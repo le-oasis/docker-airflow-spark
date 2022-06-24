@@ -1,0 +1,384 @@
+[2022-06-15 07:08:47,348] {processor.py:153} INFO - Started process (PID=46) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:08:47,351] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:08:47,353] {logging_mixin.py:115} INFO - [2022-06-15 07:08:47,353] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:08:47,399] {logging_mixin.py:115} INFO - [2022-06-15 07:08:47,395] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:08:47,402] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:08:47,492] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.153 seconds
+[2022-06-15 07:09:18,303] {processor.py:153} INFO - Started process (PID=106) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:18,305] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:09:18,307] {logging_mixin.py:115} INFO - [2022-06-15 07:09:18,307] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:18,341] {logging_mixin.py:115} INFO - [2022-06-15 07:09:18,338] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:09:18,342] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:18,386] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.094 seconds
+[2022-06-15 07:09:49,278] {processor.py:153} INFO - Started process (PID=171) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:49,280] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:09:49,281] {logging_mixin.py:115} INFO - [2022-06-15 07:09:49,281] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:49,307] {logging_mixin.py:115} INFO - [2022-06-15 07:09:49,304] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:09:49,308] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:09:49,337] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.067 seconds
+[2022-06-15 07:10:19,858] {processor.py:153} INFO - Started process (PID=232) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:19,862] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:10:19,864] {logging_mixin.py:115} INFO - [2022-06-15 07:10:19,864] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:19,880] {logging_mixin.py:115} INFO - [2022-06-15 07:10:19,877] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:10:19,881] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:19,910] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.058 seconds
+[2022-06-15 07:10:50,213] {processor.py:153} INFO - Started process (PID=300) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:50,215] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:10:50,216] {logging_mixin.py:115} INFO - [2022-06-15 07:10:50,216] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:50,233] {logging_mixin.py:115} INFO - [2022-06-15 07:10:50,231] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:10:50,234] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:10:50,267] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.059 seconds
+[2022-06-15 07:14:11,692] {processor.py:153} INFO - Started process (PID=42) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:14:11,709] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:14:11,713] {logging_mixin.py:115} INFO - [2022-06-15 07:14:11,712] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:14:11,815] {logging_mixin.py:115} INFO - [2022-06-15 07:14:11,796] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:14:11,822] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:14:11,997] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.341 seconds
+[2022-06-15 07:15:07,082] {processor.py:153} INFO - Started process (PID=97) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:07,087] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:15:07,093] {logging_mixin.py:115} INFO - [2022-06-15 07:15:07,093] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:07,149] {logging_mixin.py:115} INFO - [2022-06-15 07:15:07,135] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:15:07,153] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:07,187] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.114 seconds
+[2022-06-15 07:15:38,198] {processor.py:153} INFO - Started process (PID=163) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:38,201] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:15:38,203] {logging_mixin.py:115} INFO - [2022-06-15 07:15:38,203] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:38,223] {logging_mixin.py:115} INFO - [2022-06-15 07:15:38,221] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:15:38,225] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:15:38,263] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.075 seconds
+[2022-06-15 07:16:09,003] {processor.py:153} INFO - Started process (PID=230) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:09,005] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:16:09,006] {logging_mixin.py:115} INFO - [2022-06-15 07:16:09,006] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:09,025] {logging_mixin.py:115} INFO - [2022-06-15 07:16:09,023] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:16:09,026] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:09,047] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.049 seconds
+[2022-06-15 07:16:39,576] {processor.py:153} INFO - Started process (PID=288) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:39,579] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:16:39,580] {logging_mixin.py:115} INFO - [2022-06-15 07:16:39,580] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:39,593] {logging_mixin.py:115} INFO - [2022-06-15 07:16:39,591] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:16:39,594] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:16:39,616] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.045 seconds
+[2022-06-15 07:22:48,000] {processor.py:153} INFO - Started process (PID=48) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:22:48,006] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:22:48,014] {logging_mixin.py:115} INFO - [2022-06-15 07:22:48,014] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:22:48,149] {logging_mixin.py:115} INFO - [2022-06-15 07:22:48,086] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:22:48,152] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:22:48,377] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.416 seconds
+[2022-06-15 07:23:25,340] {processor.py:153} INFO - Started process (PID=104) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:25,341] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:23:25,342] {logging_mixin.py:115} INFO - [2022-06-15 07:23:25,342] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:25,360] {logging_mixin.py:115} INFO - [2022-06-15 07:23:25,358] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:23:25,361] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:25,376] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.038 seconds
+[2022-06-15 07:23:55,401] {processor.py:153} INFO - Started process (PID=162) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:55,402] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:23:55,404] {logging_mixin.py:115} INFO - [2022-06-15 07:23:55,404] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:55,421] {logging_mixin.py:115} INFO - [2022-06-15 07:23:55,418] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:23:55,424] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:23:55,442] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.044 seconds
+[2022-06-15 07:24:26,419] {processor.py:153} INFO - Started process (PID=225) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:26,421] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:24:26,422] {logging_mixin.py:115} INFO - [2022-06-15 07:24:26,422] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:26,447] {logging_mixin.py:115} INFO - [2022-06-15 07:24:26,444] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:24:26,448] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:26,475] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.059 seconds
+[2022-06-15 07:24:56,669] {processor.py:153} INFO - Started process (PID=283) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:56,670] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:24:56,671] {logging_mixin.py:115} INFO - [2022-06-15 07:24:56,671] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:56,683] {logging_mixin.py:115} INFO - [2022-06-15 07:24:56,681] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:24:56,684] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:24:56,699] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.033 seconds
+[2022-06-15 07:25:27,070] {processor.py:153} INFO - Started process (PID=344) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:27,072] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:25:27,073] {logging_mixin.py:115} INFO - [2022-06-15 07:25:27,073] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:27,095] {logging_mixin.py:115} INFO - [2022-06-15 07:25:27,092] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:25:27,096] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:27,128] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.062 seconds
+[2022-06-15 07:25:57,745] {processor.py:153} INFO - Started process (PID=413) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:57,748] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:25:57,754] {logging_mixin.py:115} INFO - [2022-06-15 07:25:57,754] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:57,767] {logging_mixin.py:115} INFO - [2022-06-15 07:25:57,764] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:25:57,768] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:25:57,804] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.066 seconds
+[2022-06-15 07:26:28,431] {processor.py:153} INFO - Started process (PID=481) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:28,434] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:26:28,436] {logging_mixin.py:115} INFO - [2022-06-15 07:26:28,436] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:28,462] {logging_mixin.py:115} INFO - [2022-06-15 07:26:28,459] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:26:28,464] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:28,489] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.067 seconds
+[2022-06-15 07:26:59,120] {processor.py:153} INFO - Started process (PID=538) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:59,126] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:26:59,130] {logging_mixin.py:115} INFO - [2022-06-15 07:26:59,130] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:59,167] {logging_mixin.py:115} INFO - [2022-06-15 07:26:59,162] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:26:59,170] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:26:59,209] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.106 seconds
+[2022-06-15 07:27:30,023] {processor.py:153} INFO - Started process (PID=606) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:27:30,026] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:27:30,030] {logging_mixin.py:115} INFO - [2022-06-15 07:27:30,030] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:27:30,057] {logging_mixin.py:115} INFO - [2022-06-15 07:27:30,055] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:27:30,059] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:27:30,085] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.070 seconds
+[2022-06-15 07:28:00,886] {processor.py:153} INFO - Started process (PID=673) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:00,889] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:28:00,891] {logging_mixin.py:115} INFO - [2022-06-15 07:28:00,891] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:00,909] {logging_mixin.py:115} INFO - [2022-06-15 07:28:00,906] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:28:00,910] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:00,931] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.048 seconds
+[2022-06-15 07:28:31,736] {processor.py:153} INFO - Started process (PID=741) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:31,739] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:28:31,741] {logging_mixin.py:115} INFO - [2022-06-15 07:28:31,740] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:31,774] {logging_mixin.py:115} INFO - [2022-06-15 07:28:31,771] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:28:31,776] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:28:31,820] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.096 seconds
+[2022-06-15 07:29:02,014] {processor.py:153} INFO - Started process (PID=808) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:02,016] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:29:02,017] {logging_mixin.py:115} INFO - [2022-06-15 07:29:02,017] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:02,038] {logging_mixin.py:115} INFO - [2022-06-15 07:29:02,035] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:29:02,040] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:02,083] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.073 seconds
+[2022-06-15 07:29:32,759] {processor.py:153} INFO - Started process (PID=866) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:32,762] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-15 07:29:32,764] {logging_mixin.py:115} INFO - [2022-06-15 07:29:32,764] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:32,786] {logging_mixin.py:115} INFO - [2022-06-15 07:29:32,783] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-hello-world-module.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-hello-world-module.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:29:32,788] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-15 07:29:32,819] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.068 seconds

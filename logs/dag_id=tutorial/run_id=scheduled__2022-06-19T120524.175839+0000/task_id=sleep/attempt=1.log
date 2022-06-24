@@ -1,0 +1,30 @@
+[2022-06-20 12:05:46,166] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: tutorial.sleep scheduled__2022-06-19T12:05:24.175839+00:00 [queued]>
+[2022-06-20 12:05:46,174] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: tutorial.sleep scheduled__2022-06-19T12:05:24.175839+00:00 [queued]>
+[2022-06-20 12:05:46,175] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2022-06-20 12:05:46,176] {taskinstance.py:1357} INFO - Starting attempt 1 of 4
+[2022-06-20 12:05:46,180] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2022-06-20 12:05:46,198] {taskinstance.py:1377} INFO - Executing <Task(BashOperator): sleep> on 2022-06-19 12:05:24.175839+00:00
+[2022-06-20 12:05:46,203] {standard_task_runner.py:52} INFO - Started process 9280 to run task
+[2022-06-20 12:05:46,206] {standard_task_runner.py:79} INFO - Running: ['***', 'tasks', 'run', 'tutorial', 'sleep', 'scheduled__2022-06-19T12:05:24.175839+00:00', '--job-id', '13', '--raw', '--subdir', '/home/***/.local/lib/python3.7/site-packages/***/example_dags/tutorial.py', '--cfg-path', '/tmp/tmpvc04e2zg', '--error-file', '/tmp/tmp9jq6t7b2']
+[2022-06-20 12:05:46,206] {standard_task_runner.py:80} INFO - Job 13: Subtask sleep
+[2022-06-20 12:05:46,255] {task_command.py:370} INFO - Running <TaskInstance: tutorial.sleep scheduled__2022-06-19T12:05:24.175839+00:00 [running]> on host f596236ec958
+[2022-06-20 12:05:46,328] {taskinstance.py:1571} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=***@example.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=tutorial
+AIRFLOW_CTX_TASK_ID=sleep
+AIRFLOW_CTX_EXECUTION_DATE=2022-06-19T12:05:24.175839+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-06-19T12:05:24.175839+00:00
+[2022-06-20 12:05:46,330] {subprocess.py:62} INFO - Tmp dir root location: 
+ /tmp
+[2022-06-20 12:05:46,331] {subprocess.py:74} INFO - Running command: ['bash', '-c', 'sleep 5']
+[2022-06-20 12:05:46,340] {subprocess.py:85} INFO - Output:
+[2022-06-20 12:05:51,346] {subprocess.py:96} INFO - Command exited with return code 0
+[2022-06-20 12:05:51,379] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=tutorial, task_id=sleep, execution_date=20220619T120524, start_date=20220620T120546, end_date=20220620T120551
+[2022-06-20 12:05:51,414] {local_task_job.py:156} INFO - Task exited with return code 0
+[2022-06-20 12:05:51,439] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2022-06-20 12:05:51,460] {dagrun.py:562} INFO - Marking run <DagRun tutorial @ 2022-06-19 12:05:24.175839+00:00: scheduled__2022-06-19T12:05:24.175839+00:00, externally triggered: False> successful
+[2022-06-20 12:05:51,461] {dagrun.py:622} INFO - DagRun Finished: dag_id=tutorial, execution_date=2022-06-19 12:05:24.175839+00:00, run_id=scheduled__2022-06-19T12:05:24.175839+00:00, run_start_date=2022-06-20 12:05:44.391918+00:00, run_end_date=2022-06-20 12:05:51.461172+00:00, run_duration=7.069254, state=success, external_trigger=False, run_type=scheduled, data_interval_start=2022-06-19 12:05:24.175839+00:00, data_interval_end=2022-06-20 12:05:24.175839+00:00, dag_hash=dd807623d0c62e9a90dbd0196009de78

@@ -1,0 +1,133 @@
+[2022-06-19 17:28:11,467] {processor.py:153} INFO - Started process (PID=397) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:11,485] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:28:11,497] {logging_mixin.py:115} INFO - [2022-06-19 17:28:11,497] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:12,407] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:13,310] {logging_mixin.py:115} INFO - [2022-06-19 17:28:13,310] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:28:13,546] {logging_mixin.py:115} INFO - [2022-06-19 17:28:13,546] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:28:13,656] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 2.205 seconds
+[2022-06-19 17:28:44,075] {processor.py:153} INFO - Started process (PID=453) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:44,077] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:28:44,078] {logging_mixin.py:115} INFO - [2022-06-19 17:28:44,078] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:44,126] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:28:44,189] {logging_mixin.py:115} INFO - [2022-06-19 17:28:44,189] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:28:44,247] {logging_mixin.py:115} INFO - [2022-06-19 17:28:44,246] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:28:44,273] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.204 seconds
+[2022-06-19 17:29:14,686] {processor.py:153} INFO - Started process (PID=508) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:14,688] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:29:14,690] {logging_mixin.py:115} INFO - [2022-06-19 17:29:14,690] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:14,889] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:14,950] {logging_mixin.py:115} INFO - [2022-06-19 17:29:14,950] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:29:15,023] {logging_mixin.py:115} INFO - [2022-06-19 17:29:15,023] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:29:15,098] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.415 seconds
+[2022-06-19 17:29:45,905] {processor.py:153} INFO - Started process (PID=572) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:45,907] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:29:45,908] {logging_mixin.py:115} INFO - [2022-06-19 17:29:45,908] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:45,929] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:29:45,953] {logging_mixin.py:115} INFO - [2022-06-19 17:29:45,953] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:29:45,973] {logging_mixin.py:115} INFO - [2022-06-19 17:29:45,973] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:29:46,007] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.105 seconds
+[2022-06-19 17:30:16,174] {processor.py:153} INFO - Started process (PID=627) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:16,175] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:30:16,176] {logging_mixin.py:115} INFO - [2022-06-19 17:30:16,176] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:16,218] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:16,257] {logging_mixin.py:115} INFO - [2022-06-19 17:30:16,257] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:30:16,288] {logging_mixin.py:115} INFO - [2022-06-19 17:30:16,288] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:30:16,308] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.139 seconds
+[2022-06-19 17:30:47,063] {processor.py:153} INFO - Started process (PID=691) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:47,065] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:30:47,067] {logging_mixin.py:115} INFO - [2022-06-19 17:30:47,067] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:47,178] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:30:47,217] {logging_mixin.py:115} INFO - [2022-06-19 17:30:47,216] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:30:47,241] {logging_mixin.py:115} INFO - [2022-06-19 17:30:47,241] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:30:47,259] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.213 seconds
+[2022-06-19 17:31:17,417] {processor.py:153} INFO - Started process (PID=746) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:17,422] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:31:17,427] {logging_mixin.py:115} INFO - [2022-06-19 17:31:17,427] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:17,466] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:17,503] {logging_mixin.py:115} INFO - [2022-06-19 17:31:17,503] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:31:17,526] {logging_mixin.py:115} INFO - [2022-06-19 17:31:17,526] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:31:17,545] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.133 seconds
+[2022-06-19 17:31:47,669] {processor.py:153} INFO - Started process (PID=810) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:47,670] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:31:47,671] {logging_mixin.py:115} INFO - [2022-06-19 17:31:47,671] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:47,727] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:31:47,811] {logging_mixin.py:115} INFO - [2022-06-19 17:31:47,811] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:31:47,863] {logging_mixin.py:115} INFO - [2022-06-19 17:31:47,863] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:31:47,912] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.253 seconds
+[2022-06-19 17:32:18,499] {processor.py:153} INFO - Started process (PID=865) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:18,499] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:32:18,500] {logging_mixin.py:115} INFO - [2022-06-19 17:32:18,500] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:18,517] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:18,536] {logging_mixin.py:115} INFO - [2022-06-19 17:32:18,536] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:32:18,550] {logging_mixin.py:115} INFO - [2022-06-19 17:32:18,550] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:32:18,565] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.068 seconds
+[2022-06-19 17:32:49,209] {processor.py:153} INFO - Started process (PID=929) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:49,209] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:32:49,210] {logging_mixin.py:115} INFO - [2022-06-19 17:32:49,210] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:49,228] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:32:49,254] {logging_mixin.py:115} INFO - [2022-06-19 17:32:49,254] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:32:49,273] {logging_mixin.py:115} INFO - [2022-06-19 17:32:49,273] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:32:49,287] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.082 seconds
+[2022-06-19 17:33:20,073] {processor.py:153} INFO - Started process (PID=994) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:20,073] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:33:20,074] {logging_mixin.py:115} INFO - [2022-06-19 17:33:20,074] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:20,094] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:20,116] {logging_mixin.py:115} INFO - [2022-06-19 17:33:20,116] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:33:20,132] {logging_mixin.py:115} INFO - [2022-06-19 17:33:20,132] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:33:20,146] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.076 seconds
+[2022-06-19 17:33:50,956] {processor.py:153} INFO - Started process (PID=1049) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:50,957] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:33:50,957] {logging_mixin.py:115} INFO - [2022-06-19 17:33:50,957] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:50,972] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:33:51,032] {logging_mixin.py:115} INFO - [2022-06-19 17:33:51,032] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:33:51,048] {logging_mixin.py:115} INFO - [2022-06-19 17:33:51,048] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:33:51,061] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.107 seconds
+[2022-06-19 17:34:21,843] {processor.py:153} INFO - Started process (PID=1114) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:21,843] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:34:21,844] {logging_mixin.py:115} INFO - [2022-06-19 17:34:21,844] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:21,859] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:21,877] {logging_mixin.py:115} INFO - [2022-06-19 17:34:21,877] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:34:21,891] {logging_mixin.py:115} INFO - [2022-06-19 17:34:21,891] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:34:21,906] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.066 seconds
+[2022-06-19 17:34:52,563] {processor.py:153} INFO - Started process (PID=1178) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:52,564] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:34:52,564] {logging_mixin.py:115} INFO - [2022-06-19 17:34:52,564] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:52,580] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:34:52,604] {logging_mixin.py:115} INFO - [2022-06-19 17:34:52,604] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:34:52,617] {logging_mixin.py:115} INFO - [2022-06-19 17:34:52,617] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:34:52,633] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.073 seconds
+[2022-06-19 17:35:23,291] {processor.py:153} INFO - Started process (PID=1233) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:23,292] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:35:23,293] {logging_mixin.py:115} INFO - [2022-06-19 17:35:23,293] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:23,310] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:23,333] {logging_mixin.py:115} INFO - [2022-06-19 17:35:23,333] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:35:23,350] {logging_mixin.py:115} INFO - [2022-06-19 17:35:23,350] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:35:23,365] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.078 seconds
+[2022-06-19 17:35:54,099] {processor.py:153} INFO - Started process (PID=1297) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:54,099] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:35:54,100] {logging_mixin.py:115} INFO - [2022-06-19 17:35:54,100] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:54,117] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:35:54,142] {logging_mixin.py:115} INFO - [2022-06-19 17:35:54,142] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:35:54,161] {logging_mixin.py:115} INFO - [2022-06-19 17:35:54,161] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:35:54,176] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.079 seconds
+[2022-06-19 17:36:24,748] {processor.py:153} INFO - Started process (PID=1361) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:24,749] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:36:24,750] {logging_mixin.py:115} INFO - [2022-06-19 17:36:24,749] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:24,766] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:24,789] {logging_mixin.py:115} INFO - [2022-06-19 17:36:24,789] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:36:24,802] {logging_mixin.py:115} INFO - [2022-06-19 17:36:24,802] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:36:24,812] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.067 seconds
+[2022-06-19 17:36:55,319] {processor.py:153} INFO - Started process (PID=1425) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:55,320] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:36:55,320] {logging_mixin.py:115} INFO - [2022-06-19 17:36:55,320] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:55,336] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:36:55,354] {logging_mixin.py:115} INFO - [2022-06-19 17:36:55,354] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:36:55,368] {logging_mixin.py:115} INFO - [2022-06-19 17:36:55,368] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:36:55,384] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.067 seconds
+[2022-06-19 17:37:26,279] {processor.py:153} INFO - Started process (PID=1480) to work on /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:37:26,279] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-hello-world-module.py for tasks to queue
+[2022-06-19 17:37:26,280] {logging_mixin.py:115} INFO - [2022-06-19 17:37:26,280] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:37:26,296] {processor.py:651} INFO - DAG(s) dict_keys(['spark-hello-world-module']) retrieved from /opt/airflow/dags/spark-hello-world-module.py
+[2022-06-19 17:37:26,314] {logging_mixin.py:115} INFO - [2022-06-19 17:37:26,314] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-19 17:37:26,328] {logging_mixin.py:115} INFO - [2022-06-19 17:37:26,328] {dag.py:2931} INFO - Setting next_dagrun for spark-hello-world-module to 2022-06-19T00:00:00+00:00, run_after=2022-06-20T00:00:00+00:00
+[2022-06-19 17:37:26,339] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-hello-world-module.py took 0.062 seconds

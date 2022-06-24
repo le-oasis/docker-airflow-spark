@@ -1,0 +1,193 @@
+[2022-06-24 10:54:59,931] {processor.py:153} INFO - Started process (PID=908) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:54:59,943] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:54:59,948] {logging_mixin.py:115} INFO - [2022-06-24 10:54:59,947] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:55:00,092] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:55:03,199] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,199] {manager.py:508} INFO - Created Permission View: can edit on DAG:example_dag
+[2022-06-24 10:55:03,411] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,411] {manager.py:508} INFO - Created Permission View: can delete on DAG:example_dag
+[2022-06-24 10:55:03,490] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,489] {manager.py:508} INFO - Created Permission View: can read on DAG:example_dag
+[2022-06-24 10:55:03,491] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,491] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:55:03,595] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,595] {dag.py:2398} INFO - Creating ORM DAG for example_dag
+[2022-06-24 10:55:03,718] {logging_mixin.py:115} INFO - [2022-06-24 10:55:03,718] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:55:04,312] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 4.392 seconds
+[2022-06-24 10:55:35,037] {processor.py:153} INFO - Started process (PID=943) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:55:35,052] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:55:35,055] {logging_mixin.py:115} INFO - [2022-06-24 10:55:35,055] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:55:35,116] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:55:35,244] {logging_mixin.py:115} INFO - [2022-06-24 10:55:35,243] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:55:35,464] {logging_mixin.py:115} INFO - [2022-06-24 10:55:35,464] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:55:35,653] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.628 seconds
+[2022-06-24 10:56:06,480] {processor.py:153} INFO - Started process (PID=959) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:06,494] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:56:06,548] {logging_mixin.py:115} INFO - [2022-06-24 10:56:06,548] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:06,675] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:06,974] {logging_mixin.py:115} INFO - [2022-06-24 10:56:06,973] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:56:07,150] {logging_mixin.py:115} INFO - [2022-06-24 10:56:07,149] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:56:07,205] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.731 seconds
+[2022-06-24 10:56:38,539] {processor.py:153} INFO - Started process (PID=994) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:38,551] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:56:38,571] {logging_mixin.py:115} INFO - [2022-06-24 10:56:38,570] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:38,950] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:56:39,998] {logging_mixin.py:115} INFO - [2022-06-24 10:56:39,997] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:56:40,448] {logging_mixin.py:115} INFO - [2022-06-24 10:56:40,448] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:56:40,755] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 2.284 seconds
+[2022-06-24 10:57:12,161] {processor.py:153} INFO - Started process (PID=1008) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:12,404] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:57:12,426] {logging_mixin.py:115} INFO - [2022-06-24 10:57:12,426] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:12,941] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:14,835] {logging_mixin.py:115} INFO - [2022-06-24 10:57:14,834] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:57:15,175] {logging_mixin.py:115} INFO - [2022-06-24 10:57:15,174] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:57:15,320] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 3.388 seconds
+[2022-06-24 10:57:45,691] {processor.py:153} INFO - Started process (PID=1033) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:45,692] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:57:45,694] {logging_mixin.py:115} INFO - [2022-06-24 10:57:45,694] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:45,719] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:57:45,846] {logging_mixin.py:115} INFO - [2022-06-24 10:57:45,846] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:57:45,954] {logging_mixin.py:115} INFO - [2022-06-24 10:57:45,954] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:57:45,989] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.310 seconds
+[2022-06-24 10:58:16,410] {processor.py:153} INFO - Started process (PID=1058) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:16,439] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:58:16,449] {logging_mixin.py:115} INFO - [2022-06-24 10:58:16,448] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:16,696] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:17,254] {logging_mixin.py:115} INFO - [2022-06-24 10:58:17,253] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:58:17,578] {logging_mixin.py:115} INFO - [2022-06-24 10:58:17,576] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:58:17,716] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 1.325 seconds
+[2022-06-24 10:58:47,883] {processor.py:153} INFO - Started process (PID=1082) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:47,886] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:58:47,888] {logging_mixin.py:115} INFO - [2022-06-24 10:58:47,888] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:47,909] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:58:47,954] {logging_mixin.py:115} INFO - [2022-06-24 10:58:47,954] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:58:47,988] {logging_mixin.py:115} INFO - [2022-06-24 10:58:47,988] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:58:48,008] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.130 seconds
+[2022-06-24 10:59:19,581] {processor.py:153} INFO - Started process (PID=1108) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:20,006] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:59:20,229] {logging_mixin.py:115} INFO - [2022-06-24 10:59:20,229] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:20,791] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:23,333] {logging_mixin.py:115} INFO - [2022-06-24 10:59:23,333] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:59:24,162] {logging_mixin.py:115} INFO - [2022-06-24 10:59:24,162] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:59:24,367] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 4.969 seconds
+[2022-06-24 10:59:55,564] {processor.py:153} INFO - Started process (PID=1138) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:55,567] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 10:59:55,572] {logging_mixin.py:115} INFO - [2022-06-24 10:59:55,571] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:55,598] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 10:59:55,664] {logging_mixin.py:115} INFO - [2022-06-24 10:59:55,664] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 10:59:55,754] {logging_mixin.py:115} INFO - [2022-06-24 10:59:55,754] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 10:59:55,806] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.254 seconds
+[2022-06-24 11:00:26,149] {processor.py:153} INFO - Started process (PID=1163) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:26,152] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:00:26,155] {logging_mixin.py:115} INFO - [2022-06-24 11:00:26,155] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:26,180] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:26,232] {logging_mixin.py:115} INFO - [2022-06-24 11:00:26,232] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:00:26,272] {logging_mixin.py:115} INFO - [2022-06-24 11:00:26,271] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:00:26,295] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.155 seconds
+[2022-06-24 11:00:56,781] {processor.py:153} INFO - Started process (PID=1186) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:56,783] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:00:56,787] {logging_mixin.py:115} INFO - [2022-06-24 11:00:56,787] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:56,832] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:00:57,187] {logging_mixin.py:115} INFO - [2022-06-24 11:00:57,187] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:00:57,564] {logging_mixin.py:115} INFO - [2022-06-24 11:00:57,561] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:00:57,674] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.908 seconds
+[2022-06-24 11:01:28,115] {processor.py:153} INFO - Started process (PID=1215) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:28,120] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:01:28,125] {logging_mixin.py:115} INFO - [2022-06-24 11:01:28,124] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:28,148] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:28,211] {logging_mixin.py:115} INFO - [2022-06-24 11:01:28,210] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:01:28,265] {logging_mixin.py:115} INFO - [2022-06-24 11:01:28,264] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:01:28,292] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.181 seconds
+[2022-06-24 11:01:58,527] {processor.py:153} INFO - Started process (PID=1241) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:58,535] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:01:58,542] {logging_mixin.py:115} INFO - [2022-06-24 11:01:58,541] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:58,585] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:01:58,654] {logging_mixin.py:115} INFO - [2022-06-24 11:01:58,654] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:01:58,738] {logging_mixin.py:115} INFO - [2022-06-24 11:01:58,736] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:01:58,792] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.285 seconds
+[2022-06-24 11:02:29,342] {processor.py:153} INFO - Started process (PID=1268) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:29,350] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:02:29,364] {logging_mixin.py:115} INFO - [2022-06-24 11:02:29,364] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:29,411] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:29,502] {logging_mixin.py:115} INFO - [2022-06-24 11:02:29,502] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:02:29,590] {logging_mixin.py:115} INFO - [2022-06-24 11:02:29,590] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:02:29,616] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.282 seconds
+[2022-06-24 11:02:59,753] {processor.py:153} INFO - Started process (PID=1293) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:59,765] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:02:59,767] {logging_mixin.py:115} INFO - [2022-06-24 11:02:59,766] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:59,792] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:02:59,873] {logging_mixin.py:115} INFO - [2022-06-24 11:02:59,873] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:02:59,938] {logging_mixin.py:115} INFO - [2022-06-24 11:02:59,938] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:02:59,967] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.219 seconds
+[2022-06-24 11:03:30,060] {processor.py:153} INFO - Started process (PID=1317) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:03:30,063] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:03:30,066] {logging_mixin.py:115} INFO - [2022-06-24 11:03:30,065] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:03:30,089] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:03:30,142] {logging_mixin.py:115} INFO - [2022-06-24 11:03:30,141] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:03:30,196] {logging_mixin.py:115} INFO - [2022-06-24 11:03:30,196] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:03:30,226] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.174 seconds
+[2022-06-24 11:04:00,363] {processor.py:153} INFO - Started process (PID=1351) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:00,374] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:04:00,378] {logging_mixin.py:115} INFO - [2022-06-24 11:04:00,378] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:00,403] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:00,451] {logging_mixin.py:115} INFO - [2022-06-24 11:04:00,451] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:04:00,485] {logging_mixin.py:115} INFO - [2022-06-24 11:04:00,485] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:04:00,505] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.151 seconds
+[2022-06-24 11:04:30,944] {processor.py:153} INFO - Started process (PID=1375) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:30,950] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:04:30,952] {logging_mixin.py:115} INFO - [2022-06-24 11:04:30,952] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:30,988] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:04:31,112] {logging_mixin.py:115} INFO - [2022-06-24 11:04:31,112] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:04:31,269] {logging_mixin.py:115} INFO - [2022-06-24 11:04:31,269] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:04:31,354] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.419 seconds
+[2022-06-24 11:05:03,368] {processor.py:153} INFO - Started process (PID=1399) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:03,372] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:05:03,384] {logging_mixin.py:115} INFO - [2022-06-24 11:05:03,384] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:03,682] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:04,790] {logging_mixin.py:115} INFO - [2022-06-24 11:05:04,790] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:05:04,921] {logging_mixin.py:115} INFO - [2022-06-24 11:05:04,921] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:05:05,068] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 2.079 seconds
+[2022-06-24 11:05:35,523] {processor.py:153} INFO - Started process (PID=1427) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:35,525] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:05:35,527] {logging_mixin.py:115} INFO - [2022-06-24 11:05:35,527] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:35,553] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:05:35,687] {logging_mixin.py:115} INFO - [2022-06-24 11:05:35,686] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:05:35,826] {logging_mixin.py:115} INFO - [2022-06-24 11:05:35,825] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:05:35,883] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.375 seconds
+[2022-06-24 11:06:07,063] {processor.py:153} INFO - Started process (PID=1450) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:07,078] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:06:07,082] {logging_mixin.py:115} INFO - [2022-06-24 11:06:07,082] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:07,346] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:07,714] {logging_mixin.py:115} INFO - [2022-06-24 11:06:07,714] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:06:07,931] {logging_mixin.py:115} INFO - [2022-06-24 11:06:07,931] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:06:08,027] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 1.069 seconds
+[2022-06-24 11:06:39,023] {processor.py:153} INFO - Started process (PID=1476) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:39,025] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:06:39,028] {logging_mixin.py:115} INFO - [2022-06-24 11:06:39,028] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:39,073] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:06:39,166] {logging_mixin.py:115} INFO - [2022-06-24 11:06:39,165] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:06:39,257] {logging_mixin.py:115} INFO - [2022-06-24 11:06:39,256] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:06:39,308] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.295 seconds
+[2022-06-24 11:07:10,299] {processor.py:153} INFO - Started process (PID=1502) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:10,302] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:07:10,304] {logging_mixin.py:115} INFO - [2022-06-24 11:07:10,303] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:10,412] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:10,514] {logging_mixin.py:115} INFO - [2022-06-24 11:07:10,514] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:07:10,693] {logging_mixin.py:115} INFO - [2022-06-24 11:07:10,693] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:07:10,878] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.791 seconds
+[2022-06-24 11:07:42,764] {processor.py:153} INFO - Started process (PID=1526) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:42,770] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:07:42,875] {logging_mixin.py:115} INFO - [2022-06-24 11:07:42,875] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:43,305] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:07:45,883] {logging_mixin.py:115} INFO - [2022-06-24 11:07:45,882] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:07:49,209] {logging_mixin.py:115} INFO - [2022-06-24 11:07:49,209] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:07:49,619] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 6.985 seconds
+[2022-06-24 11:08:20,709] {processor.py:153} INFO - Started process (PID=1550) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:20,714] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:08:20,718] {logging_mixin.py:115} INFO - [2022-06-24 11:08:20,718] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:20,747] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:20,828] {logging_mixin.py:115} INFO - [2022-06-24 11:08:20,827] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:08:20,886] {logging_mixin.py:115} INFO - [2022-06-24 11:08:20,886] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:08:20,916] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.222 seconds
+[2022-06-24 11:08:50,979] {processor.py:153} INFO - Started process (PID=1583) to work on /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:50,981] {processor.py:641} INFO - Processing file /opt/airflow/dags/makedir.py for tasks to queue
+[2022-06-24 11:08:50,984] {logging_mixin.py:115} INFO - [2022-06-24 11:08:50,984] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:51,006] {processor.py:651} INFO - DAG(s) dict_keys(['example_dag']) retrieved from /opt/airflow/dags/makedir.py
+[2022-06-24 11:08:51,065] {logging_mixin.py:115} INFO - [2022-06-24 11:08:51,064] {dag.py:2379} INFO - Sync 1 DAGs
+[2022-06-24 11:08:51,111] {logging_mixin.py:115} INFO - [2022-06-24 11:08:51,111] {dag.py:2931} INFO - Setting next_dagrun for example_dag to 2022-06-14T00:00:00+00:00, run_after=2022-06-15T00:00:00+00:00
+[2022-06-24 11:08:51,131] {processor.py:161} INFO - Processing /opt/airflow/dags/makedir.py took 0.165 seconds

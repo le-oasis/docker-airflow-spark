@@ -1,0 +1,384 @@
+[2022-06-15 07:08:47,594] {processor.py:153} INFO - Started process (PID=48) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:08:47,602] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:08:47,612] {logging_mixin.py:115} INFO - [2022-06-15 07:08:47,611] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:08:47,683] {logging_mixin.py:115} INFO - [2022-06-15 07:08:47,661] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:08:47,693] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:08:47,816] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.235 seconds
+[2022-06-15 07:09:18,420] {processor.py:153} INFO - Started process (PID=108) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:18,422] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:09:18,424] {logging_mixin.py:115} INFO - [2022-06-15 07:09:18,424] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:18,451] {logging_mixin.py:115} INFO - [2022-06-15 07:09:18,445] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:09:18,455] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:18,477] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.061 seconds
+[2022-06-15 07:09:49,356] {processor.py:153} INFO - Started process (PID=173) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:49,357] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:09:49,358] {logging_mixin.py:115} INFO - [2022-06-15 07:09:49,358] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:49,371] {logging_mixin.py:115} INFO - [2022-06-15 07:09:49,369] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:09:49,373] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:09:49,389] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.035 seconds
+[2022-06-15 07:10:19,928] {processor.py:153} INFO - Started process (PID=234) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:19,929] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:10:19,930] {logging_mixin.py:115} INFO - [2022-06-15 07:10:19,930] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:19,938] {logging_mixin.py:115} INFO - [2022-06-15 07:10:19,936] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:10:19,939] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:19,958] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.032 seconds
+[2022-06-15 07:10:50,286] {processor.py:153} INFO - Started process (PID=302) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:50,287] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:10:50,288] {logging_mixin.py:115} INFO - [2022-06-15 07:10:50,288] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:50,301] {logging_mixin.py:115} INFO - [2022-06-15 07:10:50,299] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:10:50,302] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:10:50,321] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.037 seconds
+[2022-06-15 07:14:12,163] {processor.py:153} INFO - Started process (PID=44) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:14:12,180] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:14:12,201] {logging_mixin.py:115} INFO - [2022-06-15 07:14:12,198] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:14:12,293] {logging_mixin.py:115} INFO - [2022-06-15 07:14:12,288] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:14:12,304] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:14:12,474] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.330 seconds
+[2022-06-15 07:15:07,304] {processor.py:153} INFO - Started process (PID=99) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:07,309] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:15:07,321] {logging_mixin.py:115} INFO - [2022-06-15 07:15:07,321] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:07,372] {logging_mixin.py:115} INFO - [2022-06-15 07:15:07,355] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:15:07,374] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:07,486] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.188 seconds
+[2022-06-15 07:15:38,285] {processor.py:153} INFO - Started process (PID=165) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:38,286] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:15:38,287] {logging_mixin.py:115} INFO - [2022-06-15 07:15:38,287] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:38,301] {logging_mixin.py:115} INFO - [2022-06-15 07:15:38,299] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:15:38,303] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:15:38,322] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.040 seconds
+[2022-06-15 07:16:09,066] {processor.py:153} INFO - Started process (PID=232) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:09,080] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:16:09,081] {logging_mixin.py:115} INFO - [2022-06-15 07:16:09,081] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:09,092] {logging_mixin.py:115} INFO - [2022-06-15 07:16:09,090] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:16:09,092] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:09,110] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.047 seconds
+[2022-06-15 07:16:39,633] {processor.py:153} INFO - Started process (PID=290) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:39,635] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:16:39,635] {logging_mixin.py:115} INFO - [2022-06-15 07:16:39,635] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:39,642] {logging_mixin.py:115} INFO - [2022-06-15 07:16:39,641] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:16:39,643] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:16:39,665] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.034 seconds
+[2022-06-15 07:22:48,504] {processor.py:153} INFO - Started process (PID=50) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:22:48,508] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:22:48,512] {logging_mixin.py:115} INFO - [2022-06-15 07:22:48,512] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:22:48,611] {logging_mixin.py:115} INFO - [2022-06-15 07:22:48,599] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:22:48,617] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:22:48,731] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.244 seconds
+[2022-06-15 07:23:25,403] {processor.py:153} INFO - Started process (PID=106) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:25,404] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:23:25,406] {logging_mixin.py:115} INFO - [2022-06-15 07:23:25,405] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:25,419] {logging_mixin.py:115} INFO - [2022-06-15 07:23:25,417] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:23:25,420] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:25,444] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.045 seconds
+[2022-06-15 07:23:56,672] {processor.py:153} INFO - Started process (PID=172) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:56,673] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:23:56,674] {logging_mixin.py:115} INFO - [2022-06-15 07:23:56,674] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:56,687] {logging_mixin.py:115} INFO - [2022-06-15 07:23:56,686] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:23:56,688] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:23:56,709] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.040 seconds
+[2022-06-15 07:24:27,482] {processor.py:153} INFO - Started process (PID=236) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:27,485] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:24:27,486] {logging_mixin.py:115} INFO - [2022-06-15 07:24:27,486] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:27,498] {logging_mixin.py:115} INFO - [2022-06-15 07:24:27,496] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:24:27,498] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:27,514] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.035 seconds
+[2022-06-15 07:24:57,713] {processor.py:153} INFO - Started process (PID=285) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:57,715] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:24:57,717] {logging_mixin.py:115} INFO - [2022-06-15 07:24:57,717] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:57,735] {logging_mixin.py:115} INFO - [2022-06-15 07:24:57,733] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:24:57,736] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:24:57,752] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.044 seconds
+[2022-06-15 07:25:27,950] {processor.py:153} INFO - Started process (PID=353) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:27,952] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:25:27,953] {logging_mixin.py:115} INFO - [2022-06-15 07:25:27,952] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:27,963] {logging_mixin.py:115} INFO - [2022-06-15 07:25:27,962] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:25:27,965] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:27,979] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.031 seconds
+[2022-06-15 07:25:58,430] {processor.py:153} INFO - Started process (PID=418) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:58,431] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:25:58,433] {logging_mixin.py:115} INFO - [2022-06-15 07:25:58,433] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:58,453] {logging_mixin.py:115} INFO - [2022-06-15 07:25:58,450] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:25:58,454] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:25:58,484] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.059 seconds
+[2022-06-15 07:26:28,934] {processor.py:153} INFO - Started process (PID=485) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:28,939] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:26:28,942] {logging_mixin.py:115} INFO - [2022-06-15 07:26:28,942] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:28,960] {logging_mixin.py:115} INFO - [2022-06-15 07:26:28,959] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:26:28,967] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:28,989] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.058 seconds
+[2022-06-15 07:26:59,232] {processor.py:153} INFO - Started process (PID=540) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:59,233] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:26:59,234] {logging_mixin.py:115} INFO - [2022-06-15 07:26:59,234] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:59,243] {logging_mixin.py:115} INFO - [2022-06-15 07:26:59,242] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:26:59,249] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:26:59,267] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.038 seconds
+[2022-06-15 07:27:30,108] {processor.py:153} INFO - Started process (PID=608) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:27:30,109] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:27:30,110] {logging_mixin.py:115} INFO - [2022-06-15 07:27:30,110] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:27:30,123] {logging_mixin.py:115} INFO - [2022-06-15 07:27:30,121] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:27:30,124] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:27:30,138] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.032 seconds
+[2022-06-15 07:28:00,954] {processor.py:153} INFO - Started process (PID=675) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:00,955] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:28:00,956] {logging_mixin.py:115} INFO - [2022-06-15 07:28:00,956] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:00,966] {logging_mixin.py:115} INFO - [2022-06-15 07:28:00,965] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:28:00,968] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:00,983] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.034 seconds
+[2022-06-15 07:28:31,851] {processor.py:153} INFO - Started process (PID=743) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:31,853] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:28:31,854] {logging_mixin.py:115} INFO - [2022-06-15 07:28:31,854] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:31,868] {logging_mixin.py:115} INFO - [2022-06-15 07:28:31,866] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:28:31,868] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:28:31,884] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.036 seconds
+[2022-06-15 07:29:02,102] {processor.py:153} INFO - Started process (PID=810) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:02,103] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:29:02,104] {logging_mixin.py:115} INFO - [2022-06-15 07:29:02,104] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:02,120] {logging_mixin.py:115} INFO - [2022-06-15 07:29:02,119] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:29:02,121] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:02,137] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.036 seconds
+[2022-06-15 07:29:32,836] {processor.py:153} INFO - Started process (PID=868) to work on /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:32,838] {processor.py:641} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-06-15 07:29:32,838] {logging_mixin.py:115} INFO - [2022-06-15 07:29:32,838] {dagbag.py:507} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:32,847] {logging_mixin.py:115} INFO - [2022-06-15 07:29:32,846] {dagbag.py:320} ERROR - Failed to import: /opt/airflow/dags/spark-postgres.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 317, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/spark-postgres.py", line 3, in <module>
+    from airflow.contrib.operators.spark_submit_operator import SparkSubmitOperator
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/contrib/operators/spark_submit_operator.py", line 22, in <module>
+    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator  # noqa
+ModuleNotFoundError: No module named 'airflow.providers.apache'
+[2022-06-15 07:29:32,849] {processor.py:653} WARNING - No viable dags retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-06-15 07:29:32,862] {processor.py:161} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.027 seconds
