@@ -1,0 +1,7 @@
+misc.txt
+dags/__pycache__
+.ipynb_checkpoints
+.part*
+part-*
+*_SUCCESS*
+*.pyc
