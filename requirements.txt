@@ -1,2 +1,6 @@
-pyspark==3.0.0
-apache-airflow-providers-apache-spark==3.0.0
+boto3
+pyspark 
+apache-airflow-providers-apache-spark
+markupsafe==2.0.1
+apache-airflow[password]
+flask-bcrypt
