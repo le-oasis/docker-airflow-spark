@@ -43,8 +43,8 @@ This project contains the following containers and thier environment variables:
 * airflow-init:
     * The initialization service. This sets up a database in the Airflow UI and creates users to login into the UI. 
     * For our UI:
-    * Username: airflow
-    * Password: airflow 
+    * Username: admin
+    * Password: poolp 
     * You can add a user via the airflow command line interface (cli) by typing the following command 
 
 ```
@@ -107,17 +107,17 @@ Apache Spark implementation (docker-compose.spark.yml)
 
     $ git clone https://github.com/le-oasis/airflow-docker-spark
 
-### Start & Build Containers
+### Build Image
 
-Inside the airflow-docker-spark folder
+Build our image from the Dockerfile located in the airflow-docker-spark folder
 
-    $ docker-compose -f docker-compose.spark.yml -f docker-compose.airflow.yaml up --build
+    $ docker build --rm --force-rm -t prunedge  .
 
-If you want to run in background:
+### Start Services
 
-    $ docker-compose -f docker-compose.spark.yml -f docker-compose.airflow.yaml up --build -d
+    $ docker-compose -f docker-compose.spark.yml up
 
-Note: when running the docker-compose for the first time, the images `postgres:9.13`, `apache/airflow:2.3.2`, `quay.io/minio/minio:RELEASE.2022-06-11T19-55-32Z` ,`bitnami/spark:3.1.2` and `jupyter/pyspark-notebook:spark-3.1.2` will be downloaded before the containers started.
+Note: when running the docker-compose for the first time, the images `postgres:13`, `apache/airflow:2.3.2`, `bitnami/minio` ,`bitnami/spark:3.1.2` and `jupyter/pyspark-notebook:spark-3.1.2` will be downloaded before the containers started.
 
 ### Check if you can access
 
@@ -137,5 +137,4 @@ Jupyter Notebook: http://127.0.0.1:8888
   * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. The URL with the token can be taken from container logs using:
   
         $ docker logs -f docker_jupyter-spark_1
-
 
