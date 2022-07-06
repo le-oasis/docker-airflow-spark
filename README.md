@@ -27,7 +27,9 @@ Build our image from the Dockerfile located in the airflow-docker-spark folder
 
 - Another option is the pull the image hosted on my [Dockerhub](https://hub.docker.com/r/mahmud1400/prunedge/tags)
 
+
     $ docker pull mahmud1400/prunedge:latest
+
 
 
 ## Add the Environment File
@@ -77,7 +79,7 @@ Airflow UI Login:
 * password: airflow
 
 Minio: http://localhost:9000
-Airflow UI Login: 
+
 * username: minio 
 * password: miniosecret
 
