@@ -1,6 +1,2 @@
-boto3
-pyspark 
-apache-airflow-providers-apache-spark
-markupsafe==2.0.1
-apache-airflow[password]
-flask-bcrypt
+numpy
+pandas
