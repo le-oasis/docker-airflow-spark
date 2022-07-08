@@ -42,5 +42,3 @@ RUN pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas]
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-
-
