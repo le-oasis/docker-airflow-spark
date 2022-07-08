@@ -5,3 +5,4 @@ dags/__pycache__
 part-*
 *_SUCCESS*
 *.pyc
+.DS_Store
