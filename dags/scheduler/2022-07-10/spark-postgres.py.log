@@ -86,3 +86,73 @@
 [2022-07-10 04:54:15,989] {logging_mixin.py:109} INFO - [2022-07-10 04:54:15,989] {dag.py:2396} INFO - Sync 1 DAGs
 [2022-07-10 04:54:16,039] {logging_mixin.py:109} INFO - [2022-07-10 04:54:16,038] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
 [2022-07-10 04:54:16,072] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.397 seconds
+[2022-07-10 04:54:46,765] {processor.py:163} INFO - Started process (PID=110) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:54:46,768] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:54:46,772] {logging_mixin.py:109} INFO - [2022-07-10 04:54:46,772] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:54:46,833] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:54:46,852] {logging_mixin.py:109} INFO - [2022-07-10 04:54:46,852] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:54:46,873] {logging_mixin.py:109} INFO - [2022-07-10 04:54:46,873] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:54:46,895] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.137 seconds
+[2022-07-10 04:55:17,045] {processor.py:163} INFO - Started process (PID=112) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:17,049] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:55:17,051] {logging_mixin.py:109} INFO - [2022-07-10 04:55:17,051] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:17,116] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:17,134] {logging_mixin.py:109} INFO - [2022-07-10 04:55:17,134] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:55:17,158] {logging_mixin.py:109} INFO - [2022-07-10 04:55:17,158] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:55:17,178] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.139 seconds
+[2022-07-10 04:55:47,251] {processor.py:163} INFO - Started process (PID=114) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:47,254] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:55:47,256] {logging_mixin.py:109} INFO - [2022-07-10 04:55:47,256] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:47,316] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:55:47,338] {logging_mixin.py:109} INFO - [2022-07-10 04:55:47,338] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:55:47,367] {logging_mixin.py:109} INFO - [2022-07-10 04:55:47,367] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:55:47,386] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.141 seconds
+[2022-07-10 04:56:17,480] {processor.py:163} INFO - Started process (PID=115) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:17,484] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:56:17,488] {logging_mixin.py:109} INFO - [2022-07-10 04:56:17,488] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:17,589] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:17,618] {logging_mixin.py:109} INFO - [2022-07-10 04:56:17,618] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:56:17,678] {logging_mixin.py:109} INFO - [2022-07-10 04:56:17,677] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:56:17,698] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.233 seconds
+[2022-07-10 04:56:48,371] {processor.py:163} INFO - Started process (PID=117) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:48,395] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:56:48,402] {logging_mixin.py:109} INFO - [2022-07-10 04:56:48,402] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:48,540] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:56:48,586] {logging_mixin.py:109} INFO - [2022-07-10 04:56:48,585] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:56:48,626] {logging_mixin.py:109} INFO - [2022-07-10 04:56:48,626] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:56:48,653] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.297 seconds
+[2022-07-10 04:57:19,296] {processor.py:163} INFO - Started process (PID=119) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:19,315] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:57:19,376] {logging_mixin.py:109} INFO - [2022-07-10 04:57:19,375] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:19,667] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:19,694] {logging_mixin.py:109} INFO - [2022-07-10 04:57:19,694] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:57:19,747] {logging_mixin.py:109} INFO - [2022-07-10 04:57:19,747] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:57:19,786] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.512 seconds
+[2022-07-10 04:57:50,505] {processor.py:163} INFO - Started process (PID=121) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:50,550] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:57:50,555] {logging_mixin.py:109} INFO - [2022-07-10 04:57:50,554] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:51,113] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:57:51,392] {logging_mixin.py:109} INFO - [2022-07-10 04:57:51,392] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:57:51,571] {logging_mixin.py:109} INFO - [2022-07-10 04:57:51,570] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:57:51,710] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 1.236 seconds
+[2022-07-10 04:58:22,126] {processor.py:163} INFO - Started process (PID=123) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:22,147] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:58:22,175] {logging_mixin.py:109} INFO - [2022-07-10 04:58:22,172] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:22,515] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:22,810] {logging_mixin.py:109} INFO - [2022-07-10 04:58:22,809] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:58:23,006] {logging_mixin.py:109} INFO - [2022-07-10 04:58:23,005] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:58:23,066] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.944 seconds
+[2022-07-10 04:58:54,305] {processor.py:163} INFO - Started process (PID=125) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:54,339] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:58:54,397] {logging_mixin.py:109} INFO - [2022-07-10 04:58:54,397] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:55,858] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:58:56,199] {logging_mixin.py:109} INFO - [2022-07-10 04:58:56,199] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:58:56,343] {logging_mixin.py:109} INFO - [2022-07-10 04:58:56,342] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:58:56,523] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 2.254 seconds
+[2022-07-10 04:59:26,972] {processor.py:163} INFO - Started process (PID=127) to work on /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:59:26,976] {processor.py:642} INFO - Processing file /opt/airflow/dags/spark-postgres.py for tasks to queue
+[2022-07-10 04:59:26,979] {logging_mixin.py:109} INFO - [2022-07-10 04:59:26,978] {dagbag.py:500} INFO - Filling up the DagBag from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:59:27,054] {processor.py:654} INFO - DAG(s) dict_keys(['spark-postgres']) retrieved from /opt/airflow/dags/spark-postgres.py
+[2022-07-10 04:59:27,080] {logging_mixin.py:109} INFO - [2022-07-10 04:59:27,080] {dag.py:2396} INFO - Sync 1 DAGs
+[2022-07-10 04:59:27,108] {logging_mixin.py:109} INFO - [2022-07-10 04:59:27,108] {dag.py:2935} INFO - Setting next_dagrun for spark-postgres to 2022-07-10T00:00:00+00:00
+[2022-07-10 04:59:27,123] {processor.py:171} INFO - Processing /opt/airflow/dags/spark-postgres.py took 0.166 seconds

@@ -1,0 +1,12 @@
+misc.txt
+dags/__pycache__
+.ipynb_checkpoints
+.part*
+part-*
+*_SUCCESS*
+*.pyc
+.DS_Store
+service-key.json
+.DS_Store
+*.log
+!spec/*.log
