@@ -10,3 +10,4 @@ service-key.json
 .DS_Store
 *.log
 !spec/*.log
+__pycache__
