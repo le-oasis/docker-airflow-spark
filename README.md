@@ -1,4 +1,4 @@
-# Building an ETL(Extract, Transform and Load) pipeline using Python, PostgresSQL, PySpark and Airflow.
+# Building an ETL(Extract, Transform and Load) pipeline using Python, PostgreSQL, PySpark and Airflow.
 This post will detail how to build an ETL (Extract, Transform and Load) pipeline.
 
 ## Prerequisites
@@ -33,7 +33,7 @@ navigate to
 ```
 docker > docker-compose.yaml
 ```
-- After creating the foundation of our project in the Dockerfile we can move towards running containers and starting up services. The airflow-docker-compose.yaml below is a modified version of the official Airflow Docker. We have added the following changes:
+- After creating the foundation of our project in the Dockerfile we can move towards running containers and starting up services. The `docker-compose.yaml` file below is a modified version of the official Airflow [yaml](https://airflow.apache.org/docs/apache-airflow/2.3.2/docker-compose.yaml) file. We have added the following changes:
 
   - Customized Airflow image that includes the installation of Python dependencies.
   - A custom network (`oasiscorp`) for bridging the containers, this will enable the containers to exist within a shared network.
@@ -84,13 +84,17 @@ You must run this `once` before you can get started. This is the initial bootstr
 docker-compose up airflow-init
 ~~~
 
-You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. Ultimately, this process is in charge of running the database setup work and migrations, bootstrapping and all initalization scripts. 
-Essentially, everything you need to get up and running on Apache Airflow.
+- You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. 
+- Ultimately, this process is in charge of running the database setup work and migrations, bootstrapping and all initalization scripts. 
+- Please note that the init will take about ***20minutes*** to cook up, depending on yor internet speed. 
+- This is essentially, everything you need to get up and running on Apache Airflow.
 
 - When we run the `docker-compose up airflow-init` command, we will see the following output:
 
 ![](./doc/air-init.png "Initialize")
-This will create the Airflow database and the Airflow USER. Once we have the Airflow database and the Airflow USER, we can start the Airflow services.
+This will create the Airflow database and the Airflow USER. Once we have the Airflow database and the Airflow USER, we can start the Airflow services:
+
+![](./doc/cooked.png "Ready")
 
 ## Personal Rule of Thumb
 For ease of use, before starting services, please pull the required docker images first.
@@ -101,7 +105,7 @@ docker pull bitnami/minio:latest
 docker pull bitnami/spark:latest
 ~~~
 ~~~
-docker pull jupyter/pyspark-notebook:spark-3.1.2
+docker pull jupyter/pyspark-notebook:latest
 ~~~
 
 
@@ -120,29 +124,19 @@ docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 
 # Access & Login
 
-Airflow: http://localhost:8080
+### Airflow: http://localhost:8080
 
 Airflow UI Login: 
 * username: airflow 
 * password: airflow
 
-Minio: http://localhost:9000
+### Minio: http://localhost:9000
 
 * username: minio 
 * password: miniosecret
 
-Spark Master: http://localhost:8181
-Jupyter: http://localhost:8888
-
-
-Postgres - Database airflow:
-
-* Server: localhost:5432
-* Database: airflow
-* User: airflow
-* Password: airflow
-
-Jupyter Notebook: http://127.0.0.1:8888
+### Spark Master: http://localhost:8181
+### Jupyter: http://localhost:8888
   * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. The URL with the token can be taken from container logs using:
  
 ```
@@ -151,9 +145,43 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 ```
 
 
-  
-        $ docker logs -f jupyter_container
 
+## Postgres:
+* Server: localhost:5432
+* Database: airflow
+* User: airflow
+* Password: airflow
+
+- Please note, that a 'test' database was created during the init of Postgres,to get into the PostgresSQLcontainer, use the following command:
+
+```
+docker exec -it postgres_container bash 
+```
+
+from bash :
+
+```
+psql -U airflow test
+```
+
+or just this one-liner :
+
+```
+docker exec -it  postgres_container psql -U airflow test
+```
+
+Some explanation
+
+- `-U` : stands for User, which in our case is airflow.
+  
+-  `docker exec -it` : Run a command in a running container. The it flags open an interactive tty. Basically allows you to enter into a running containers CLI. 
+- If you wanted to open the bash terminal you can do this:
+
+```
+docker exec -it postgres_container bash 
+```
+
+- `postgres_container` : The container name (you could use the container id instead, check by running `docker ps`)
 
 
 # FYI
@@ -233,7 +261,7 @@ Apache Spark implementation (docker-compose.spark.yml)
 
 * jupyter-spark: 
   * Jupyter notebook with pyspark for interactive development.
-  * Image: jupyter/pyspark-notebook:spark-3.1.2
+  * Image: jupyter/pyspark-notebook:latest
   * Port: 8888
   * References: 
     * https://hub.docker.com/layers/jupyter/pyspark-notebook/spark-3.1.2/images/sha256-37398efc9e51f868e0e1fde8e93df67bae0f9c77d3d3ce7fe3830faeb47afe4d?context=explore
