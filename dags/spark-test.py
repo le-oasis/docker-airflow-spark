@@ -18,7 +18,7 @@ now = datetime.now()
 default_args = {
     "owner": "airflow",
     "depends_on_past": False,
-    "start_date": datetime(2022, 7, 6),
+    "start_date": datetime(now.year, now.month, now.day),
     "email": ["airflow@airflow.com"],
     "email_on_failure": False,
     "email_on_retry": False,
@@ -39,7 +39,7 @@ spark_job = SparkSubmitOperator(
     task_id="spark_job",
     application="/usr/local/spark/app/hello-world.py", # Spark application path created in airflow and spark cluster
     name=spark_app_name,
-    conn_id="spark_connection",
+    conn_id="spark_connect",
     verbose=1,
     conf={"spark.master":spark_master},
     application_args=[file_path],

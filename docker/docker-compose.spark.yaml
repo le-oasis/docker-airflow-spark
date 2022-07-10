@@ -1,7 +1,7 @@
-version: "3"
+version: "3.8"
 services:
 
-    # object storage
+    # Minio: object storage
     minio:
         hostname: myminio
         container_name: minio_container
@@ -13,7 +13,7 @@ services:
             - '9000:9000'
             - '9001:9001'
         volumes:
-            - './minio/data:/data'
+            - '../minio/data:/data'
         networks:
             - oasiscorp
         healthcheck:
@@ -24,11 +24,11 @@ services:
         restart: always
 
 
-    # Spark with 3 workers
+    # Spark with 2 workers
     spark:
         hostname: myspark
         container_name: spark_container
-        image: bitnami/spark:latest 
+        image: 'bitnami/spark:latest'
         user: root # Run container as root container: https://docs.bitnami.com/tutorials/work-with-non-root-containers/
         networks:
             - oasiscorp
@@ -39,8 +39,8 @@ services:
             - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
             - SPARK_SSL_ENABLED=no
         volumes:
-            - ./spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
-            - ./spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
         ports:
             - "8181:8080"
             - "7077:7077"
@@ -48,7 +48,7 @@ services:
     spark-worker-1:
         hostname: mysparkw1
         container_name: sw1_container
-        image: bitnami/spark:latest
+        image: 'bitnami/spark:latest'
         user: root
         networks:
             - oasiscorp
@@ -62,13 +62,13 @@ services:
             - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
             - SPARK_SSL_ENABLED=no
         volumes:
-            - ./spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
-            - ./spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
 
     spark-worker-2:
         hostname: mysparkw2
         container_name: sw2_container
-        image: bitnami/spark:latest
+        image: 'bitnami/spark:latest'
         user: root
         networks:
             - oasiscorp
@@ -82,25 +82,24 @@ services:
             - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
             - SPARK_SSL_ENABLED=no
         volumes:
-            - ./spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
-            - ./spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
+            - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
 
 
-
-    #Jupyter notebook
+    # Jupyter notebook
     jupyter-spark:
         hostname: myjupyter
         container_name: jupyter_container
-        image: jupyter/pyspark-notebook:spark-3.1.2
+        image: 'jupyter/pyspark-notebook:latest'
         networks:
             - oasiscorp
         ports:
           - "8888:8888"
           - "4040-4080:4040-4080"
         volumes:
-          - ./notebooks:/home/jovyan/work/notebooks/
-          - ./spark/resources/data:/home/jovyan/work/data/
-          - ./spark/resources/jars:/home/jovyan/work/jars/
+          - ../notebooks:/home/jovyan/work/notebooks/
+          - ../spark/resources/data:/home/jovyan/work/data/
+          - ../spark/resources/jars:/home/jovyan/work/jars/
 
 
 networks:
