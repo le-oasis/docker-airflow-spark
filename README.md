@@ -1,4 +1,4 @@
-# Building an ETL(Extract, Transform and Load) pipeline using Python, PostgresSQL, PySpark and Airflow.
+# Building an ETL(Extract, Transform and Load) pipeline using Python, PostgreSQL, PySpark and Airflow.
 This post will detail how to build an ETL (Extract, Transform and Load) pipeline.
 
 ## Prerequisites
@@ -166,7 +166,9 @@ psql -U airflow test
 
 or just this one-liner :
 
+```
 docker exec -it  postgres_container psql -U airflow test
+```
 
 Some explanation
 
@@ -259,7 +261,7 @@ Apache Spark implementation (docker-compose.spark.yml)
 
 * jupyter-spark: 
   * Jupyter notebook with pyspark for interactive development.
-  * Image: jupyter/pyspark-notebook:spark-3.1.2
+  * Image: jupyter/pyspark-notebook:latest
   * Port: 8888
   * References: 
     * https://hub.docker.com/layers/jupyter/pyspark-notebook/spark-3.1.2/images/sha256-37398efc9e51f868e0e1fde8e93df67bae0f9c77d3d3ce7fe3830faeb47afe4d?context=explore
