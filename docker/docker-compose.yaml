@@ -21,7 +21,6 @@ x-airflow-common:
     # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
     # Scan for DAGs every 60 seconds
     
-    
   volumes:
     - ../dags:/opt/airflow/dags
     - ../dags:/opt/airflow/logs
