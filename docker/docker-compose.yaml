@@ -50,6 +50,8 @@ services:
       POSTGRES_DB: airflow
     networks:
       - oasiscorp
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
