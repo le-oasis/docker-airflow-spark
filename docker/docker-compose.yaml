@@ -5,7 +5,7 @@ x-airflow-common:
   &airflow-common
   # uncomment the image tag to use a specific image
   # comment the build & context if you want to use the built image.
-  image: apache/airflow:2.2.3
+  # image: apache/airflow:2.2.3
   build:
     context: ./airflow-setup
   environment:
