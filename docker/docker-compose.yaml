@@ -5,7 +5,7 @@ x-airflow-common:
   &airflow-common
   # uncomment the image tag to use a specific image
   # comment the build & context if you want to use the built image.
-  # image: apache/airflow:2.2.3
+  # image: 'air-prune'
   build:
     context: ./airflow-setup
   environment:
@@ -23,7 +23,7 @@ x-airflow-common:
     
   volumes:
     - ../dags:/opt/airflow/dags
-    - ../dags:/opt/airflow/logs
+    - ../logs:/opt/airflow/logs
     - ../plugins:/opt/airflow/plugins
     - ../spark/app:/usr/local/spark/app #Spark Scripts (Must be the same path in airflow and Spark Cluster)
     - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
