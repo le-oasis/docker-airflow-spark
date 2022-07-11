@@ -3,7 +3,7 @@
 # Contributors: Demilade Somide, John Oloniyo
 # Supervising Line Manager: Oladimeji Oladepo
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
-# BUILD: docker build -t docker-prunedge:latest .
+# BUILD: docker build --rm --force-rm -t air-prune .
 # BASED ON: https://github.com/puckel/docker-airflow
 # INSPIRED BY: https://github.com/cordon-thiago/airflow-spark
 
