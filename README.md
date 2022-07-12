@@ -13,7 +13,7 @@ Before we head towards setting up Airflow, let's do a quick overvirew.
 -  A `workflow`  is a series of tasks that are executed in a specific order and we call them `DAGs`. 
 -  A  `DAG` <u>(Directed Acyclic Graph)</u> is a graph that contains a set of tasks that are connected by dependencies or a graph with nodes connected via directed edges.
 
-## Setting Up Airflow
+## Setting Up Airflow.
 - Okay now that we got the basics of what Airflow and DAGs are, let’s set up Airflow. 
 - First, we will need to create our custom Airflow Docker image. This image adds and installs a list of Python packages that we will need to run the ETL (Extract, Transform and Load) pipeline.
 
