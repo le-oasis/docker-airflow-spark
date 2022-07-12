@@ -10,7 +10,8 @@
 
 # Airflow Image Definition 
 ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.2.3
-ARG AIRFLOW_HOME=/usr/local/airflow
+
+
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
 
@@ -19,6 +20,9 @@ ENV SPARK_VERSION=3.2.1
 ENV HADOOP_VERSION=3.2
 ENV SPARK_INSTALL_ROOT=/spark
 
+#Airflow Home 
+ARG AIRFLOW_HOME=/usr/local/airflow
+RUN export AIRFLOW_HOME
 # Spark Environment 
 # Spark Home
 ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
@@ -94,6 +98,7 @@ COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow/airflow.cfg
 
 #https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html
 USER airflow
+WORKDIR ${AIRFLOW_HOME}
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
 # RUN pip install --no-cache-dir -U pip setuptools wheel

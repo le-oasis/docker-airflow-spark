@@ -23,7 +23,6 @@ x-airflow-common:
     
   volumes:
     - ../dags:/opt/airflow/dags
-    - ../logs:/opt/airflow/logs
     - ../plugins:/opt/airflow/plugins
     - ../spark/app:/usr/local/spark/app #Spark Scripts (Must be the same path in airflow and Spark Cluster)
     - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -40,6 +39,8 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+
+
   postgres:
     image: 'postgres:latest'
     container_name: postgres_container

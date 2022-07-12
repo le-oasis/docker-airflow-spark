@@ -13,7 +13,7 @@ services:
             - '9000:9000'
             - '9001:9001'
         volumes:
-            - '../minio/data:/data'
+            - '../minio_data:/data'
         networks:
             - oasiscorp
         healthcheck:
@@ -101,6 +101,8 @@ services:
           - ../spark/resources/data:/home/jovyan/work/data/
           - ../spark/resources/jars:/home/jovyan/work/jars/
 
+volumes:
+  minio_data:
 
 networks:
   oasiscorp:
