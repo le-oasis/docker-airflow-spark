@@ -44,7 +44,7 @@ docker > docker-compose.yaml
 The docker-compose.yaml file when deployed will start a list of containers namely:
 
 - `airflow-scheduler` - The scheduler monitors all tasks and DAGs, then triggers the task instances once their dependencies are complete.
-- `airflow-webserver` - The webserver is available at http://localhost:8080.
+- `airflow-webserver` - The webserver is available at http://localhost:8085.
 - `airflow-worker`  - The worker that executes the tasks given by the scheduler.
 - `airflow-init`  - The initialization service.
 - `flower ` - The flower app for monitoring the environment. It is available at http:/localhost:5555.
@@ -131,7 +131,7 @@ The DAG file we're executing is named 'postgresetl.py' in our DAGs folder.
 ## Postgres-Airflow Connection 
 
 Apache Airflow: postgresoperator_demo
-After setting up our DAG, we need to configure the connection details in Airflow. Open the service in your browser at http://localhost:8080 and click on `Admin` ->  `Connections` in the top bar. Airflow comes with a lot of connections by default, but let's create a new one for our purpose.
+After setting up our DAG, we need to configure the connection details in Airflow. Open the service in your browser at http://localhost:8085 and click on `Admin` ->  `Connections` in the top bar. Airflow comes with a lot of connections by default, but let's create a new one for our purpose.
 
 Click on Create and fill in the necessary details:
 
@@ -189,7 +189,7 @@ Congratulations! We are now able to schedule tasks to execute code on our databa
 
 # Access & Login
 
-### Airflow: http://localhost:8080
+### Airflow: http://localhost:8085
 
 Airflow UI Login: 
 * username: airflow 
