@@ -41,7 +41,6 @@ x-airflow-common:
 
 services:
 
-
   postgres:
     image: 'postgres:latest'
     container_name: postgres_container
@@ -62,43 +61,6 @@ services:
       interval: 5s
       retries: 5
     restart: always
-
-
-  # zeppelin:
-  #   # image: apache/zeppelin:0.9.0
-  #   build:
-  #     context: ./zep-setup
-  #   container_name: zeppelin
-  #   volumes:
-  #     - ../zep-notebook:/notebook
-  #     - ../zep-logs:/logs
-  #     - ../zep-data:/learn
-  #     # - ${SPARK_HOME}:/spark
-  #     - ../spark/conf:/spark/conf
-  #     - ../spark/jars:/spark/user_jars
-  #     - ../spark/sql/:/spark/sql/
-  #   environment:
-  #     # - SPARK_HOME=/spark
-  #     - SPARK_SUBMIT_OPTIONS=--packages=org.postgresql:postgresql:42.4.0 --jars=/spark/user_jars/postgresql-42.4.0.jar
-  #     - ZEPPELIN_LOG_DIR=/logs
-  #     - ZEPPELIN_NOTEBOOK_DIR=/notebook
-  #     - ZEPPELIN_ADDR=0.0.0.0
-  #     - ZEPPELIN_SPARK_MAXRESULT=10000
-  #     - ZEPPELIN_INTERPRETER_OUTPUT_LIMIT=204800
-  #     - ZEPPELIN_NOTEBOOK_COLLABORATIVE_MODE_ENABLE=false
-  #   healthcheck:
-  #     interval: 5s
-  #     retries: 10
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - oasiscorp
-  #   hostname: "zeppelin"
-  #   depends_on:
-  #     - postgres
-
-
-
 
 
   redis:
@@ -159,11 +121,8 @@ services:
     restart: always
 
 
-
-
 volumes:
   postgres-db-volume:
-
 
 
 networks:
