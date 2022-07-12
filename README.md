@@ -201,6 +201,7 @@ Airflow UI Login:
 * password: miniosecret
 
 ### Spark Master: http://localhost:8181
+
 ### Jupyter: http://localhost:8888
   * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. The URL with the token can be taken from container logs using:
  
