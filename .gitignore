@@ -9,3 +9,6 @@ part-*
 service-key.json
 .DS_Store
 __pycache__
+*.log
+**/logs/debug.log
+*/logs

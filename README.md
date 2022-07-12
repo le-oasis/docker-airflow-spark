@@ -122,6 +122,74 @@ docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 ~~~
 
 
+# Working with Databases (PostgreSQL) 
+Here in this scenario, we are going to schedule a dag file to create a table and insert data into it in PostgreSQL using the Postgres Operator.
+The DAG file we're executing is named 'postgresetl.py' in our DAGs folder. 
+
+* Our DAG file will have two simple tasks of using SQL query to create_table & insert_data into our 'test' database. 
+*
+
+## Postgres-Airflow Connection 
+
+Apache Airflow: postgresoperator_demo
+After setting up our DAG, we need to configure the connection details in Airflow. Open the service in your browser at http://localhost:8080 and click on `Admin` ->  `Connections` in the top bar. Airflow comes with a lot of connections by default, but let's create a new one for our purpose.
+
+Click on Create and fill in the necessary details:
+
+`Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
+`Conn Type`: Postgres - Select it from the dropdown menu.
+`Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
+`Schema`: test - the database name (test database was created during init)
+`Login`: airflow - or whichever username you set in your docker-compose.yml file.
+`Password`: airflow - or whichever password you set in your docker-compose.yml file.
+`Port`: 5432 - the standard port for the database within the docker network.
+Click on save:
+
+
+Creating the connection airflow to connect the Postgres DB as shown in below
+
+![](./doc/postgres.png "DataReady")
+Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
+DAG Succesful 
+
+
+![](./doc/postgres1.png "DaGReady")
+
+## Getting into Postgres:
+* localhost:5432
+* Host: mypostgres
+* Database: airflow
+* User: airflow
+* Password: airflow
+
+- Please note, that a 'test' database was created during the init of Postgres. 
+- To get into the PostgresSQLcontainer, use the following command:
+
+```
+docker exec -it postgres_container bash 
+```
+
+from bash :
+
+```
+psql -U airflow test
+```
+
+in full:
+
+
+```
+docker exec -it  postgres_container psql -U airflow test
+```
+
+The output of the above dag file in the Postgres command line is as below:
+
+
+![](./doc/postgres2.png "SQL")
+
+Congratulations! We are now able to schedule tasks to execute code on our database from Airflow!
+
+
 # Access & Login
 
 ### Airflow: http://localhost:8080
@@ -136,6 +204,7 @@ Airflow UI Login:
 * password: miniosecret
 
 ### Spark Master: http://localhost:8181
+
 ### Jupyter: http://localhost:8888
   * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. The URL with the token can be taken from container logs using:
  
@@ -146,25 +215,11 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 
 
 
-## Postgres:
-* Server: localhost:5432
-* Database: airflow
-* User: airflow
-* Password: airflow
+# FYI
 
-- Please note, that a 'test' database was created during the init of Postgres,to get into the PostgresSQLcontainer, use the following command:
+## Postgres 
 
-```
-docker exec -it postgres_container bash 
-```
-
-from bash :
-
-```
-psql -U airflow test
-```
-
-or just this one-liner :
+enter the Postgres Conatiner via CLI command :
 
 ```
 docker exec -it  postgres_container psql -U airflow test
@@ -182,9 +237,6 @@ docker exec -it postgres_container bash
 ```
 
 - `postgres_container` : The container name (you could use the container id instead, check by running `docker ps`)
-
-
-# FYI
 
 ## Why do we need an ETL pipeline?
 
