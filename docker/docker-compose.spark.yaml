@@ -1,32 +1,82 @@
 version: "3.8"
+# Settings and configurations that are common for all containers
+x-minio-common: &minio-common
+  image: quay.io/minio/minio:RELEASE.2022-07-08T00-05-23Z
+  command: server --console-address ":9001" http://minio{1...4}/data{1...2}
+  expose:
+    - "9000"
+    - "9001"
+  # environment:
+    # MINIO_ROOT_USER: minioadmin
+    # MINIO_ROOT_PASSWORD: minioadmin
+  networks:
+            - oasiscorp
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+    interval: 30s
+    timeout: 20s
+    retries: 3
+
+# starts 4 docker containers running minio server instances.
+# using nginx reverse proxy, load balancing, you can access
+# it through port 9000.
 services:
 
-    # Minio: object storage
-    minio:
-        hostname: myminio
-        container_name: minio_container
-        image: 'bitnami/minio:latest' # latest image 
-        environment:
-            MINIO_ROOT_USER: minio
-            MINIO_ROOT_PASSWORD: miniosecret
-        ports:
-            - '9000:9000'
-            - '9001:9001'
-        volumes:
-            - '../minio_data:/data'
-        networks:
-            - oasiscorp
-        healthcheck:
-            test: ["CMD", "curl", "-f", "http://myminio:9000/minio/health/live"]
-            interval: 30s
-            timeout: 20s
-            retries: 3
-        restart: always
+    minio1:
+            <<: *minio-common
+            hostname: minio1
+            networks:
+                - oasiscorp
+            volumes:
+                - data1-1:/data1
+                - data1-2:/data2
 
+    minio2:
+            <<: *minio-common
+            hostname: minio2
+            networks:
+                - oasiscorp
+            volumes:
+                - data2-1:/data1
+                - data2-2:/data2
+
+    minio3:
+            <<: *minio-common
+            hostname: minio3
+            networks:
+                - oasiscorp
+            volumes:
+                - data3-1:/data1
+                - data3-2:/data2
+
+    minio4:
+            <<: *minio-common
+            hostname: minio4
+            networks:
+                    - oasiscorp
+            volumes:
+                - data4-1:/data1
+                - data4-2:/data2
+
+    nginx:
+            image: nginx:1.19.2-alpine
+            hostname: nginx
+            networks:
+                    - oasiscorp
+            volumes:
+                - ./nginx.conf:/etc/nginx/nginx.conf:ro
+            ports:
+                - "9000:9000"
+                - "9001:9001"
+            depends_on:
+                - minio1
+                - minio2
+                - minio3
+                - minio4
 
     # Spark with 2 workers
     spark:
-        hostname: myspark
+        hostname: spark
         container_name: spark_container
         image: 'bitnami/spark:latest'
         user: root # Run container as root container: https://docs.bitnami.com/tutorials/work-with-non-root-containers/
@@ -46,7 +96,6 @@ services:
             - "7077:7077"
 
     spark-worker-1:
-        hostname: mysparkw1
         container_name: sw1_container
         image: 'bitnami/spark:latest'
         user: root
@@ -61,12 +110,13 @@ services:
             - SPARK_RPC_ENCRYPTION_ENABLED=no
             - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
             - SPARK_SSL_ENABLED=no
+        ports:
+            - "8182:8182"
         volumes:
             - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
             - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
 
     spark-worker-2:
-        hostname: mysparkw2
         container_name: sw2_container
         image: 'bitnami/spark:latest'
         user: root
@@ -81,6 +131,8 @@ services:
             - SPARK_RPC_ENCRYPTION_ENABLED=no
             - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
             - SPARK_SSL_ENABLED=no
+        ports:
+            - "8183:8183"
         volumes:
             - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
             - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -101,8 +153,18 @@ services:
           - ../spark/resources/data:/home/jovyan/work/data/
           - ../spark/resources/jars:/home/jovyan/work/jars/
 
+## By default this config uses default local driver,
+## For custom volumes replace with volume driver configuration.
 volumes:
-  minio_data:
+  data1-1:
+  data1-2:
+  data2-1:
+  data2-2:
+  data3-1:
+  data3-2:
+  data4-1:
+  data4-2:
+
 
 networks:
   oasiscorp:

@@ -24,6 +24,7 @@ x-airflow-common:
   volumes:
     - ../dags:/opt/airflow/dags
     - ../plugins:/opt/airflow/plugins
+    - ../logs:/opt/airflow/logs
     - ../spark/app:/usr/local/spark/app #Spark Scripts (Must be the same path in airflow and Spark Cluster)
     - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
    
@@ -119,8 +120,13 @@ services:
       retries: 5
     restart: always
 
+
+
+
 volumes:
   postgres-db-volume:
+
+
 
 networks:
   oasiscorp:

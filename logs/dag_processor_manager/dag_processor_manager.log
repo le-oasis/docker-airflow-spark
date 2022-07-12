@@ -1,0 +1,288 @@
+[2022-07-12 03:18:11,904] {manager.py:514} INFO - Processing files using up to 2 processes at a time 
+[2022-07-12 03:18:11,904] {manager.py:515} INFO - Process each file at most once every 30 seconds
+[2022-07-12 03:18:11,904] {manager.py:517} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2022-07-12 03:18:11,904] {manager.py:663} INFO - Searching for files in /opt/airflow/dags
+[2022-07-12 03:18:11,905] {manager.py:666} INFO - There are 2 files in /opt/airflow/dags
+[2022-07-12 03:18:11,974] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:18:11,974] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:13:11.974834+00:00
+[2022-07-12 03:18:11,996] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                              PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/spark-postgres.py     48  0.03s             0           0
+/opt/airflow/dags/spark-test.py         47  0.05s             0           0
+================================================================================
+[2022-07-12 03:18:22,012] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:18:22,013] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:13:22.013082+00:00
+[2022-07-12 03:18:32,038] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:18:32,038] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:13:32.038777+00:00
+[2022-07-12 03:18:42,063] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:18:42,063] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:13:42.063480+00:00
+[2022-07-12 03:18:42,069] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  4.13s           2022-07-12T03:18:16
+/opt/airflow/dags/spark-test.py                               1           0  4.15s           2022-07-12T03:18:16
+================================================================================
+[2022-07-12 03:18:52,143] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:18:52,143] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:13:52.143433+00:00
+[2022-07-12 03:19:02,167] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:02,167] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:02.167975+00:00
+[2022-07-12 03:19:12,192] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:12,192] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:12.192943+00:00
+[2022-07-12 03:19:12,199] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:18:46
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:18:46
+================================================================================
+[2022-07-12 03:19:22,225] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:22,225] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:22.225244+00:00
+[2022-07-12 03:19:32,251] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:32,251] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:32.251739+00:00
+[2022-07-12 03:19:42,276] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:42,276] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:42.276571+00:00
+[2022-07-12 03:19:42,283] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.08s           2022-07-12T03:19:16
+/opt/airflow/dags/spark-test.py                               1           0  0.09s           2022-07-12T03:19:16
+================================================================================
+[2022-07-12 03:19:52,340] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:19:52,340] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:14:52.340722+00:00
+[2022-07-12 03:20:02,363] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:02,364] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:02.364107+00:00
+[2022-07-12 03:20:12,388] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:12,388] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:12.388817+00:00
+[2022-07-12 03:20:12,395] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:19:46
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:19:46
+================================================================================
+[2022-07-12 03:20:22,425] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:22,426] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:22.426515+00:00
+[2022-07-12 03:20:32,458] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:32,458] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:32.458705+00:00
+[2022-07-12 03:20:42,483] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:42,483] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:42.483260+00:00
+[2022-07-12 03:20:42,490] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:20:16
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:20:16
+================================================================================
+[2022-07-12 03:20:52,521] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:20:52,521] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:15:52.521223+00:00
+[2022-07-12 03:21:02,547] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:02,547] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:02.547357+00:00
+[2022-07-12 03:21:12,572] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:12,572] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:12.572758+00:00
+[2022-07-12 03:21:12,579] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.08s           2022-07-12T03:20:46
+/opt/airflow/dags/spark-test.py                               1           0  5.07s           2022-07-12T03:20:51
+================================================================================
+[2022-07-12 03:21:22,651] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:22,651] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:22.651295+00:00
+[2022-07-12 03:21:32,675] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:32,676] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:32.676093+00:00
+[2022-07-12 03:21:42,702] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:42,702] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:42.702964+00:00
+[2022-07-12 03:21:42,709] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:21:16
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:21:21
+================================================================================
+[2022-07-12 03:21:52,783] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:21:52,783] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:16:52.783825+00:00
+[2022-07-12 03:22:02,806] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:02,807] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:02.807045+00:00
+[2022-07-12 03:22:12,828] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:12,829] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:12.829119+00:00
+[2022-07-12 03:22:12,835] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:21:46
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:21:51
+================================================================================
+[2022-07-12 03:22:22,935] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:22,935] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:22.935290+00:00
+[2022-07-12 03:22:32,958] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:32,958] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:32.958475+00:00
+[2022-07-12 03:22:42,978] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:42,978] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:42.978944+00:00
+[2022-07-12 03:22:42,985] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.09s           2022-07-12T03:22:16
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:22:21
+================================================================================
+[2022-07-12 03:22:53,059] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:22:53,059] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:17:53.059945+00:00
+[2022-07-12 03:23:03,082] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:03,083] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:03.083008+00:00
+[2022-07-12 03:23:12,104] {manager.py:663} INFO - Searching for files in /opt/airflow/dags
+[2022-07-12 03:23:12,105] {manager.py:666} INFO - There are 2 files in /opt/airflow/dags
+[2022-07-12 03:23:13,112] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:13,113] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:13.113102+00:00
+[2022-07-12 03:23:13,119] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:22:47
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:22:52
+================================================================================
+[2022-07-12 03:23:23,194] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:23,194] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:23.194937+00:00
+[2022-07-12 03:23:33,218] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:33,218] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:33.218413+00:00
+[2022-07-12 03:23:43,242] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:43,243] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:43.242994+00:00
+[2022-07-12 03:23:43,249] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:23:17
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:23:22
+================================================================================
+[2022-07-12 03:23:53,321] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:23:53,321] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:18:53.321263+00:00
+[2022-07-12 03:24:03,344] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:03,345] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:03.345093+00:00
+[2022-07-12 03:24:13,366] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:13,366] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:13.366942+00:00
+[2022-07-12 03:24:13,373] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:23:47
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:23:52
+================================================================================
+[2022-07-12 03:24:23,445] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:23,446] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:23.446138+00:00
+[2022-07-12 03:24:33,470] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:33,470] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:33.470325+00:00
+[2022-07-12 03:24:43,492] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:43,492] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:43.492354+00:00
+[2022-07-12 03:24:43,499] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:24:17
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:24:22
+================================================================================
+[2022-07-12 03:24:53,572] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:24:53,572] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:19:53.572674+00:00
+[2022-07-12 03:25:03,594] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:03,594] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:03.594754+00:00
+[2022-07-12 03:25:13,616] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:13,616] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:13.616826+00:00
+[2022-07-12 03:25:13,623] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:24:47
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:24:52
+================================================================================
+[2022-07-12 03:25:23,695] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:23,696] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:23.696094+00:00
+[2022-07-12 03:25:33,717] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:33,717] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:33.717876+00:00
+[2022-07-12 03:25:43,738] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:43,739] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:43.739011+00:00
+[2022-07-12 03:25:43,745] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:25:17
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:25:22
+================================================================================
+[2022-07-12 03:25:53,824] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:25:53,824] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:20:53.824230+00:00
+[2022-07-12 03:26:03,848] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:03,849] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:03.849019+00:00
+[2022-07-12 03:26:13,870] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:13,870] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:13.870567+00:00
+[2022-07-12 03:26:13,877] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.07s           2022-07-12T03:25:47
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:25:52
+================================================================================
+[2022-07-12 03:26:23,950] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:23,950] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:23.950586+00:00
+[2022-07-12 03:26:33,976] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:33,976] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:33.976481+00:00
+[2022-07-12 03:26:43,998] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:43,998] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:43.998695+00:00
+[2022-07-12 03:26:44,005] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:26:17
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:26:22
+================================================================================
+[2022-07-12 03:26:54,073] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:26:54,073] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:21:54.073448+00:00
+[2022-07-12 03:27:04,096] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:27:04,096] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:22:04.096233+00:00
+[2022-07-12 03:27:14,117] {manager.py:1065} INFO - Finding 'running' jobs without a recent heartbeat
+[2022-07-12 03:27:14,118] {manager.py:1069} INFO - Failing jobs without heartbeat after 2022-07-12 03:22:14.118062+00:00
+[2022-07-12 03:27:14,124] {manager.py:784} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                            PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+-----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/spark-postgres.py                           1           0  0.06s           2022-07-12T03:26:48
+/opt/airflow/dags/spark-test.py                               1           0  0.06s           2022-07-12T03:26:53
+================================================================================
