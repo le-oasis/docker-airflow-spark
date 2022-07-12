@@ -135,17 +135,15 @@ After setting up our DAG, we need to configure the connection details in Airflow
 
 Click on Create and fill in the necessary details:
 
-`Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
-`Conn Type`: Postgres - Select it from the dropdown menu.
-`Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
-`Schema`: test - the database name (test database was created during init)
-`Login`: airflow - or whichever username you set in your docker-compose.yml file.
-`Password`: airflow - or whichever password you set in your docker-compose.yml file.
-`Port`: 5432 - the standard port for the database within the docker network.
-Click on save:
+- `Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
+- `Conn Type`: Postgres - Select it from the dropdown menu.
+- `Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
+- `Schema`: test - the database name (test database was created during init)
+- `Login`: airflow - or whichever username you set in your docker-compose.yml file.
+- `Password`: airflow - or whichever password you set in your docker-compose.yml file.
+- `Port`: 5432 - the standard port for the database within the docker network.
 
-
-Creating the connection airflow to connect the Postgres DB as shown in below
+Click on save: Creating the connection airflow to connect the Postgres DB as shown in below
 
 ![](./doc/postgres.png "DataReady")
 Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
