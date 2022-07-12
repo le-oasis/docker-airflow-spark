@@ -127,7 +127,6 @@ Here in this scenario, we are going to schedule a dag file to create a table and
 The DAG file we're executing is named 'postgresetl.py' in our DAGs folder. 
 
 * Our DAG file will have two simple tasks of using SQL query to create_table & insert_data into our 'test' database. 
-*
 
 ## Postgres-Airflow Connection 
 
@@ -204,7 +203,6 @@ Airflow UI Login:
 * password: miniosecret
 
 ### Spark Master: http://localhost:8181
-
 ### Jupyter: http://localhost:8888
   * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. The URL with the token can be taken from container logs using:
  
@@ -212,7 +210,6 @@ Airflow UI Login:
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 2>&1 | grep 'http://127.0.0.1' | tail -1
 
 ```
-
 
 
 # FYI
