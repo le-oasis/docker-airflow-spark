@@ -62,7 +62,7 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 ## Build Image
 
 Build our image from the Dockerfile located in the airflow-docker-spark folder
- 👉🏼 : docker > airflow-setup > Dockerfile : 
+ - 👉🏼 : docker > airflow-setup > Dockerfile : 
 
 
 ```
