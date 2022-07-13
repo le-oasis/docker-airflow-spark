@@ -58,7 +58,12 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 
     $ git clone https://github.com/le-oasis/airflow-docker-spark
  
+ 
  ## Folder structure 
+- The print screen below shows the folder structure, the  `docker compose` and  `airflow-init` commands would be done in the `Docker` folder, while building the image would be done in the `airflow-setup`  folder.
+ 
+ ![](./doc/tree.png "Ready")
+
 
 
 ## Add the Environment File
