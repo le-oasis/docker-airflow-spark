@@ -57,7 +57,33 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 ## Clone project
 
     $ git clone https://github.com/le-oasis/airflow-docker-spark
+ 
+ ## Folder structure 
 
+
+## Add the Environment File
+This will enable the local host runtime and the container runtime to work with the same user. *This is needed for Linux or Linux-style environments - which includes Mac*
+
+~~~
+echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+~~~
+
+
+## .env
+
+Before starting Airflow for the first time, we need to prepare our environment. We need to add the Airflow USER to our .env file because some of the container’s directories that we mount, will not be owned by the root user. The directories are:
+
+- ./dags - you can put your DAG files here.
+- ./logs - contains logs from task execution and scheduler.
+- ./plugins - you can put your custom plugins here.
+
+```
+mkdir -p ./dags ./logs ./plugins
+chmod -R 777 ./dags ./logs ./plugins
+echo -e "AIRFLOW_UID=$(id -u)" >> .env
+echo -e "AIRFLOW_GID=0" >> .env
+
+```
 
 ## Build Image
 
@@ -69,14 +95,6 @@ Build our image from the Dockerfile located in the airflow-docker-spark folder
 docker build --rm --force-rm -t docker-prunedge:latest .
 ```
 
-
-
-## Add the Environment File
-This will enable the local host runtime and the container runtime to work with the same user. *This is needed for Linux or Linux-style environments - which includes Mac*
-
-~~~
-echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
-~~~
 
 
 ## Airflow Init.
@@ -266,21 +284,6 @@ User-defined bridges provide automatic DNS resolution between containers, meanin
 airflow users create -u <USERNAME> -f <FIRST> -l <LAST> -r <ROLE> -e <EMAIL>
 ```
 
-## .env
-
-Before starting Airflow for the first time, we need to prepare our environment. We need to add the Airflow USER to our .env file because some of the container’s directories that we mount, will not be owned by the root user. The directories are:
-
-- ./dags - you can put your DAG files here.
-- ./logs - contains logs from task execution and scheduler.
-- ./plugins - you can put your custom plugins here.
-
-```
-mkdir -p ./dags ./logs ./plugins
-chmod -R 777 ./dags ./logs ./plugins
-echo -e "AIRFLOW_UID=$(id -u)" >> .env
-echo -e "AIRFLOW_GID=0" >> .env
-
-```
 
 
 ## Docker-compose.spark.yaml 
