@@ -17,7 +17,7 @@ Before we head towards setting up Airflow, let's do a quick overvirew.
 - Okay now that we got the basics of what Airflow and DAGs are, let’s set up Airflow. 
 - First, we will need to create our custom Airflow Docker image. This image adds and installs a list of Python packages that we will need to run the ETL (Extract, Transform and Load) pipeline.
 
-### Docker Image Build via Dockerfile 
+### Dockerfile 
 navigate to 
 
 ```
@@ -62,9 +62,11 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 ## Build Image
 
 Build our image from the Dockerfile located in the airflow-docker-spark folder
+ 👉🏼 : docker > airflow-setup > Dockerfile : 
+
 
 ```
-docker build -t docker-prunedge:latest .
+docker build --rm --force-rm -t docker-prunedge:latest .
 ```
 
 
@@ -77,7 +79,9 @@ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 ~~~
 
 
-## Airflow Init
+## Airflow Init.
+👉🏼 : docker 
+
 You must run this `once` before you can get started. This is the initial bootstrap process. This process will download all of the required Docker container images, and run the initialization sequence required to run Airflow.
 
 ~~~
@@ -109,7 +113,8 @@ docker pull jupyter/pyspark-notebook:latest
 ~~~
 
 
-navigate to 
+👉🏼 : navigate to 
+
 
 ```
 pwd > docker 
