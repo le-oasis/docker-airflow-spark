@@ -40,11 +40,6 @@ spark_job = SparkSubmitOperator(
     application="/usr/local/spark/app/hello-world.py", # Spark application path created in airflow and spark cluster
     name=spark_app_name,
     conn_id="spark_connect",
-    total_executor_cores=4,
-    executor_cores=2,
-    executor_memory='10g',
-    driver_memory='10g',
-    execution_timeout=timedelta(minutes=10),
     verbose=1,
     conf={"spark.master":spark_master},
     application_args=[file_path],
