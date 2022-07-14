@@ -19,6 +19,21 @@ services:
             interval: 30s
             timeout: 20s
             retries: 3
+            
+   # Jupyter notebook
+    jupyter-spark:
+        hostname: myjupyter
+        container_name: jupyter_container
+        image: 'jupyter/pyspark-notebook:latest'
+        networks:
+            - oasiscorp
+        ports:
+          - "8888:8888"
+          - "4040-4080:4040-4080"
+        volumes:
+          - ../notebooks:/home/jovyan/work/notebooks/
+          - ../spark/resources/data:/home/jovyan/work/data/
+          - ../spark/resources/jars:/home/jovyan/work/jars/
 
     # Spark with 2 workers
     spark:
@@ -116,33 +131,7 @@ services:
     #         - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
     #         - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
 
-    # Jupyter notebook
-    jupyter-spark:
-        hostname: myjupyter
-        container_name: jupyter_container
-        image: 'jupyter/pyspark-notebook:latest'
-        networks:
-            - oasiscorp
-        ports:
-          - "8888:8888"
-          - "4040-4080:4040-4080"
-        volumes:
-          - ../notebooks:/home/jovyan/work/notebooks/
-          - ../spark/resources/data:/home/jovyan/work/data/
-          - ../spark/resources/jars:/home/jovyan/work/jars/
-
-## By default this config uses default local driver,
-## For custom volumes replace with volume driver configuration.
-volumes:
-  data1-1:
-  data1-2:
-  data2-1:
-  data2-2:
-  data3-1:
-  data3-2:
-  data4-1:
-  data4-2:
-
+ 
 networks:
   oasiscorp:
     driver: bridge
