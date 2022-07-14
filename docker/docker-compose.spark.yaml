@@ -19,6 +19,7 @@ services:
             interval: 30s
             timeout: 20s
             retries: 3
+        restart: always
             
    # Jupyter notebook
     jupyter-spark:
@@ -29,7 +30,7 @@ services:
             - oasiscorp
         ports:
           - "8888:8888"
-          - "4040-4080:4040-4080"
+        #   - "4040-4080:4040-4080"
         volumes:
           - ../notebooks:/home/jovyan/work/notebooks/
           - ../spark/resources/data:/home/jovyan/work/data/
