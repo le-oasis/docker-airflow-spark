@@ -241,7 +241,16 @@ Click on Create and fill in the necessary details:
 
 - `Conn Id`: myminio_connection - the ID with which we can retrieve the connection details later on.
 - `Conn Type`: S3 - Select it from the dropdown menu.
-- `Extras`: {"aws_access_key_id": "minio_admin", "aws_secret_access_key": "minio_password", "host": "http://myminio:9000"} - consists of the JSON.
+- `Extras`:  - 
+
+```
+{"aws_access_key_id": "minio_admin", 
+"aws_secret_access_key": "minio_password", 
+"host": "http://myminio:9000"}
+```
+
+
+consists of the JSON.
 
 Click on save: Creating the connection airflow to connect the Minio S3 Bucket as shown in below
 <img width="1440" alt="Screenshot 2022-07-14 at 12 07 56" src="https://user-images.githubusercontent.com/64960391/178976020-16db5054-ab77-4e71-94fc-f9120bf7584e.png">
