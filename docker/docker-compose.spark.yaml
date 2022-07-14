@@ -1,78 +1,24 @@
 version: "3.8"
-# Settings and configurations that are common for all containers
-x-minio-common: &minio-common
-  image: quay.io/minio/minio:RELEASE.2022-07-08T00-05-23Z
-  command: server --console-address ":9001" http://minio{1...4}/data{1...2}
-  expose:
-    - "9000"
-    - "9001"
-  # environment:
-    # MINIO_ROOT_USER: minioadmin
-    # MINIO_ROOT_PASSWORD: minioadmin
-  networks:
-            - oasiscorp
-  healthcheck:
-    test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
-    interval: 30s
-    timeout: 20s
-    retries: 3
-
-# starts 4 docker containers running minio server instances.
-# using nginx reverse proxy, load balancing, you can access
-# it through port 9000.
 services:
-
-    minio1:
-            <<: *minio-common
-            hostname: minio1
-            networks:
-                - oasiscorp
-            volumes:
-                - data1-1:/data1
-                - data1-2:/data2
-
-    minio2:
-            <<: *minio-common
-            hostname: minio2
-            networks:
-                - oasiscorp
-            volumes:
-                - data2-1:/data1
-                - data2-2:/data2
-
-    minio3:
-            <<: *minio-common
-            hostname: minio3
-            networks:
-                - oasiscorp
-            volumes:
-                - data3-1:/data1
-                - data3-2:/data2
-
-    minio4:
-            <<: *minio-common
-            hostname: minio4
-            networks:
-                    - oasiscorp
-            volumes:
-                - data4-1:/data1
-                - data4-2:/data2
-
-    nginx:
-            image: nginx:1.19.2-alpine
-            hostname: nginx
-            networks:
-                    - oasiscorp
-            volumes:
-                - ./nginx.conf:/etc/nginx/nginx.conf:ro
-            ports:
-                - "9000:9000"
-                - "9001:9001"
-            depends_on:
-                - minio1
-                - minio2
-                - minio3
-                - minio4
+    minio:
+        hostname: myminio
+        container_name: minio_container
+        image: 'bitnami/minio:2021' # latest image as of 2021-11-08
+        environment:
+            MINIO_ACCESS_KEY: minio_admin
+            MINIO_SECRET_KEY: minio_password
+        ports:
+            - '9000:9000'
+            - '9001:9001'
+        volumes:
+            - '../minio/data:/data'
+        networks:
+            - oasiscorp
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://myminio:9000/minio/health/live"]
+            interval: 30s
+            timeout: 20s
+            retries: 3
 
     # Spark with 2 workers
     spark:
