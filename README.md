@@ -212,7 +212,44 @@ The output of the above dag file in the Postgres command line is as below:
 
 Congratulations! We are now able to schedule tasks to execute code on our database from Airflow!
 
+# Working with S3Bucket Object Storage (Minio)
+Here in this scenario, we are going to schedule a dag file to upload a text file to a Minio S3 bucket and then read the content of the .txt file.
+The DAG file we're executing is named 'hello-minio.py' in our DAGs folder.
 
+* Our DAG file will have two simple tasks of using PythonOperator to upload a .txt to the S3Bucket and read the content of a file on the MiniO S3 bucket.
+# Creating a S3 Bucket On The Minio WebUI
+
+1. Go to the Minio webUI on http://localhost:9000
+   * username: minio_admin 
+   * password: minio_password
+  
+2. Click on bucket icon on the left-menu Bar marked red below the create a S3 Bucket with name miniobucket
+<img width="1440" alt="Screenshot 2022-07-14 at 13 09 37" src="https://user-images.githubusercontent.com/64960391/178980887-0f223058-bd93-4d5e-9787-1b252ad52e9c.png">
+
+3. locally create a new file named minio_testfile.txt with the content "This is the content of a testfile from MinIO".
+4. Select your bucket and click on Browse. Create a new directory called test by click on the icon marked in red.
+<img width="1438" alt="Screenshot 2022-07-14 at 12 22 53" src="https://user-images.githubusercontent.com/64960391/178981636-14d2ef33-963f-4bdd-b481-14f723eb3660.png">
+
+5. And within it click the Upload file-symbol as seen below to upload testfile.txt.
+<img width="1432" alt="Screenshot 2022-07-14 at 13 16 42" src="https://user-images.githubusercontent.com/64960391/178981813-cddca00c-c89e-44ec-998f-4ae989db03c5.png">
+
+## Minio-Airflow Connection
+
+After setting up our DAG, we need to configure the connection details in Airflow. Open the service in your browser at http://localhost:8085 and click on `Admin` ->  `Connections` in the top bar. Airflow comes with a lot of connections by default, but let's create a new one for our purpose.
+
+Click on Create and fill in the necessary details:
+
+- `Conn Id`: myminio_connection - the ID with which we can retrieve the connection details later on.
+- `Conn Type`: S3 - Select it from the dropdown menu.
+- `Extras`: {"aws_access_key_id": "minio_admin", "aws_secret_access_key": "minio_password", "host": "http://myminio:9000"} - consists of the JSON.
+
+Click on save: Creating the connection airflow to connect the Minio S3 Bucket as shown in below
+<img width="1440" alt="Screenshot 2022-07-14 at 12 07 56" src="https://user-images.githubusercontent.com/64960391/178976020-16db5054-ab77-4e71-94fc-f9120bf7584e.png">
+
+Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
+<img width="1425" alt="Screenshot 2022-07-14 at 12 09 32" src="https://user-images.githubusercontent.com/64960391/178976662-96734a10-0087-4d79-b51a-14a3de269aca.png">
+
+DAG Succesful
 # Access & Login
 
 ### Airflow: http://localhost:8085
@@ -223,8 +260,8 @@ Airflow UI Login:
 
 ### Minio: http://localhost:9000
 
-* username: minio 
-* password: miniosecret
+* username: minio_admin 
+* password: minio_password
 
 ### Spark Master: http://localhost:8181
 
