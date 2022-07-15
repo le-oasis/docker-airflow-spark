@@ -100,6 +100,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --user apache-airflow-providers-apache-spark
 RUN pip install --no-cache-dir --user boto3
 RUN pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas]
+RUN pip install --no-cache-dir --user apache-airflow-providers-cncf-kubernetes
 RUN pip install --no-cache-dir -r requirements.txt
 
 
