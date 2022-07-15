@@ -121,10 +121,7 @@ docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 Airflow UI Login: 
 * username: airflow 
 * password: airflow
-### Minio: http://localhost:9000
 
-* username: minio 
-* password: miniosecret
 ### Spark: http://localhost:8181
 
 * Spark Master & Workers.
@@ -139,6 +136,8 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 ```
 ### Minio: http://localhost:9001
 
+* username: minio 
+* password: miniosecret
 * Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
 * This would serve as our Object Storage Service. 
 
