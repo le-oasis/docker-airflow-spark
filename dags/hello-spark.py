@@ -1,31 +1,44 @@
-from email.policy import default
+import airflow
+from datetime import timedelta
 from airflow import DAG
-from airflow.operators.bash_operator import BashOperator
-from datetime import datetime, timedelta
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator 
+from airflow.utils.dates import days_ago
 
 
 default_args = {
-
-    "owner": "airflow",
-    "depends_on_past": False,
-    "start_date": datetime(2022, 7, 14),
-    "email": ["airflow@airflow.com"],
-    "email_on_failure": False,
-    "email_on_retry": False,
-    "retries": 1,
-    "retry_delay": timedelta(minutes=5),
+    'owner': 'airflow',    
+    #'start_date': airflow.utils.dates.days_ago(2),
+    # 'end_date': datetime(),
+    # 'depends_on_past': False,
+    # 'email': ['airflow@example.com'],
+    # 'email_on_failure': False,
+    #'email_on_retry': False,
+    # If a task fails, retry it once after waiting
+    # at least 5 minutes
+    #'retries': 1,
+    'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG("spark-dag", default_args=default_args, schedule_interval=None)
 
-# t1 and t2  are examples of tasks created by instantiating operators
+dag_spark = DAG(
+        dag_id = "sparkoperator_demo",
+        default_args=default_args,
+        # schedule_interval='0 0 * * *',
+        schedule_interval='@once',	
+        dagrun_timeout=timedelta(minutes=60),
+        description='use case of sparkoperator in airflow',
+        start_date = airflow.utils.dates.days_ago(1)
+)
 
-t1 = BashOperator(task_id="spark-test", bash_command="/home/airflow/.local/bin/spark-submit --master spark://spark-master:7077 /usr/local/spark/app/sparksubmit_basic.py /usr/local/spark/resources/data/testfile.txt", dag=dag)
 
+spark_submit_local = SparkSubmitOperator(
+		application ='/usr/local/spark/app/basic.py' ,
+		conn_id= 'spark_connect', 
+		task_id='spark_submit_task', 
+		dag=dag_spark
+		)
 
-# --conf spark.driver.host=$(hostname -i)
+spark_submit_local
 
-t2 = BashOperator(task_id="print_date", bash_command="date", dag=dag)
-
-
-t2.set_upstream(t1)
+if __name__ == "__main__":
+    dag_spark.cli()
