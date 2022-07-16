@@ -7,7 +7,7 @@ logFilepath = "/usr/local/spark/resources/data/testfile.txt"
 
 # Create spark context
 # sc = SparkContext()
-sc = SparkContext(master="spark://spark:7077")
+sc = SparkContext(master="spark://spark-master:7077")
 
 
 # Read file

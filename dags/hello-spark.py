@@ -20,8 +20,10 @@ dag = DAG("spark-dag", default_args=default_args, schedule_interval=None)
 
 # t1 and t2  are examples of tasks created by instantiating operators
 
-t1 = BashOperator(task_id="spark-test", bash_command="/home/airflow/.local/bin/spark-submit --master spark://spark:7077  --conf spark.driver.host=$(hostname -i) /usr/local/spark/app/sparksubmit_basic.py  /usr/local/spark/resources/data/testfile.txt", dag=dag)
+t1 = BashOperator(task_id="spark-test", bash_command="/home/airflow/.local/bin/spark-submit --master spark://spark-master:7077 /usr/local/spark/app/sparksubmit_basic.py /usr/local/spark/resources/data/testfile.txt", dag=dag)
 
+
+# --conf spark.driver.host=$(hostname -i)
 
 t2 = BashOperator(task_id="print_date", bash_command="date", dag=dag)
 
