@@ -49,7 +49,10 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 docker pull apache/airflow:2.2.3
 ~~~
 ~~~
-docker pull bitnami/spark:latest
+docker pull bde2020/spark-master:3.3.0-hadoop3.3
+~~~
+~~~
+docker pull bde2020/spark-worker:3.3.0-hadoop3.3
 ~~~
 ~~~
 docker pull jupyter/pyspark-notebook:latest
@@ -62,7 +65,7 @@ docker pull redis:latest
 ~~~
 
 ## Dockerfile: Build the Image 
-- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.2.1`, `Hadoop.v3.2`, & other dependencies built on top of `Airflow.v.2.2.3`.
+- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
 - navigate to the `airflow-setup` directory, this is where the `Dockerfile` is located:
 - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
 - `docker` --> `airflow-setup` --> `Dockerfile`.
