@@ -12,3 +12,6 @@ __pycache__
 *.log
 **/logs/debug.log
 */logs
+docker/postgres-db-volume/*
+docker/logs/*
+docker/minio/*
