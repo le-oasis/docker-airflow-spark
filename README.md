@@ -1,5 +1,5 @@
 # Building an ELT Pipeline using Python, PostgreSQL, Spark and Airflow.
-This post will detail how to build an ETL (Extract, Transform and Load) pipeline.
+This post will detail how to build an ELT (Extract, Load and Transform) pipeline.
 
 ## Prerequisites
 Definition:
