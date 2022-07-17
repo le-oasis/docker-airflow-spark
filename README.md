@@ -1,4 +1,4 @@
-# Building an ETL(Extract, Transform and Load) pipeline using Python, PostgreSQL, PySpark and Airflow.
+# Building an ELT Pipeline using Python, PostgreSQL, Spark and Airflow.
 This post will detail how to build an ETL (Extract, Transform and Load) pipeline.
 
 ## Prerequisites
@@ -164,14 +164,21 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 ## Spark Submit 
 
 - After you have started the services, you can run the Spark submit command to run a Spark job.
-- Example: running the sparksubmit_basic.py application. 
+- Example: running the `basic.py` application. 
 - This app simple runs a spark job that counts the number of words in a file.
 - Run the following command to run the application:
 
 ```
-docker exec -it spark_container spark-submit --master spark://spark:7077 /usr/local/spark/app/sparksubmit_basic.py  /usr/local/spark/resources/data/testfile.txt
+docker exec -it spark-master /bin/bash
+```
+- This will take you to the bash shell of the spark container where you can run a Spark Submit job.
+- Run the following command to start the application:
+
 
 ```
+bash-5.0# spark/bin/spark-submit --master spark://spark-master:7077 /usr/local/spark/app/sparksubmit_basic.py  /usr/local/spark/resources/data/testfile.txt
+```
+- This will run the application and output the result.
 
 ## Postgres-Airflow Connection 
 - In this scenario, we are going to schedule a dag file to create a table and insert data into it in PostgreSQL using the Postgres Operator.
