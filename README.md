@@ -131,7 +131,7 @@ Airflow UI Login:
 * username: airflow 
 * password: airflow
 
-### Spark: http://localhost:8181
+### Spark: http://localhost:8080
 
 * Spark Master & Workers.
 ### Jupyter: http://localhost:8888
@@ -178,7 +178,41 @@ docker exec -it spark-master /bin/bash
 ```
 bash-5.0# spark/bin/spark-submit --master spark://spark-master:7077 /usr/local/spark/app/sparksubmit_basic.py  /usr/local/spark/resources/data/testfile.txt
 ```
-- This will run the application and output the result.
+
+## Architecture 
+![](./doc/architecture.png "Blueprint")
+
+## Spark DAG
+1. Configure a Spark Connection by Accessing the AirflowUI http://localhost:8085 and creating a connection.
+2. Click on `Admin` ->  `Connections` in the top bar. 
+3. Click on `Add a new record` and input the following details:
+
+- Conn Id:  `spark_connect`  - This is the name of the connection.
+- Conn Type: `Spark` - This is the type of connection.
+- Host: `spark://spark-master` - This is the hostname of the Spark Master.
+- Port: `7077`  - This is the port of the Spark Master.
+- Extra: `{"queue": "root.default"}` - This is the name of the queue that the Spark job will be submitted to.
+
+4. Save the connection settings. 
+
+![](./doc/sparkcon.png "Spark DAG")
+
+
+
+5. Run the `SparkOperatorDemo` DAG
+6. After a couple minutes you should see the DAG run as successful. 
+
+![](./doc/sparkdag.png "Spark DAG")
+
+7. Check the DAG log for the result.
+
+![](./doc/sparklog.png "Spark DAG")
+
+8. Check the Spark UI http://localhost:8080 for the result of our DAG & Spark submit via terminal:
+
+![](./doc/sparkui.png "Spark DAG")
+
+
 
 ## Postgres-Airflow Connection 
 - In this scenario, we are going to schedule a dag file to create a table and insert data into it in PostgreSQL using the Postgres Operator.
@@ -227,6 +261,20 @@ docker exec -it  postgres_container psql -U airflow test
 
 - Congratulations! We are now able to schedule tasks to execute code on our database from Airflow!
 
+
+## SparkSQL 
+### Using RDBMS with Spark SQL and JDBC
+- Connecting to a Relational Database Management System (RDBMS) from Spark requires two things, a JDBC compatible driver and the database properties. 
+- Together Apache Spark can make it easy to work with data stored in external databases.
+- to connect Spark to our Postgres DB we can run that using the Jupyter notebook container we made. 
+- We can use the following command to connect to JupyterLab:
+```
+docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 2>&1 | grep 'http://127.0.0.1' | tail -1
+```
+- This will take you to the JupyterLab shell of the Jupyter notebook container where you can run a Spark SQL.
+- Here we can read the data table from PostgreSQL and create the DataFrames.
+- We can also write new data into Postgres via Jupyter Notebooks.
+- We can also use the Spark SQL to query the data.
 
 ## Minio-Airflow  
 ### S3Bucket Object Storage (Minio)
