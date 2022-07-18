@@ -45,17 +45,32 @@ dag_psql = DAG(
 # and also to execute the SQL query we created create_table_sql_query ,insert_data_sql_query
 
 create_table_sql_query = """ 
-CREATE TABLE IF NOT EXISTS `bettercustomers` (
-  `id` mediumint NOT NULL AUTO_INCREMENT COMMENT 'customer automatic id',
-  `created` timestamp DEFAULT CURRENT_TIMESTAMP COMMENT 'customer join date',
-  `updated` timestamp DEFAULT CURRENT_TIMESTAMP COMMENT 'last record update',
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `email` varchar(255) NOT NULL UNIQUE, PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS oasis (id INT NOT NULL, created timestamp DEFAULT CURRENT_TIMESTAMP,
+  updated timestamp DEFAULT CURRENT_TIMESTAMP,
+  first_name varchar(100) NOT NULL,
+  last_name varchar(100) NOT NULL,
+  email varchar(255) NOT NULL UNIQUE, PRIMARY KEY(id)
 );
 """
+
+
 insert_data_sql_query = """
-INSERT INTO bettercustomers (created, first_name, last_name, email) VALUES("2021-02-16 00:16:06", "Scott", "Haines", "scott@coffeeco.com"), ("2021-02-16 00:16:06", "John", "Hamm", "john.hamm@acme.com"), ("2021-02-16 00:16:06", "Milo", "Haines", "mhaines@coffeeco.com"),("2021-02-21 21:00:00", "Penny", "Haines", "penny@coffeeco.com"),("2021-02-21 22:00:00", "Cloud", "Fast", "cloud.fast@acme.com"),("2021-02-21 23:00:00", "Marshal", "Haines", "paws@coffeeco.com"),("2021-02-24 09:00:00", "Willow", "Haines", "willow@coffeeco.com"),("2021-02-24 09:00:00", "Clover", "Haines", "pup@coffeeco.com");"""
+INSERT INTO oasis (id, created, first_name, last_name, email) 
+VALUES (1, '2021-02-16 00:16:06', 'Scott', 'Haines', 'scott@coffeeco.com'), 
+(2,'2021-02-16 00:16:06', 'John', 'Hamm', 'john.hamm@acme.com'), 
+(3,'2021-02-16 00:16:06', 'Milo', 'Haines', 'mhaines@coffeeco.com'),
+(4,'2021-02-21 21:00:00', 'Penny', 'Haines', 'penny@coffeeco.com'),
+(5,'2021-02-21 22:00:00', 'Cloud', 'Fast', 'cloud.fast@acme.com'),
+(6,'2021-02-21 23:00:00', 'Marshal', 'Haines', 'paws@coffeeco.com'),
+(7,'2021-02-24 09:00:00', 'Willow', 'Haines', 'willow@coffeeco.com'),
+(8,'2021-02-24 09:00:00', 'Clover', 'Haines', 'pup@coffeeco.com');"""
+
+
+
+
+
+
+
 
 create_table = PostgresOperator(
 sql = create_table_sql_query,
