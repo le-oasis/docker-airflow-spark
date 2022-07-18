@@ -70,7 +70,7 @@ docker pull postgres:latest
 docker pull redis:latest
 ~~~
 
-## Dockerfile: Build the Image 
+## Dockerfile: Build the Image.
 - `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
 - navigate to the `airflow-setup` directory, this is where the `Dockerfile` is located:
 - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
