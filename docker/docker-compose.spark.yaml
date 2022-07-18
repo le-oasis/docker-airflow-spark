@@ -4,7 +4,7 @@ services:
     image: bde2020/spark-master:3.3.0-hadoop3.3
     container_name: spark-master
     ports:
-      - "8080:8080"
+      - "8181:8080"
       - "7077:7077"
       - "4040:4040"
     volumes:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - spark-master
     ports:
-      - "8081:8081"
+      - "8182:8182"
     volumes:
        - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
        - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -36,7 +36,7 @@ services:
     depends_on:
       - spark-master
     ports:
-      - "8082:8081"
+      - "8183:8182"
     volumes:
         - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
         - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -51,7 +51,7 @@ services:
     depends_on:
       - spark-master
     ports:
-      - "8083:8081"
+      - "8184:8182"
     volumes:
         - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
         - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
