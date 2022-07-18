@@ -45,7 +45,7 @@ dag_psql = DAG(
 # and also to execute the SQL query we created create_table_sql_query ,insert_data_sql_query
 
 create_table_sql_query = """ 
-CREATE TABLE IF NOT EXISTS oasis (id INT NOT NULL, created timestamp DEFAULT CURRENT_TIMESTAMP,
+CREATE TABLE IF NOT EXISTS customers (id INT NOT NULL, created timestamp DEFAULT CURRENT_TIMESTAMP,
   updated timestamp DEFAULT CURRENT_TIMESTAMP,
   first_name varchar(100) NOT NULL,
   last_name varchar(100) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS oasis (id INT NOT NULL, created timestamp DEFAULT CUR
 
 
 insert_data_sql_query = """
-INSERT INTO oasis (id, created, first_name, last_name, email) 
+INSERT INTO customers (id, created, first_name, last_name, email) 
 VALUES (1, '2021-02-16 00:16:06', 'Scott', 'Haines', 'scott@coffeeco.com'), 
 (2,'2021-02-16 00:16:06', 'John', 'Hamm', 'john.hamm@acme.com'), 
 (3,'2021-02-16 00:16:06', 'Milo', 'Haines', 'mhaines@coffeeco.com'),
