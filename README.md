@@ -336,7 +336,7 @@ Click on Create and fill in the necessary details:
 
 - Great, our DAG was executed successfully and our file has been uploaded to the S3 bucket.
 
-# FYI
+# Extras and Useful Commands
 
 ## Adding New Users: Airflow
 
@@ -351,7 +351,43 @@ Click on Create and fill in the necessary details:
 airflow users create -u <USERNAME> -f <FIRST> -l <LAST> -r <ROLE> -e <EMAIL>
 ```
 
+## Memory and CPU utilization
 
+When all the containers are running, you can experience system lag if your system is not able to handle the load. Monitoring the CPU and Memory utilization of the containers is crucial to maintaining good performance and a reliable system. To monitor the CPU and Memory utilization of the containers, we use the Docker command-line tool stats command, which gives us a live look at our containers resource utilization. We can use this tool to gauge the CPU, Memory, Network, and disk utilization of every running container.
+
+```
+docker stats
+```
+## Docker Commands
+
+    List Images:
+    $ docker images <repository_name>
+
+    List Containers:
+    $ docker container ls
+
+    Check container logs:
+    $ docker logs -f <container_name>
+
+    To build a Dockerfile after changing sth (run inside directoty containing Dockerfile):
+    $ docker build --rm -t <tag_name> .
+
+    Access container bash:
+    $ docker exec -i -t <container_name> /bin/bash
+
+    Remove Images & Containers:
+    $ docker system prune -a
+
+    Remove Volumes:
+    $ docker volume prune -a 
+
+## Useful docker-compose commands
+
+    Start Containers:
+    $ docker-compose -f <compose-file.yml> up -d
+
+    Stop Containers:
+    $ docker-compose -f <compose-file.yml> down --remove-orphans
 
 ## Postgres 
 
