@@ -1,5 +1,46 @@
 version: '3'
 services:
+
+  minio:
+        hostname: myminio
+        container_name: minio_container
+        image: 'bitnami/minio:latest' # latest image as of 2021-11-08
+        environment:
+            MINIO_ACCESS_KEY: minio_admin
+            MINIO_SECRET_KEY: minio_password
+        ports:
+            - '9000:9000'
+            - '9001:9001'
+        volumes:
+            - '../minio/data:/data'
+        networks:
+            - oasiscorp
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://myminio:9000/minio/health/live"]
+            interval: 30s
+            timeout: 20s
+            retries: 3
+        restart: always
+
+
+   # Jupyter notebook
+  jupyter-spark:
+        hostname: myjupyter
+        container_name: jupyter_container
+        image: 'jupyter/pyspark-notebook:latest'
+        networks:
+            - oasiscorp
+        ports:
+          - "8888:8888"
+        #   - "4040-4080:4040-4080"
+        volumes:
+          - ../notebooks:/home/jovyan/work/notebooks/
+          - ../spark/resources/data:/home/jovyan/work/data/
+          - ../spark/resources/jars:/home/jovyan/work/jars/
+        restart: always
+
+
+
   spark-master:
     image: bde2020/spark-master:3.3.0-hadoop3.3
     container_name: spark-master

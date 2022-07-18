@@ -16,4 +16,3 @@ docker/postgres-db-volume/*
 docker/logs/*
 docker/minio/*
 metastore_db
-derby.log
