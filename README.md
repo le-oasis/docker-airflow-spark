@@ -46,29 +46,27 @@ The docker-compose.yaml file when deployed will start a list of containers namel
 - Run the following commands in order to pull the required docker images.
 
 ~~~
-# Airflow Image 
 docker pull apache/airflow:2.2.3
 ~~~
 ~~~
-# Spark Master Image
 docker pull bde2020/spark-master:3.3.0-hadoop3.3
 ~~~
 ~~~
-# Spark Worker Image
 docker pull bde2020/spark-worker:3.3.0-hadoop3.3
 ~~~
 ~~~
-# Jupyter Notebook Image 
 docker pull jupyter/pyspark-notebook:latest
 ~~~
 ~~~
-# Postgres Image
 docker pull postgres:latest
 ~~~
 ~~~
-# Redis Image
 docker pull redis:latest
 ~~~
+~~~
+docker pull bitnami/minio:latest
+~~~
+
 
 ## Dockerfile: Build the Image.
 - `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
