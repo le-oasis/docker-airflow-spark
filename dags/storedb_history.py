@@ -6,7 +6,7 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.utils.dates import days_ago
 
 # Step 2: Default Arguments
-# Define default and DAG-specific arguments
+# Define default and DAG-specific arguments . .
 
 args={'owner': 'airflow'}
 
