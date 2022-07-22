@@ -3,14 +3,11 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
 from datetime import datetime
-
-
-
 from airflow import DAG
-
-
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
+
+
 
 default_args = {
     'owner': 'airflow',
@@ -37,11 +34,13 @@ with DAG(
     start_task = DummyOperator(
 	task_id='start_task',
 )
-task_time = PythonOperator(
-	task_id='current_time',
-	   python_callable=print_current_time
-)
-end_task = DummyOperator(
-	task_id='end_task'
-)
+
+
+task_time = PythonOperator(task_id='current_time',  python_callable=print_current_time)
+
+
+end_task = DummyOperator(task_id='end_task')
+
+
+
 start_task >> task_time >> end_task

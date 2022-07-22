@@ -15,8 +15,8 @@ FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
 
 # Spark & Hadoop Versions 
-ENV SPARK_VERSION=3.2.1
-ENV HADOOP_VERSION=3.2
+ENV SPARK_VERSION=3.3.0
+ENV HADOOP_VERSION=3
 ENV SPARK_INSTALL_ROOT=/spark
 
 # Spark Environment 
@@ -100,6 +100,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --user apache-airflow-providers-apache-spark
 RUN pip install --no-cache-dir --user boto3
 RUN pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas]
+RUN pip install --no-cache-dir --user apache-airflow-providers-cncf-kubernetes
 RUN pip install --no-cache-dir -r requirements.txt
 
 

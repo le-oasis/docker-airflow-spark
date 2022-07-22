@@ -45,11 +45,32 @@ dag_psql = DAG(
 # and also to execute the SQL query we created create_table_sql_query ,insert_data_sql_query
 
 create_table_sql_query = """ 
-CREATE TABLE employee (id INT NOT NULL, name VARCHAR(250) NOT NULL, dept VARCHAR(250) NOT NULL);
+CREATE TABLE IF NOT EXISTS customers (id INT NOT NULL, created timestamp DEFAULT CURRENT_TIMESTAMP,
+  updated timestamp DEFAULT CURRENT_TIMESTAMP,
+  first_name varchar(100) NOT NULL,
+  last_name varchar(100) NOT NULL,
+  email varchar(255) NOT NULL UNIQUE, PRIMARY KEY(id)
+);
 """
+
+
 insert_data_sql_query = """
-insert into employee (id, name, dept) values(1, 'vamshi','bigdata'),(2, 'divya','bigdata'),(3, 'binny','projectmanager'),
-(4, 'omair','projectmanager') ;"""
+INSERT INTO customers (id, created, first_name, last_name, email) 
+VALUES (1, '2021-02-16 00:16:06', 'Scott', 'Haines', 'scott@coffeeco.com'), 
+(2,'2021-02-16 00:16:06', 'John', 'Hamm', 'john.hamm@acme.com'), 
+(3,'2021-02-16 00:16:06', 'Milo', 'Haines', 'mhaines@coffeeco.com'),
+(4,'2021-02-21 21:00:00', 'Penny', 'Haines', 'penny@coffeeco.com'),
+(5,'2021-02-21 22:00:00', 'Cloud', 'Fast', 'cloud.fast@acme.com'),
+(6,'2021-02-21 23:00:00', 'Marshal', 'Haines', 'paws@coffeeco.com'),
+(7,'2021-02-24 09:00:00', 'Willow', 'Haines', 'willow@coffeeco.com'),
+(8,'2021-02-24 09:00:00', 'Clover', 'Haines', 'pup@coffeeco.com');"""
+
+
+
+
+
+
+
 
 create_table = PostgresOperator(
 sql = create_table_sql_query,
