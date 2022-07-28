@@ -6,8 +6,8 @@ services:
         container_name: minio_container
         image: 'bitnami/minio:latest' # latest image as of 2021-11-08
         environment:
-            MINIO_ACCESS_KEY: minio_admin
-            MINIO_SECRET_KEY: minio_password
+            MINIO_ACCESS_KEY: minio
+            MINIO_SECRET_KEY: miniosecret
         ports:
             - '9000:9000'
             - '9001:9001'
