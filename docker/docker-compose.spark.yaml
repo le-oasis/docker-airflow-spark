@@ -4,7 +4,7 @@ services:
   minio:
         hostname: myminio
         container_name: minio_container
-        image: 'bitnami/minio:latest' # latest image as of 2021-11-08
+        image: 'bitnami/minio:latest' # latest image 
         environment:
             MINIO_ACCESS_KEY: minio
             MINIO_SECRET_KEY: miniosecret
