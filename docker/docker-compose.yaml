@@ -111,6 +111,7 @@ services:
   airflow-init:
     <<: *airflow-common
     command: version
+    container_name: airflow-init
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'

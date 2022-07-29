@@ -25,7 +25,7 @@ def print_current_time():
     print("date and time =", dt_string)
 
 with DAG(
-    'current_time_dag',
+    'Time_DAG',
     default_args=default_args,
     description='current_time_dag',
     schedule_interval='*/5 * * * *',

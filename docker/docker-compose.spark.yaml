@@ -2,41 +2,13 @@ version: '3'
 services:
 
 
-# MINIO_ROOT_USER=minio
-# MINIO_ROOT_PASSWORD=miniosecret
-
-
-
-
-
-  # minio:
-  #       hostname: minio
-  #       container_name: minio_container
-  #       image: 'minio/minio:RELEASE.2021-01-08T21-18-21Z'
-  #       environment:
-  #           MINIO_ACCESS_KEY: minio_access_key
-  #           MINIO_SECRET_KEY: minio_secret_key
-  #       ports:
-  #           - '9000:9000'
-  #           - '9001:9001'
-  #       volumes:
-  #           - '../minio/data:/data'
-  #       networks:
-  #           - oasiscorp
-  #       healthcheck:
-  #           test: ["CMD", "curl", "-f", "http://minio:9000/minio/health/live"]
-  #           interval: 30s
-  #           timeout: 20s
-  #           retries: 3
-  #       restart: always
-
 
   minio:
         hostname: minio
         container_name: minio
         image: 'bitnami/minio:latest' # latest image 
         environment:
-            MINIO_ACCESS_KEY: minio_secret_key
+            MINIO_ACCESS_KEY: minio_access_key
             MINIO_SECRET_KEY: minio_secret_key
             MINIO_ROOT_USER: minio_access_key
             MINIO_ROOT_PASSWORD: minio_secret_key
@@ -44,7 +16,7 @@ services:
             - '9000:9000'
             - '9001:9001'
         volumes:
-            - '../minio/data:/data'
+            - '../minio-data:/data'
         networks:
             - oasiscorp
         healthcheck:
@@ -149,11 +121,8 @@ services:
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
   
-volumes:
-  minio-data:
-    driver: local
 
-        
+     
 networks:
   oasiscorp:
     driver: bridge

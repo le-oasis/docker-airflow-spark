@@ -30,7 +30,7 @@ default_args = {
 # Give the DAG name, configure the schedule, and set the DAG settings.
 
 dag_psql = DAG(
-    dag_id = "postgresoperator_demo",
+    dag_id = "Postgres_Demo",
     default_args=default_args,
     # schedule_interval='0 0 * * *',
     schedule_interval='@once',	
