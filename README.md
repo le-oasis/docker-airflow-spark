@@ -173,49 +173,6 @@ To list all object in all buckets, type:
 s3cmd --config minio.s3cfg la
 ```
 
-## Access Trino with CLI and Prepare Table
-
-Download trino cli with:
-
-```bash
-wget https://repo1.maven.org/maven2/io/trino/trino-cli/352/trino-cli-351-executable.jar \
-  -O trino
-chmod +x trino  # Make it executable
-```
-
-Create schema and create table with:
-
-```bash
-./trino --execute "
-CREATE SCHEMA IF NOT EXISTS minio.iris
-WITH (location = 's3a://iris/');
-
-CREATE TABLE IF NOT EXISTS minio.iris.iris_parquet (
-  sepal_length DOUBLE,
-  sepal_width  DOUBLE,
-  petal_length DOUBLE,
-  petal_width  DOUBLE,
-  class        VARCHAR
-)
-WITH (
-  external_location = 's3a://iris/',
-  format = 'PARQUET'
-);"
-```
-
-Query the newly created table with:
-
-```bash
-./trino --execute "
-SHOW TABLES IN minio.iris;
-SELECT * FROM minio.iris.iris_parquet LIMIT 5;"
-```
-
-
-
-
-
-
 
 ## Check Access
 
@@ -225,7 +182,7 @@ Airflow UI Login:
 * username: airflow 
 * password: airflow
 
-### Spark: http://localhost:8080
+### Spark: http://localhost:8181
 
 * Spark Master & Workers.
 ### Jupyter: http://localhost:8888
@@ -321,15 +278,13 @@ Click on Create and fill in the necessary details:
 
 - `Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
 - `Conn Type`: Postgres - Select it from the dropdown menu.
-- `Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
-- `Schema`: test - the database name (test database was created during init)
+- `Host`: postgres - Docker will resolve the hostname. {defined in the .yaml file}
+- `Schema`: metastore - the database name (test database was created during init)
 - `Login`: airflow - or whichever username you set in your docker-compose.yml file.
 - `Password`: airflow - or whichever password you set in your docker-compose.yml file.
 - `Port`: 5432 - the standard port for the database within the docker network.
 
-Click on save: Creating the connection airflow to connect the Postgres DB as shown in below
-
-![](./doc/postgres.png "DataReady")
+Click on save: Creating the connection airflow to connect the Postgres DB.
 
 - Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
 - DAG Succesful 
@@ -346,7 +301,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB as sho
 
 
 ```
-docker exec -it  postgres_container psql -U airflow test
+docker exec -it  postgres_container psql -U airflow metastore
 ```
 
 - After gaining acces, we can run a SQL query to validate the data has been inserted.
@@ -380,8 +335,8 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 
 1. Go to the Minio webUI on http://localhost:9000
 
-   * username: minio 
-   * password: miniosecret
+   * username: minio_access_key 
+   * password: minio_secret_key
   
 2. Click on bucket icon on the left-menu Bar marked red below the create a S3 Bucket with name `miniobucket`.
 
@@ -409,7 +364,7 @@ Click on Create and fill in the necessary details:
 - `Extras`:  
 
 ```
-{"aws_access_key_id": "minio", "aws_secret_access_key": "miniosecret",  "host": "http://myminio:9000"}
+{"aws_access_key_id": "minio_access_key", "aws_secret_access_key": "minio_secret_key",  "host": "http://minio:9000"}
 ```
 
 - Should look like this. Click on Save.
@@ -473,7 +428,7 @@ docker stats
     $ docker system prune -a
 
     Remove Volumes:
-    $ docker volume prune -a 
+    $ docker volume prune
 
 ## Useful docker-compose commands
 

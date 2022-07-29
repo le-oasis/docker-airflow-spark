@@ -1,7 +1,7 @@
 1. cd docker
 2. docker-compose up airflow-init
 3. docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
-4. docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml down --remove -orphans -v 
+4. docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml down --remove-orphans -v 
 5. s3cmd --config minio.s3cfg mb s3://iris
 6. s3cmd --config minio.s3cfg mb s3://2022
 
