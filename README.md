@@ -121,6 +121,59 @@ docker-compose up airflow-init
 docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 ~~~
 
+# trino-minio-docker
+
+Minimal example to run Trino with Minio and the Hive standalone metastore on Docker. The data in this tutorial was converted into an [Apache Parquet](https://parquet.apache.org/) file from the famous [Iris data set](https://archive.ics.uci.edu/ml/datasets/iris).
+
+## Installation and Setup
+
+Install [s3cmd](https://s3tools.org/s3cmd) with:
+
+```bash
+sudo apt update
+sudo apt install -y \
+    s3cmd \
+    openjdk-11-jre-headless  # Needed for trino-cli
+```
+
+Pull and run all services with:
+
+```bash
+docker-compose up
+```
+
+Configure `s3cmd` with (or use the `minio.s3cfg` configuration):
+
+```bash
+s3cmd --config minio.s3cfg --configure
+```
+
+Use the following configuration for the `s3cmd` configuration when prompted:
+
+```
+Access Key: minio_access_key
+Secret Key: minio_secret_key
+Default Region [US]:
+S3 Endpoint [s3.amazonaws.com]: localhost:9000
+DNS-style bucket+hostname:port template for accessing a bucket [%(bucket)s.s3.amazonaws.com]: localhost:9000
+Encryption password:
+Path to GPG program [/usr/bin/gpg]:
+Use HTTPS protocol [Yes]: no
+```
+
+To create a bucket and upload data to minio, type:
+
+```bash
+s3cmd --config minio.s3cfg mb s3://iris
+s3cmd --config minio.s3cfg put data/iris.parq s3://iris
+```
+To list all object in all buckets, type:
+
+```bash
+s3cmd --config minio.s3cfg la
+```
+
+
 ## Check Access
 
 ### Airflow: http://localhost:8085
@@ -129,7 +182,7 @@ Airflow UI Login:
 * username: airflow 
 * password: airflow
 
-### Spark: http://localhost:8080
+### Spark: http://localhost:8181
 
 * Spark Master & Workers.
 ### Jupyter: http://localhost:8888
@@ -225,15 +278,13 @@ Click on Create and fill in the necessary details:
 
 - `Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
 - `Conn Type`: Postgres - Select it from the dropdown menu.
-- `Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
-- `Schema`: test - the database name (test database was created during init)
+- `Host`: postgres - Docker will resolve the hostname. {defined in the .yaml file}
+- `Schema`: metastore - the database name (test database was created during init)
 - `Login`: airflow - or whichever username you set in your docker-compose.yml file.
 - `Password`: airflow - or whichever password you set in your docker-compose.yml file.
 - `Port`: 5432 - the standard port for the database within the docker network.
 
-Click on save: Creating the connection airflow to connect the Postgres DB as shown in below
-
-![](./doc/postgres.png "DataReady")
+Click on save: Creating the connection airflow to connect the Postgres DB.
 
 - Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
 - DAG Succesful 
@@ -250,7 +301,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB as sho
 
 
 ```
-docker exec -it  postgres_container psql -U airflow test
+docker exec -it  postgres_container psql -U airflow metastore
 ```
 
 - After gaining acces, we can run a SQL query to validate the data has been inserted.
@@ -284,8 +335,8 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 
 1. Go to the Minio webUI on http://localhost:9000
 
-   * username: minio 
-   * password: miniosecret
+   * username: minio_access_key 
+   * password: minio_secret_key
   
 2. Click on bucket icon on the left-menu Bar marked red below the create a S3 Bucket with name `miniobucket`.
 
@@ -313,7 +364,7 @@ Click on Create and fill in the necessary details:
 - `Extras`:  
 
 ```
-{"aws_access_key_id": "minio", "aws_secret_access_key": "miniosecret",  "host": "http://myminio:9000"}
+{"aws_access_key_id": "minio_access_key", "aws_secret_access_key": "minio_secret_key",  "host": "http://minio:9000"}
 ```
 
 - Should look like this. Click on Save.
@@ -377,7 +428,7 @@ docker stats
     $ docker system prune -a
 
     Remove Volumes:
-    $ docker volume prune -a 
+    $ docker volume prune
 
 ## Useful docker-compose commands
 

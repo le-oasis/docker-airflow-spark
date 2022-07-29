@@ -1,0 +1,27 @@
+1. cd docker
+2. docker-compose up airflow-init
+3. docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
+4. docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml down --remove-orphans -v 
+5. s3cmd --config minio.s3cfg mb s3://iris
+6. s3cmd --config minio.s3cfg mb s3://2022
+
+create a S3 Bucket with name miniobucket.
+
+sudo apt update
+sudo apt install -y \
+    s3cmd \
+    openjdk-11-jre-headless  # Needed for trino-cli
+
+s3cmd --config minio.s3cfg --configure
+
+6. s3cmd --config minio.s3cfg mb s3://miniobucket
+
+place the file folder into miniobucket
+s3cmd --config minio.s3cfg put /workspace/docker-airflow-spark/minio/data/testfile.txt s3://miniobucket/test
+
+
+6. s3cmd --config minio.s3cfg put data/iris.parq s3://iris
+
+
+docker exec -it  postgres_container psql -U airflow metastore
+

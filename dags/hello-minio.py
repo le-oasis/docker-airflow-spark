@@ -26,7 +26,7 @@ def read_file_content(ds, **kwargs):
     print(f"File contents: '{contents}'.")
     
 
-with DAG(dag_id='hello_minio_python_operator',
+with DAG(dag_id='s3_dag',
         start_date=datetime(2021, 9, 5),  
         schedule_interval=None,
         catchup=False,

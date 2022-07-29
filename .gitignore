@@ -16,3 +16,5 @@ docker/postgres-db-volume/*
 docker/logs/*
 docker/minio/*
 metastore_db
+docker/minio-data/.root_password
+docker/minio-data/.root_user

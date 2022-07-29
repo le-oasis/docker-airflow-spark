@@ -1,26 +1,46 @@
 version: '3'
 services:
 
+
+
   minio:
-        hostname: myminio
-        container_name: minio_container
+        hostname: minio
+        container_name: minio
         image: 'bitnami/minio:latest' # latest image 
         environment:
-            MINIO_ACCESS_KEY: minio
-            MINIO_SECRET_KEY: miniosecret
+            MINIO_ACCESS_KEY: minio_access_key
+            MINIO_SECRET_KEY: minio_secret_key
+            MINIO_ROOT_USER: minio_access_key
+            MINIO_ROOT_PASSWORD: minio_secret_key
         ports:
             - '9000:9000'
             - '9001:9001'
         volumes:
-            - '../minio/data:/data'
+            - '../minio-data:/data'
         networks:
             - oasiscorp
         healthcheck:
-            test: ["CMD", "curl", "-f", "http://myminio:9000/minio/health/live"]
+            test: ["CMD", "curl", "-f", "http://minio:9000/minio/health/live"]
             interval: 30s
             timeout: 20s
             retries: 3
         restart: always
+
+
+
+
+
+  # Big Data Engine
+  trino:
+    hostname: trino
+    image: 'trinodb/trino:latest'
+    container_name: trino
+    ports:
+      - '8080:8080'
+    volumes:
+      - ../etc:/etc/trino
+    networks:
+      - oasiscorp
 
 
    # Jupyter notebook
@@ -45,7 +65,7 @@ services:
     image: bde2020/spark-master:3.3.0-hadoop3.3
     container_name: spark-master
     ports:
-      - "8080:8080"
+      - "8181:8080"
       - "7077:7077"
       - "4040:4040"
     volumes:
@@ -61,8 +81,8 @@ services:
     container_name: spark-worker-1
     depends_on:
       - spark-master
-    ports:
-      - "8081:8081"
+    # ports:
+    #   - "8081:8081"
     volumes:
        - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
        - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -76,8 +96,8 @@ services:
     container_name: spark-worker-2
     depends_on:
       - spark-master
-    ports:
-      - "8082:8081"
+    # ports:
+    #   - "8082:8081"
     volumes:
         - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
         - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -91,8 +111,8 @@ services:
     container_name: spark-worker-3
     depends_on:
       - spark-master
-    ports:
-      - "8083:8081"
+    # ports:
+    #   - "8083:8081"
     volumes:
         - ../spark/app:/usr/local/spark/app # Spark scripts folder (Must be the same path in airflow and Spark Cluster)
         - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
@@ -102,8 +122,7 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
   
 
-
-        
+     
 networks:
   oasiscorp:
     driver: bridge
