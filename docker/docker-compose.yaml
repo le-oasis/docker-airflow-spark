@@ -67,6 +67,7 @@ services:
   # Redis DB
   redis:
     image: 'redis:latest'
+    container_name: redis
     networks:
       - oasiscorp
     expose:
@@ -82,6 +83,7 @@ services:
   airflow-webserver:
     <<: *airflow-common
     command: webserver
+    container_name: webserver
     ports:
         - '8085:8080'
     healthcheck:
@@ -95,12 +97,14 @@ services:
   airflow-scheduler:
     <<: *airflow-common
     command: scheduler
+    container_name: scheduler
     restart: always
 
   # Airflow Worker 
   airflow-worker:
     <<: *airflow-common
     command: celery worker
+    container_name: celery-worker
     restart: always
 
   # Airflow DB
@@ -114,18 +118,7 @@ services:
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
 
-  # Flower: Flower is a web based tool for monitoring and administrating Celery clusters.
-  flower:
-    <<: *airflow-common
-    command: celery flower
-    ports:
-      - 5555:5555
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:5555/"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-    restart: always
+
 
 volumes:
   postgres-db-volume:
