@@ -196,8 +196,8 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 ```
 ### Minio: http://localhost:9001
 
-* username: minio 
-* password: miniosecret
+* username: minio_access_key 
+* password: minio_secret_key
 * Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
 * This would serve as our Object Storage Service. 
 
