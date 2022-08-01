@@ -39,6 +39,10 @@ Use HTTPS protocol [Yes]: no
 Create a new bucket in datalake
 s3cmd --config minio.s3cfg mb s3://datalake
 
+3.1
+place the file folder into miniobucket
+s3cmd --config minio.s3cfg put /workspace/docker-airflow-spark/minio-data/iris.parq s3://datalake
+
 
 4. Create Trino 
 wget https://repo1.maven.org/maven2/io/trino/trino-cli/390/trino-cli-390-executable.jar \
@@ -74,16 +78,8 @@ SELECT * FROM datalake.iris.iris_parquet LIMIT 5;"
 
 
 
+./trino --execute "
+CREATE SCHEMA datalake.myschema;"
 
 
-
-
-place the file folder into miniobucket
-s3cmd --config minio.s3cfg put /workspace/docker-airflow-spark/minio-data/iris.parq s3://datalake
-
-
-6. s3cmd --config minio.s3cfg put data/iris.parq s3://iris
-
-
-docker exec -it  postgres_container psql -U airflow metastore
 

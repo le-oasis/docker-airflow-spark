@@ -63,6 +63,62 @@ services:
       retries: 5
     restart: always
 
+  # Hive Metatore
+  hive-metastore:
+    image: 'bitsondatadev/hive-metastore:latest'
+    container_name: hive
+    hostname: hive-metastore
+    ports:
+      - '9083:9083' # Metastore Thrift
+    volumes:
+      - ./conf/metastore-site.xml:/opt/apache-hive-metastore-3.0.0-bin/conf/metastore-site.xml:ro
+    environment:
+      METASTORE_DB_HOSTNAME: postgres
+    depends_on:
+      - postgres
+    networks:
+      - oasiscorp
+
+
+  # S3 Object Storage
+  minio:
+        hostname: minio
+        container_name: minio
+        image: 'minio/minio:latest' # latest image 
+        environment:
+            MINIO_ACCESS_KEY: minio_access_key
+            MINIO_SECRET_KEY: minio_secret_key
+            MINIO_ROOT_USER: minio_access_key
+            MINIO_ROOT_PASSWORD: minio_secret_key
+        ports:
+            - '9000:9000'
+            - '9001:9001'
+        volumes:
+            - '../minio-data:/data'
+        networks:
+            - oasiscorp
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://minio:9000/minio/health/live"]
+            interval: 30s
+            timeout: 20s
+            retries: 3
+        restart: always
+
+
+  # Big Data Engine
+  trino:
+    hostname: trino
+    image: 'trinodb/trino:latest'
+    container_name: trino
+    ports:
+      - '8080:8080'
+    volumes:
+      - ../trino:/etc/trino
+    networks:
+      - oasiscorp
+
+
+
 
   # Redis DB
   redis:
