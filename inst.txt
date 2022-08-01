@@ -5,6 +5,18 @@
 5. s3cmd --config minio.s3cfg mb s3://iris
 6. s3cmd --config minio.s3cfg mb s3://2022
 
+
+
+Modern Data Lake with Minio
+I will walk-through a step-by-step process to demonstrate how we can leverage 
+an S3-Compatible Object Storage (MinIO) and a 
+Distributed SQL query engine (Trino) to achieve this. 
+
+
+
+
+
+
 create a S3 Bucket with name miniobucket.
 
 sudo apt update
