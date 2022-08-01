@@ -34,7 +34,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ../etc:/etc/trino
+      - ../trino-data:/etc/trino
     networks:
       - oasiscorp
 
