@@ -12,21 +12,47 @@ I will walk-through a step-by-step process to demonstrate how we can leverage
 an S3-Compatible Object Storage (MinIO) and a 
 Distributed SQL query engine (Trino) to achieve this. 
 
-
-
-
-
-
-create a S3 Bucket with name miniobucket.
-
+1. install the command line interface 
 sudo apt update
 sudo apt install -y \
     s3cmd \
     openjdk-11-jre-headless  # Needed for trino-cli
 
+
+2. configure
 s3cmd --config minio.s3cfg --configure
 
-6. s3cmd --config minio.s3cfg mb s3://miniobucket
+Input must resemble:
+
+Access Key: minio_access_key
+Secret Key: minio_secret_key
+Default Region [US]:
+S3 Endpoint [s3.amazonaws.com]: localhost:9000
+DNS-style bucket+hostname:port template for accessing a bucket [%(bucket)s.s3.amazonaws.com]: localhost:9000
+Encryption password:
+Path to GPG program [/usr/bin/gpg]:
+Use HTTPS protocol [Yes]: no
+
+
+
+3. Data Lake
+Create a new bucket in datalake
+s3cmd --config minio.s3cfg mb s3://datalake
+
+
+4. Create Trino
+wget https://repo1.maven.org/maven2/io/trino/trino-cli/390/trino-cli-390-executable.jar \
+  -O trino
+chmod +x trino
+
+5. check trino
+./trino --execute "
+SHOW CATALOGS;"
+
+
+
+
+
 
 place the file folder into miniobucket
 s3cmd --config minio.s3cfg put /workspace/docker-airflow-spark/minio/data/testfile.txt s3://miniobucket/test

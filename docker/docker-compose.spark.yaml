@@ -26,9 +26,6 @@ services:
         restart: always
 
 
-
-
-
   # Big Data Engine
   trino:
     hostname: trino
