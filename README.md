@@ -64,7 +64,7 @@ docker pull postgres:latest
 docker pull redis:latest
 ~~~
 ~~~
-docker pull bitnami/minio:latest
+docker pull minio/minio:latest
 ~~~
 
 
@@ -123,8 +123,7 @@ docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 
 
 ## Live Services
-* To ensure that our services were up-and-running, you can access them via the following links:
-
+To ensure the services are running, you can click on the following URLs:
 ### Jupyter: http://localhost:8888
 
 * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
@@ -134,7 +133,6 @@ docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 2>&1 | grep 'http://127.0.0.1' | tail -1
 
 ```
-
 
 ### Airflow: http://localhost:8085
 
@@ -154,28 +152,34 @@ Airflow UI Login:
 * Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
 * This would serve as our Object Storage Service. 
 
-### Postgres:
-
-* localhost:5432
-* Host: mypostgres
-* Database: airflow
-* User: airflow
-* Password: airflow
+### Postgres
+- Access to the Postgres database is available using the following command:
 
 ```
 docker exec -it  postgres_container psql -U airflow metastore
 
 ```
 
+### Postgres DB Access Info:
+* localhost:5432
+* Host: mypostgres
+* Database: airflow
+* User: airflow
+* Password: airflow
+
+
+
 - Please note, that a 'metastore' database was created during the init of Postgres. 
 
 
 
-# trino-minio-docker
+## Modern Data Lake with Minio
 
-Minimal example to run Trino with Minio and the Hive standalone metastore on Docker. The data in this tutorial was converted into an [Apache Parquet](https://parquet.apache.org/) file from the famous [Iris data set](https://archive.ics.uci.edu/ml/datasets/iris).
+- I will walk-through a step-by-step process to demonstrate how we can leverage 
+- an S3-Compatible Object Storage [Minio](https://blog.min.io/modern-data-lake-with-minio-part-1/) and a Distributed SQL query engine [Trino](https://hub.docker.com/r/trinodb/trino) to achieve this.      
+- Minimal example to run Trino with Minio and the Hive standalone metastore on Docker.
 
-## Installation and Setup
+### Installation and Setup
 
 Install [s3cmd](https://s3tools.org/s3cmd) with:
 

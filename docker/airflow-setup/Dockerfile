@@ -84,8 +84,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         ${JAVA_LIBRARY} \
     && apt-get autoremove -yqq --purge \
-    && apt-get clean \ 
     && apt-get install libsasl2-dev \
+    && apt-get clean \ 
     && rm -rf /var/lib/apt/lists/*
 
 # Install Airflow Packages & Providers
