@@ -1,8 +1,7 @@
 version: '3'
 services:
 
-
-
+  # S3 Object Storage
   minio:
         hostname: minio
         container_name: minio
