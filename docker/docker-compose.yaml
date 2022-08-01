@@ -88,8 +88,6 @@ services:
         environment:
             MINIO_ACCESS_KEY: minio_access_key
             MINIO_SECRET_KEY: minio_secret_key
-            MINIO_ROOT_USER: minio_access_key
-            MINIO_ROOT_PASSWORD: minio_secret_key
         ports:
             - '9000:9000'
             - '9001:9001'
@@ -116,9 +114,6 @@ services:
       - ../trino:/etc/trino
     networks:
       - oasiscorp
-
-
-
 
   # Redis DB
   redis:
@@ -179,6 +174,8 @@ services:
 
 volumes:
   postgres-db-volume:
+  minio-data:
+    driver: local
 
 networks:
   oasiscorp:
