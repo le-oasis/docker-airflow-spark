@@ -19,3 +19,4 @@ metastore_db
 docker/minio-data/.root_password
 docker/minio-data/.root_user
 docker/minio-data/*
+docker/trino-data/*
