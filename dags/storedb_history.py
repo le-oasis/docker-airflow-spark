@@ -28,7 +28,7 @@ default_args = {
 # Give the DAG name, configure the schedule, and set the DAG settings.
 
 dag_psql = DAG(
-    dag_id = "storedbhistorydemo",
+    dag_id = "Postgres_Big_DB",
     default_args=default_args,
     # schedule_interval='0 0 * * *',
     schedule_interval='@once',	

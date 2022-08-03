@@ -1,4 +1,4 @@
-# Feel free to modify this file to suit your needs.
+# Feel free to modify this file to suit your needs..
 ---
 version: '3'
 x-airflow-common:
@@ -41,11 +41,11 @@ x-airflow-common:
 
 services:
 
-
+  # Postgre DB
   postgres:
     image: 'postgres:latest'
     container_name: postgres_container
-    hostname: mypostgres
+    hostname: postgres
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
@@ -64,8 +64,57 @@ services:
     restart: always
 
 
+  # S3 Object Storage
+  minio:
+    hostname: minio
+    container_name: minio
+    image: 'minio/minio'
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ../minio/data:/export
+      - ../minio/config:/root/.minio
+    networks:
+      - oasiscorp    
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+    command: ["server", "--console-address", ":9001", "/export"]
+
+  # Create Minio Buckets
+  createbuckets:
+    image: 'minio/mc'
+    container_name: minio_cb
+    depends_on:
+      - minio
+    networks:
+      - oasiscorp
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add myminio http://minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
+      /usr/bin/mc mb myminio/bronze;
+      /usr/bin/mc policy download myminio/bronze;
+
+   
+      /usr/bin/mc mb myminio/sliver;
+      /usr/bin/mc policy download myminio/sliver;
+
+
+      /usr/bin/mc mb myminio/gold;
+      /usr/bin/mc policy download myminio/gold;
+      exit 0;
+      "
+
+  # Redis DB
   redis:
     image: 'redis:latest'
+    container_name: redis
     networks:
       - oasiscorp
     expose:
@@ -77,9 +126,11 @@ services:
       retries: 50
     restart: always
 
+  # Airflow Web UI
   airflow-webserver:
     <<: *airflow-common
     command: webserver
+    container_name: webserver
     ports:
         - '8085:8080'
     healthcheck:
@@ -89,19 +140,25 @@ services:
       retries: 5
     restart: always
 
+  # Airflow Scheduler
   airflow-scheduler:
     <<: *airflow-common
     command: scheduler
+    container_name: scheduler
     restart: always
 
+  # Airflow Worker 
   airflow-worker:
     <<: *airflow-common
     command: celery worker
+    container_name: celery-worker
     restart: always
 
+  # Airflow DB
   airflow-init:
     <<: *airflow-common
     command: version
+    container_name: airflow-init
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
@@ -111,10 +168,10 @@ services:
 
 
 
-
 volumes:
   postgres-db-volume:
-
+  minio-data:
+    driver: local
 
 networks:
   oasiscorp:

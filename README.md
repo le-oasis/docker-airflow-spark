@@ -64,7 +64,7 @@ docker pull postgres:latest
 docker pull redis:latest
 ~~~
 ~~~
-docker pull bitnami/minio:latest
+docker pull minio/minio
 ~~~
 
 
@@ -121,17 +121,9 @@ docker-compose up airflow-init
 docker compose  -f docker-compose.yaml  -f docker-compose.spark.yaml up -d
 ~~~
 
-## Check Access
 
-### Airflow: http://localhost:8085
-
-Airflow UI Login: 
-* username: airflow 
-* password: airflow
-
-### Spark: http://localhost:8080
-
-* Spark Master & Workers.
+## Live Services
+To ensure the services are running, you can click on the following URLs:
 ### Jupyter: http://localhost:8888
 
 * For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
@@ -141,24 +133,46 @@ Airflow UI Login:
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 2>&1 | grep 'http://127.0.0.1' | tail -1
 
 ```
+
+### Airflow: http://localhost:8085
+
+Airflow UI Login: 
+* username: airflow 
+* password: airflow
+
+### Spark: http://localhost:8181
+
+* Spark Master & Workers.
+
+
 ### Minio: http://localhost:9001
 
-* username: minio 
-* password: miniosecret
+* username: minio_access_key 
+* password: minio_secret_key
 * Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
 * This would serve as our Object Storage Service. 
 
-### Postgres:
+### Postgres
+- Access to the Postgres database is available using the following command:
+
+```
+docker exec -it  postgres_container psql -U airflow metastore
+
+```
+
+### Postgres DB Access Info:
 * localhost:5432
 * Host: mypostgres
 * Database: airflow
 * User: airflow
 * Password: airflow
 
-- Please note, that a 'test' database was created during the init of Postgres. 
+
+
+- Please note, that a 'metastore' database was created during the init of Postgres. 
+
 
 # Working with Containers
-
 ## Spark Submit 
 
 - After you have started the services, you can run the Spark submit command to run a Spark job.
@@ -225,15 +239,13 @@ Click on Create and fill in the necessary details:
 
 - `Conn Id`: postgres_air - the ID with which we can retrieve the connection details later on.
 - `Conn Type`: Postgres - Select it from the dropdown menu.
-- `Host`: mypostgres - Docker will resolve the hostname. {defined in the .yaml file}
-- `Schema`: test - the database name (test database was created during init)
+- `Host`: postgres - Docker will resolve the hostname. {defined in the .yaml file}
+- `Schema`: metastore - the database name (test database was created during init)
 - `Login`: airflow - or whichever username you set in your docker-compose.yml file.
 - `Password`: airflow - or whichever password you set in your docker-compose.yml file.
 - `Port`: 5432 - the standard port for the database within the docker network.
 
-Click on save: Creating the connection airflow to connect the Postgres DB as shown in below
-
-![](./doc/postgres.png "DataReady")
+Click on save: Creating the connection airflow to connect the Postgres DB.
 
 - Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side.
 - DAG Succesful 
@@ -250,7 +262,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB as sho
 
 
 ```
-docker exec -it  postgres_container psql -U airflow test
+docker exec -it  postgres_container psql -U airflow metastore
 ```
 
 - After gaining acces, we can run a SQL query to validate the data has been inserted.
@@ -284,8 +296,8 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 
 1. Go to the Minio webUI on http://localhost:9000
 
-   * username: minio 
-   * password: miniosecret
+   * username: minio_access_key 
+   * password: minio_secret_key
   
 2. Click on bucket icon on the left-menu Bar marked red below the create a S3 Bucket with name `miniobucket`.
 
@@ -313,7 +325,7 @@ Click on Create and fill in the necessary details:
 - `Extras`:  
 
 ```
-{"aws_access_key_id": "minio", "aws_secret_access_key": "miniosecret",  "host": "http://myminio:9000"}
+{"aws_access_key_id": "minio_access_key", "aws_secret_access_key": "minio_secret_key",  "host": "http://minio:9000"}
 ```
 
 - Should look like this. Click on Save.
@@ -377,7 +389,7 @@ docker stats
     $ docker system prune -a
 
     Remove Volumes:
-    $ docker volume prune -a 
+    $ docker volume prune
 
 ## Useful docker-compose commands
 
@@ -421,6 +433,61 @@ Assume we had a set of data that we wanted to use. However, this data is unclean
 - Data is fast to load into another program
 - With smart devices, online communities, and E-Commerce, there is an abundance of raw, unfiltered data in today’s industry.
 - However, most of it is squandered because it is difficult to interpret due to it being tangled. ETL pipelines are available to combat this by automating data collection and transformation so that analysts can use them for business insights.
+
+
+## Modern Data Lake with Minio
+
+- I will walk-through a step-by-step process to demonstrate how we can leverage 
+- an S3-Compatible Object Storage [Minio](https://blog.min.io/modern-data-lake-with-minio-part-1/) and a Distributed SQL query engine [Trino](https://hub.docker.com/r/trinodb/trino) to achieve this.      
+- Minimal example to run Trino with Minio and the Hive standalone metastore on Docker.
+
+### Installation and Setup
+
+Install [s3cmd](https://s3tools.org/s3cmd) with:
+
+```bash
+sudo apt update
+sudo apt install -y \
+    s3cmd \
+    openjdk-11-jre-headless  # Needed for trino-cli
+```
+
+Pull and run all services with:
+
+```bash
+docker-compose up
+```
+
+Configure `s3cmd` with (or use the `minio.s3cfg` configuration):
+
+```bash
+s3cmd --config minio.s3cfg --configure
+```
+
+Use the following configuration for the `s3cmd` configuration when prompted:
+
+```
+Access Key: minio_access_key
+Secret Key: minio_secret_key
+Default Region [US]:
+S3 Endpoint [s3.amazonaws.com]: localhost:9000
+DNS-style bucket+hostname:port template for accessing a bucket [%(bucket)s.s3.amazonaws.com]: localhost:9000
+Encryption password:
+Path to GPG program [/usr/bin/gpg]:
+Use HTTPS protocol [Yes]: no
+```
+
+To create a bucket and upload data to minio, type:
+
+```bash
+s3cmd --config minio.s3cfg mb s3://iris
+s3cmd --config minio.s3cfg put data/iris.parq s3://iris
+```
+To list all object in all buckets, type:
+
+```bash
+s3cmd --config minio.s3cfg la
+```
 
 
 ## User defined network 
