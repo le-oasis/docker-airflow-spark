@@ -68,7 +68,7 @@ services:
   minio:
     hostname: minio
     container_name: minio
-    image: minio/minio
+    image: 'minio/minio'
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -89,7 +89,8 @@ services:
 
   # Create Minio Buckets
   createbuckets:
-    image: minio/mc
+    image: 'minio/mc'
+    container_name: minio_cb
     depends_on:
       - minio
     networks:
