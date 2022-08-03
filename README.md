@@ -64,7 +64,7 @@ docker pull postgres:latest
 docker pull redis:latest
 ~~~
 ~~~
-docker pull minio/minio:latest
+docker pull minio/minio
 ~~~
 
 
@@ -172,66 +172,7 @@ docker exec -it  postgres_container psql -U airflow metastore
 - Please note, that a 'metastore' database was created during the init of Postgres. 
 
 
-
-## Modern Data Lake with Minio
-
-- I will walk-through a step-by-step process to demonstrate how we can leverage 
-- an S3-Compatible Object Storage [Minio](https://blog.min.io/modern-data-lake-with-minio-part-1/) and a Distributed SQL query engine [Trino](https://hub.docker.com/r/trinodb/trino) to achieve this.      
-- Minimal example to run Trino with Minio and the Hive standalone metastore on Docker.
-
-### Installation and Setup
-
-Install [s3cmd](https://s3tools.org/s3cmd) with:
-
-```bash
-sudo apt update
-sudo apt install -y \
-    s3cmd \
-    openjdk-11-jre-headless  # Needed for trino-cli
-```
-
-Pull and run all services with:
-
-```bash
-docker-compose up
-```
-
-Configure `s3cmd` with (or use the `minio.s3cfg` configuration):
-
-```bash
-s3cmd --config minio.s3cfg --configure
-```
-
-Use the following configuration for the `s3cmd` configuration when prompted:
-
-```
-Access Key: minio_access_key
-Secret Key: minio_secret_key
-Default Region [US]:
-S3 Endpoint [s3.amazonaws.com]: localhost:9000
-DNS-style bucket+hostname:port template for accessing a bucket [%(bucket)s.s3.amazonaws.com]: localhost:9000
-Encryption password:
-Path to GPG program [/usr/bin/gpg]:
-Use HTTPS protocol [Yes]: no
-```
-
-To create a bucket and upload data to minio, type:
-
-```bash
-s3cmd --config minio.s3cfg mb s3://iris
-s3cmd --config minio.s3cfg put data/iris.parq s3://iris
-```
-To list all object in all buckets, type:
-
-```bash
-s3cmd --config minio.s3cfg la
-```
-
-
-
-
 # Working with Containers
-
 ## Spark Submit 
 
 - After you have started the services, you can run the Spark submit command to run a Spark job.
@@ -492,6 +433,61 @@ Assume we had a set of data that we wanted to use. However, this data is unclean
 - Data is fast to load into another program
 - With smart devices, online communities, and E-Commerce, there is an abundance of raw, unfiltered data in today’s industry.
 - However, most of it is squandered because it is difficult to interpret due to it being tangled. ETL pipelines are available to combat this by automating data collection and transformation so that analysts can use them for business insights.
+
+
+## Modern Data Lake with Minio
+
+- I will walk-through a step-by-step process to demonstrate how we can leverage 
+- an S3-Compatible Object Storage [Minio](https://blog.min.io/modern-data-lake-with-minio-part-1/) and a Distributed SQL query engine [Trino](https://hub.docker.com/r/trinodb/trino) to achieve this.      
+- Minimal example to run Trino with Minio and the Hive standalone metastore on Docker.
+
+### Installation and Setup
+
+Install [s3cmd](https://s3tools.org/s3cmd) with:
+
+```bash
+sudo apt update
+sudo apt install -y \
+    s3cmd \
+    openjdk-11-jre-headless  # Needed for trino-cli
+```
+
+Pull and run all services with:
+
+```bash
+docker-compose up
+```
+
+Configure `s3cmd` with (or use the `minio.s3cfg` configuration):
+
+```bash
+s3cmd --config minio.s3cfg --configure
+```
+
+Use the following configuration for the `s3cmd` configuration when prompted:
+
+```
+Access Key: minio_access_key
+Secret Key: minio_secret_key
+Default Region [US]:
+S3 Endpoint [s3.amazonaws.com]: localhost:9000
+DNS-style bucket+hostname:port template for accessing a bucket [%(bucket)s.s3.amazonaws.com]: localhost:9000
+Encryption password:
+Path to GPG program [/usr/bin/gpg]:
+Use HTTPS protocol [Yes]: no
+```
+
+To create a bucket and upload data to minio, type:
+
+```bash
+s3cmd --config minio.s3cfg mb s3://iris
+s3cmd --config minio.s3cfg put data/iris.parq s3://iris
+```
+To list all object in all buckets, type:
+
+```bash
+s3cmd --config minio.s3cfg la
+```
 
 
 ## User defined network 
