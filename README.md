@@ -295,9 +295,7 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:latest") 
 ### Creating a S3 Bucket On The Minio WebUI
 
 1. Go to the Minio webUI on http://localhost:9000
-
-   * username: minio_access_key 
-   * password: minio_secret_key
+- Enter your Minio username and password:
   
 2. Click on bucket icon on the left-menu Bar marked red below the create a S3 Bucket with name `miniobucket`.
 
