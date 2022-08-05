@@ -15,7 +15,14 @@ services:
           - ../notebooks:/home/jovyan/work/notebooks/
           - ../spark/resources/data:/home/jovyan/work/data/
           - ../spark/resources/jars:/home/jovyan/work/jars/
+        environment:
+          OBJECTS_ENDPOINT: "http://minio:9000"
+          OBJECTS_CONTAINER: minio
+          OBJECTS_SECRET: "miniosecret"
+          OBJECTS_ACCESSID: "minio"
         restart: always
+
+  
 
 
   # Spark Master with 3 workers.
