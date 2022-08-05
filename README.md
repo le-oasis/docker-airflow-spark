@@ -325,12 +325,9 @@ Click on Create and fill in the necessary details:
 - `Extras`:  
 
 ```
-{"aws_access_key_id": "minio_access_key", "aws_secret_access_key": "minio_secret_key",  "host": "http://minio:9000"}
+{"aws_access_key_id": "minio", "aws_secret_access_key": "miniosecret", "host": "http://minio:9000"}
 ```
 
-- Should look like this. Click on Save.
-
-![](./doc/minio2.png "DaGReady")
 
 
 - Head back to the Airflow UI, activate the DAG on the left & click on "Trigger DAG" on the right-hand side.
