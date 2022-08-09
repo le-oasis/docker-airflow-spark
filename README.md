@@ -1,4 +1,4 @@
-# Building an ELT Pipeline using Docker, Python, PostgreSQL, Spark and Airflow.
+# Building a Data Warehouse with Docker, Python, PostgreSQL, Spark and Airflow.
 This post will detail how to build an ELT (Extract, Load and Transform) pipeline.
 
 ## Prerequisites
