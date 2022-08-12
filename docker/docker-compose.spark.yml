@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
 
   # Jupyter notebook
@@ -10,20 +10,11 @@ services:
             - oasiscorp
         ports:
           - "8888:8888"
-        #   - "4040-4080:4040-4080"
         volumes:
           - ../notebooks:/home/jovyan/work/notebooks/
           - ../spark/resources/data:/home/jovyan/work/data/
           - ../spark/resources/jars:/home/jovyan/work/jars/
-        environment:
-          OBJECTS_ENDPOINT: "http://minio:9000"
-          OBJECTS_CONTAINER: minio
-          OBJECTS_SECRET: "miniosecret"
-          OBJECTS_ACCESSID: "minio"
         restart: always
-
-  
-
 
   # Spark Master with 3 workers.
   spark-master:
@@ -88,8 +79,6 @@ services:
         - oasiscorp
     environment:
       - "SPARK_MASTER=spark://spark-master:7077"
-  
-
      
 networks:
   oasiscorp:

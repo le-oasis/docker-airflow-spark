@@ -1,3 +1,4 @@
+# Welcome to the Modern Data Lake.
 # Feel free to modify this file to suit your needs..
 ---
 version: '3'
@@ -18,16 +19,12 @@ x-airflow-common:
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
-    # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    # Scan for DAGs every 60 seconds
-    
   volumes:
     - ../dags:/opt/airflow/dags
     - ../plugins:/opt/airflow/plugins
     - ../logs:/opt/airflow/logs
     - ../spark/app:/usr/local/spark/app #Spark Scripts (Must be the same path in airflow and Spark Cluster)
     - ../spark/resources:/usr/local/spark/resources #Resources folder (Must be the same path in airflow and Spark Cluster)
-   
   user: "${AIRFLOW_UID:-50000}:$AIRFLOW_GID:-50000}"
   env_file:
     - ./.env
@@ -46,10 +43,8 @@ services:
     image: 'postgres:latest'
     container_name: postgres_container
     hostname: postgres
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+    env_file:
+      - ./.env
     networks:
       - oasiscorp
     ports:
@@ -64,79 +59,70 @@ services:
     restart: always
 
 
-   # configuration manager for NiFi
-  zookeeper:
-        hostname: myzookeeper
-        container_name: zookeeper_container
-        image: 'bitnami/zookeeper:3.7.0'  # latest image as of 2021-11-08.
-        environment:
-            - ALLOW_ANONYMOUS_LOGIN=yes
-        networks:
-            - oasiscorp
-        restart: always
+  # # Zookeeper: A configuration Manager for NiFi
+  # zookeeper:
+  #       hostname: myzookeeper
+  #       container_name: zookeeper_container
+  #       image: 'bitnami/zookeeper:3.7.0'  # latest image as of 2021-11-08.
+  #       environment:
+  #           - ALLOW_ANONYMOUS_LOGIN=yes
+  #       networks:
+  #           - oasiscorp
+  #       restart: always
 
-    # data extraction, transformation and load service
-  nifi:
-        hostname: mynifi
-        container_name: nifi_container
-        image: 'apache/nifi:1.15.0'  # latest image as of 2021-11-08.
-        ports:
-            - '8091:8080'
-        networks:
-            - oasiscorp
-        volumes:
-            - nifi-database_repository:/opt/nifi/nifi-current/database_repository
-            - nifi-flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
-            - nifi-content_repository:/opt/nifi/nifi-current/content_repository
-            - nifi-provenance_repository:/opt/nifi/nifi-current/provenance_repository
-            - nifi-conf:/opt/nifi/nifi-current/conf
-            - nifi-state:/opt/nifi/nifi-current/state
-            - ../nifi/logs:/opt/nifi/nifi-current/logs
-            - ../nifi/jdbc:/opt/nifi/nifi-current/jdbc
-            - ../nifi/credentials:/opt/nifi/nifi-current/credentials
-        environment:
-            - NIFI_WEB_HTTP_PORT=8080
-            - NIFI_CLUSTER_IS_NODE=true
-            - NIFI_CLUSTER_NODE_PROTOCOL_PORT=8082
-            - NIFI_ZK_CONNECT_STRING=myzookeeper:2181
-            - NIFI_ELECTION_MAX_WAIT=30 sec
-            - NIFI_SENSITIVE_PROPS_KEY='12345678901234567890A'
-        restart: on-failure
-        healthcheck:
-            test: ["CMD", "curl", "-f", "http://mynifi:8080/nifi/"]
-            interval: 30s
-            timeout: 20s
-            retries: 3
+  # # Apache Nifi: Data extraction, Transformation and load service.
+  # nifi:
+  #       hostname: mynifi
+  #       container_name: nifi_container
+  #       image: 'apache/nifi:1.15.0'  # latest image as of 2021-11-08.
+  #       ports:
+  #           - '8091:8080'
+  #       networks:
+  #           - oasiscorp
+  #       volumes:
+  #           - nifi-database_repository:/opt/nifi/nifi-current/database_repository
+  #           - nifi-flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+  #           - nifi-content_repository:/opt/nifi/nifi-current/content_repository
+  #           - nifi-provenance_repository:/opt/nifi/nifi-current/provenance_repository
+  #           - nifi-conf:/opt/nifi/nifi-current/conf
+  #           - nifi-state:/opt/nifi/nifi-current/state
+  #           - ../nifi/logs:/opt/nifi/nifi-current/logs
+  #           - ../nifi/jdbc:/opt/nifi/nifi-current/jdbc
+  #           - ../nifi/credentials:/opt/nifi/nifi-current/credentials
+  #       env_file:
+  #           - ./.env
+  #       restart: on-failure
+  #       healthcheck:
+  #           test: ["CMD", "curl", "-f", "http://mynifi:8080/nifi/"]
+  #           interval: 30s
+  #           timeout: 20s
+  #           retries: 3
 
-    # version control for nifi flows
-  registry:
-        hostname: myregistry
-        container_name: registry_container
-        image: 'apache/nifi-registry:latest'  
-        restart: always
-        ports:
-            - "18080:18080"
-        environment:
-            - LOG_LEVEL=INFO
-            - NIFI_REGISTRY_DB_DIR=/opt/nifi-registry/nifi-registry-current/database
-            - NIFI_REGISTRY_FLOW_PROVIDER=file
-            - NIFI_REGISTRY_FLOW_STORAGE_DIR=/opt/nifi-registry/nifi-registry-current/flow_storage
-        volumes:
-            - ../nifi_registry/database:/opt/nifi-registry/nifi-registry-current/database
-            - ../nifi_registry/flow_storage:/opt/nifi-registry/nifi-registry-current/flow_storage
-        networks:
-            - oasiscorp
-        healthcheck:
-            test: ["CMD", "curl", "-f", "http://myregistry:18080/nifi-registry/"]
-            interval: 30s
-            timeout: 20s
-            retries: 3
+  # # Nifi-Registry: Version control for Nifi Flows.
+  # registry:
+  #       hostname: myregistry
+  #       container_name: registry_container
+  #       image: 'apache/nifi-registry:latest'  
+  #       restart: always
+  #       ports:
+  #           - "18080:18080"
+  #       environment:
+  #           - LOG_LEVEL=INFO
+  #           - NIFI_REGISTRY_DB_DIR=/opt/nifi-registry/nifi-registry-current/database
+  #           - NIFI_REGISTRY_FLOW_PROVIDER=file
+  #           - NIFI_REGISTRY_FLOW_STORAGE_DIR=/opt/nifi-registry/nifi-registry-current/flow_storage
+  #       volumes:
+  #           - ../nifi_registry/database:/opt/nifi-registry/nifi-registry-current/database
+  #           - ../nifi_registry/flow_storage:/opt/nifi-registry/nifi-registry-current/flow_storage
+  #       networks:
+  #           - oasiscorp
+  #       healthcheck:
+  #           test: ["CMD", "curl", "-f", "http://myregistry:18080/nifi-registry/"]
+  #           interval: 30s
+  #           timeout: 20s
+  #           retries: 3
 
-
-
-
-
-  # S3 Object Storage
+  # Minio: S3 Object Storage
   minio:
     hostname: minio
     container_name: minio
@@ -159,7 +145,7 @@ services:
 
     command: ["server", "--console-address", ":9001", "/export"]
 
-  # Create Minio Buckets
+  # Minio Client: Create Minio Buckets
   createbuckets:
     image: 'minio/mc'
     container_name: minio_cb
@@ -239,7 +225,7 @@ services:
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
 
 
-
+# Volumes
 volumes:
   postgres-db-volume:
   nifi-database_repository:
@@ -251,6 +237,8 @@ volumes:
   minio-data:
     driver: local
 
+
+# Network Bridge Connection
 networks:
   oasiscorp:
     driver: bridge
