@@ -145,7 +145,7 @@ docker exec -it  mcstore-postgresdb psql -U airflow
 
 
 ## Connecting Spark with Airflow via Airflow DAG
-1. Configure a Spark Connection by Accessing the AirflowUI http://localhost:4040 and creating a connection.
+1. Configure a Spark Connection by Accessing the AirflowUI http://localhost:8085 and creating a connection.
 2. Click on `Admin` ->  `Connections` in the top bar. 
 3. Click on `Add a new record` and input the following details:
 
@@ -180,7 +180,7 @@ docker exec -it  mcstore-postgresdb psql -U airflow
 - The DAG file we're executing is named `hello-postgres` in our DAGs folder. 
 - Our DAG file will have two simple tasks of using SQL query to create_table & insert_data into our 'test' database. 
 - After setting up our DAG, we need to configure the connection details in Airflow. 
-- Open the service in your browser at http://localhost:4040 and create a connection.
+- Open the service in your browser at http://localhost:8085 and create a connection.
 - Click on `Admin` ->  `Connections` in the top bar. 
 - Let's create a new one for our purpose.
 
@@ -222,7 +222,7 @@ docker exec -it  mcstore-postgresdb psql -U airflow metastore
 4. Select your bucket and click on Browse. Create a new directory called test by click on the icon marked in red.
 5. Upload a .txt file (`testfile.txt`) from your local directory to the test folder in the S3 bucket below. 
 6. After setting up our `Conn Id` DAG, we need to configure the connection details in Airflow. 
-7. Open the service in your browser at http://localhost:4040 and click on `Admin` ->  `Connections` in the top bar. 
+7. Open the service in your browser at http://localhost:8085 and click on `Admin` ->  `Connections` in the top bar. 
 
 Click on Create and fill in the necessary details:
 
