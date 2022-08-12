@@ -149,9 +149,9 @@ docker exec -it  mcstore-postgresdb psql -U airflow
 2. Click on `Admin` ->  `Connections` in the top bar. 
 3. Click on `Add a new record` and input the following details:
 
-- Conn Id:  `mcstore_con_spark`  - This is the name of the connection.
+- Conn Id:  `spark_connect`  - This is the name of the connection.
 - Conn Type: `Spark` - This is the type of connection.
-- Host: `spark://mcstoresparkm` - This is the hostname of the Spark Master.
+- Host: `spark://spark-master` - This is the hostname of the Spark Master.
 - Port: `7077`  - This is the port of the Spark Master.
 - Extra: `{"queue": "root.default"}` - This is the name of the queue that the Spark job will be submitted to.
 
@@ -186,9 +186,9 @@ docker exec -it  mcstore-postgresdb psql -U airflow
 
 Click on Create and fill in the necessary details:
 
-- Conn Id : `mcstore_con_postgres` - the ID with which we can retrieve the connection details later on.
+- Conn Id : `postgres_air` - the ID with which we can retrieve the connection details later on.
 - Conn Type : `Postgres` - Select it from the dropdown menu.
-- Host : `mcstorepostgresdb` - {defined in the .env file}
+- Host : `postgres` - {defined in the .env file}
 - Schema : `metastore` - the database name.
 - Login : `airflow` - or whichever username you set in your docker-compose.yml file.
 - Password : `airflow`  - or whichever password you set in your docker-compose.yml file.
@@ -226,11 +226,11 @@ docker exec -it  mcstore-postgresdb psql -U airflow metastore
 
 Click on Create and fill in the necessary details:
 
-- Conn Id :`mcstore_con_minio`  - the ID with which we can retrieve the connection details later on.
+- Conn Id :`myminio_connection`  - the ID with which we can retrieve the connection details later on.
 - Conn Type : `S3`  - Select it from the dropdown menu.
 - Extras:  
 ```
-{"aws_access_key_id": "xxxx", "aws_secret_access_key": "xxxxxx", "host": "http://mcstoredatalake:9000"}
+{"aws_access_key_id": "xxxx", "aws_secret_access_key": "xxxxxx", "host": "http://minio:9000"}
 ```
 
 ### Validate DAG
