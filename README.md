@@ -23,7 +23,7 @@ docker pull bde2020/spark-worker:3.3.0-hadoop3.3
 docker pull jupyter/pyspark-notebook:spark-3.2.1
 ~~~
 ~~~
-docker pull postgres:9.5.3
+docker pull postgres:latest
 ~~~
 ~~~
 docker pull bitnami/zookeeper:3.7.0
@@ -35,19 +35,10 @@ docker pull apache/nifi-registry:latest
 docker pull apache/nifi:1.15.0
 ~~~
 ~~~
-docker pull dimeji/apache-ranger
-~~~
-~~~
 docker pull docker.io/bitnami/minio:2022
 ~~~
 ~~~
 docker pull minio/mc
-~~~
-~~~
-docker pull trinodb/trino:390
-~~~
-~~~
-docker pull sqlpad/sqlpad:master
 ~~~
 ~~~
 docker pull redis:latest
@@ -57,7 +48,7 @@ docker pull redis:latest
 - `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
 - navigate to the `docker-airflow` directory, this is where the `Dockerfile` is located:
     - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
-    - `lakehouse` --> `docker-airflow` --> `Dockerfile`.
+    - `docker` --> `airflow-setup` --> `Dockerfile`.
 - It will take about ***10minutes*** to build, depending on yor internet speed / platform you use to build the image.
 - Run the following command to build the image:
 
@@ -65,7 +56,7 @@ docker pull redis:latest
 docker build --rm --force-rm -t docker-prunedge:latest . 
 ```
 ## Airflow Init.
-- navigate back to: 👉🏼 : `lakehouse`
+- navigate back to: 👉🏼 : `docker`
 
 - You must run this `once` before you can get started. This is the initial bootstrap process. 
 - You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. 
@@ -90,7 +81,7 @@ docker-compose up airflow-init
 
 ## Starting Services
 After running airflow-init & pulling the necessary images, you're ready to rock n roll. 
-- Navigate to the `lakehouse` directory:
+- Navigate to the `docker` directory:
 - Run the following command to start the services:
 
 ~~~
@@ -109,7 +100,7 @@ To ensure the services are running, you can click on the following URLs:
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2.1") 2>&1 | grep 'http://127.0.0.1' | tail -1
 ```
 
-### Airflow: http://localhost:4040
+### Airflow: http://localhost:8085
 
 Airflow UI Login: 
 * username: airflow 
@@ -211,7 +202,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB.
 
 - A little sanity check to make sure the DAG is worked and our SQL tables have been populated.
 - We're going to head into the postgres container 
-- Navigate to the `lakehouse` directory:
+- Navigate to the `docker` directory:
 - Run the following command:
 
 ```
@@ -251,16 +242,6 @@ Click on Create and fill in the necessary details:
 
 
 # Extras and Useful Commands
-
-
-## Start Catalog
-```bash
-cd ../catalog
-docker compose -f docker-compose.catalog.yml up
-```
-
-## Large Files
-Download the AWS Java bundle [aws-java-sdk-bundle-1.12.257](https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.257/aws-java-sdk-bundle-1.12.257.jar) and add to `lakehouse/spark/resources/jars` directory.
 
 ## Adding New Users: Airflow
 
