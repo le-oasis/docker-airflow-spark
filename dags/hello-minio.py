@@ -15,19 +15,19 @@ def upload_file(ds, **kwargs):
         s3 = S3Hook('myminio_connection')
         s3.load_file("/tmp/test.txt",
                      key="test/my-test-upload-file.txt",
-                     bucket_name="miniobucket")
+                     bucket_name="oasis")
 
 
 def read_file_content(ds, **kwargs):
     # Reading the existing file from minio
     s3 = S3Hook('myminio_connection')
     contents = s3.read_key(key="test/testfile.txt"
-                           ,bucket_name="miniobucket")
+                           ,bucket_name="oasis")
     print(f"File contents: '{contents}'.")
     
 
 with DAG(dag_id='s3_dag',
-        start_date=datetime(2021, 9, 5),  
+        start_date=datetime(2021, 9, 12),  
         schedule_interval=None,
         catchup=False,
         tags=['minio'],
