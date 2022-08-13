@@ -18,8 +18,9 @@ s3endPointLoc = "http://localhost:9000"
 spark = SparkSession \
     .builder \
     .master("spark://spark-master:7077") \
-    .config("spark.jars", "/usr/local/spark/app/jars/hadoop-aws-3.2.0.jar,/usr/local/spark/app/jars/hadoop-cloud-storage-3.2.0.jar") \
+    .config("spark.jars", "/usr/local/spark/app/jars/hadoop-aws-3.2.0.jar,/usr/local/spark/app/jars/hadoop-cloud-storage-3.2.0.jar,/usr/local/spark/app/jars/aws-java-sdk-bundle-1.11.375.jar") \
     .getOrCreate()
+
 
 
 spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", s3endPointLoc)
