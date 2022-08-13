@@ -1,4 +1,28 @@
 
+
+misc.txt
+dags/__pycache__
+.ipynb_checkpoints
+.part*
+part-*
+*_SUCCESS*
+*.pyc
+.DS_Store
+service-key.json
+.DS_Store
+__pycache__
+*.log
+**/logs/debug.log
+*/logs
+docker/postgres-db-volume/*
+docker/logs/*
+docker/minio/*
+metastore_db
+docker/minio-data/.root_password
+docker/minio-data/.root_user
+docker/minio-data/*
+docker/trino-data/*
+
 .idea/
 
 # Created by https://www.gitignore.io/api/macos,linux,django,python,pycharm
