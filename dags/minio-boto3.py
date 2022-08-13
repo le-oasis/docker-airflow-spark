@@ -7,8 +7,8 @@ from airflow.hooks.S3_hook import S3Hook
 import boto3
 import pandas as pd
 
-Bucket = 'bronze'
-Key = 'sales/customers/2022/07/02/09/customers.csv' 
+Bucket = 'oasis'
+Key = "/test/office.csv"
 
 # Read CSV from S3
 def read_data():

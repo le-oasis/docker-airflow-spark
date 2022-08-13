@@ -7,35 +7,50 @@ from pyspark import SQLContext
 from itertools import islice
 from pyspark.sql.functions import col
 
-#########################################################
-s3accessKeyAws = "minio"
-s3secretKeyAws = "minio123"
-connectionTimeOut = "600000"
-s3endPointLoc = "http://localhost:9000"
-####################################################
-
-
+# Spark Session Builder
 spark = SparkSession \
     .builder \
-    .master("spark://spark-master:7077") \
-    .config("spark.jars", "/usr/local/spark/app/jars/hadoop-aws-3.2.0.jar,/usr/local/spark/app/jars/hadoop-cloud-storage-3.2.0.jar,/usr/local/spark/app/jars/aws-java-sdk-bundle-1.11.375.jar") \
-    .getOrCreate()
+    .master("spark://spark-master:7077").getOrCreate()
 
 
+# Pulling DataFrame from Minio
+df = spark.read.option("header",True).csv("s3a://oasis/test/office.csv")
 
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.endpoint", s3endPointLoc)
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.access.key", s3accessKeyAws)
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.secret.key", s3secretKeyAws)
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.timeout", connectionTimeOut)
-
-spark.sparkContext._jsc.hadoopConfiguration().set("spark.sql.debug.maxToStringFields", "100")
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.path.style.access", "true")
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem")
-spark.sparkContext._jsc.hadoopConfiguration().set("fs.s3a.connection.ssl.enabled", "false")
-spark.sparkContext._jsc.hadoopConfiguration().set("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
-
-
-
-df = spark.read.option("header",True).csv("s3a://bronze/sales/customers/2022/07/02/09/customers.csv")
-
+# Printing Result
 print(df.show(3))
+
+#### Reading Ratings Dataset
+ratings = spark.read\
+            .option("header", "true")\
+            .option("inferSchema", "true")\
+            .csv("s3a://oasis/test/ratings.csv")
+
+# Show top 3             
+ratings.show(3)
+ratings.registerTempTable("ratings")
+
+#### Reading Movies Dataset
+movies = spark.read\
+            .option("header", "true")\
+            .option("inferSchema", "true")\
+            .csv("s3a://oasis/test/movies.csv")
+movies.show(3)
+movies.registerTempTable("movies")
+
+#### Performing Transformations 
+top_100_movies = spark.sql("""
+    SELECT title, AVG(rating) as avg_rating
+    FROM movies m
+    LEFT JOIN ratings r ON m.movieId = r.movieID
+    GROUP BY title
+    HAVING COUNT(*) > 100
+    ORDER BY avg_rating DESC
+    LIMIT 100
+""")
+
+###
+# top_100_movies.write.parquet("s3a://oasis/test/top_100_movies")
+####
+
+# Writing Results to S3
+top_100_movies.write.option("header","true").csv("s3a://oasis/test/results/resultcsv")

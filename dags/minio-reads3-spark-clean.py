@@ -1,21 +1,18 @@
-from datetime import datetime, timedelta
-import pendulum
+import airflow
+from datetime import timedelta
 from airflow import DAG
-from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
-from airflow.models import Variable
-from airflow.utils.dates import days_ago
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator 
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.bash_operator import BashOperator
-from datetime import datetime
 from airflow.utils.dates import days_ago
 
 
 ###############################################
-# Parameters
+# Parameters & Arguments
 ###############################################
+
 minio_conf = {
-    "spark.master": "spark://spark-master:7077", 
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
     "spark.hadoop.fs.s3a.endpoint": "http://minio:9000",
     "spark.hadoop.fs.s3a.access.key": "minio",
@@ -24,50 +21,65 @@ minio_conf = {
     "spark.hadoop.fs.s3a.connection.ssl.enabled": "false",
 }
 
+# Spark App Name; shown on Spark UI
+spark_app_name = "Spark Minio Connect"
 
-default_args = {
-    'owner': 'airflow',
-    'depends_on_past': False,
-    'start_date': days_ago(2),
-    'email': ['youremail@example.com'],
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 0,
-    'retry_delay': timedelta(minutes=5)
+# Path to Jars
+spark_home = "/usr/local/spark/app"
+
+
+# Runtime Arguments
+app_jars=f'{spark_home}/jars/hadoop-aws-3.2.0.jar,{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar,{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
+driver_class_path=f'{spark_home}/jars/hadoop-aws-3.2.0.jar:{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar:{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
+
+
+
+
+###############################################
+# DAG Definition
+###############################################
+
+# Arguments
+args = {
+    'owner': 'airflow',    
+    'retry_delay': timedelta(minutes=5),
 }
 
 
 
-
-with DAG(dag_id='Talk_Minio_Spark',
-        start_date=datetime(2021, 9, 12),  
-        schedule_interval=None,
-        catchup=False,
-        tags=['minio'],
-    ) as dag:
-
-    start_task = DummyOperator(
+# DAG Definition
+with DAG(
+    dag_id='Spark_Minio_Connect',
+    default_args=args,
+    schedule_interval=None,
+    start_date=days_ago(1),
+    tags=['read', 'minio'],
+) as dag:
+        start_task = DummyOperator(
 	task_id='start_task'
 )
 
 
 
-pull_data = SparkSubmitOperator(task_id='Pull_Data',
+# Sequence of Tasks
+Pull_Data_From_S3 = SparkSubmitOperator(task_id='Pull_Data',
                                               conn_id='spark_connect',
                                               application='/usr/local/spark/app/minio.py',
                                               conf=minio_conf,
                                               total_executor_cores=2,
+                                              jars=app_jars,
+                                              driver_class_path=driver_class_path,
                                               packages="org.apache.spark:spark-hadoop-cloud_2.13:3.3.0",
                                               executor_cores=2,
                                               executor_memory='5g',
                                               driver_memory='5g',
-                                              name='pull_data',
+                                              name=spark_app_name,
                                               execution_timeout=timedelta(minutes=10),
                                               dag=dag
-                                              )
+                                              )                                             
 
 
 end_task = DummyOperator(task_id='end_task')                                  
 
 
-start_task >> pull_data >> end_task
+start_task >> Pull_Data_From_S3 >> end_task
