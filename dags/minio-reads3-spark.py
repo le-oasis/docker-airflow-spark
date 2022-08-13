@@ -33,22 +33,12 @@ driver_class_path=f'{spark_home}/jars/hadoop-aws-3.2.0.jar:{spark_home}/jars/had
 ###############################################
 # DAG Definition
 ###############################################
-
 default_args = {
     'owner': 'airflow',    
-    #'start_date': airflow.utils.dates.days_ago(2),
-    # 'end_date': datetime(),
-    # 'depends_on_past': False,
-    # 'email': ['airflow@example.com'],
-    # 'email_on_failure': False,
-    #'email_on_retry': False,
-    # If a task fails, retry it once after waiting
-    # at least 5 minutes
-    #'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
 
-
+# DAG Definition
 dag_spark = DAG(
         dag_id = "Spark_Demo_P",
         default_args=default_args,
@@ -61,7 +51,6 @@ dag_spark = DAG(
 
 
 # Spark Submit Operator
-
 spark_submit_local = SparkSubmitOperator(
     task_id="Spark_Min",
     application="/usr/local/spark/app/minio.py", 
