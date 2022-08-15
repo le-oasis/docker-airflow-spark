@@ -1,13 +1,11 @@
+# Step 1: Importing modules
+# Import Python dependencies needed for the workflow
 import airflow
 from datetime import timedelta
 from airflow import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator 
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.python_operator import PythonOperator
-from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
-
-
 ###############################################
 # Parameters & Arguments
 ###############################################
@@ -53,7 +51,7 @@ with DAG(
 # Sequence of Tasks
 Pull_Data_From_S3 = SparkSubmitOperator(task_id='Pull_Data',
                                               conn_id='spark_connect',
-                                              application='/usr/local/spark/app/minio.py',
+                                              application='/usr/local/spark/app/minio/minio.py',
                                               conf=minio_conf,
                                               total_executor_cores=2,
                                               jars=app_jars,
