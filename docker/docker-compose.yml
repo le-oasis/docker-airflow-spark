@@ -149,6 +149,8 @@ services:
   createbuckets:
     image: 'minio/mc'
     container_name: minio_cb
+    env_file:
+      - .env
     depends_on:
       - minio
     networks:
