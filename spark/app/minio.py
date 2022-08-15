@@ -29,7 +29,7 @@ uk_customers = spark.sql("""
     SELECT *
     FROM customers
     WHERE country = 'United Kingdom'
-    ORDER BY customer_id DESC
+    ORDER BY customer_id ASC
     LIMIT 10
 """)
 
