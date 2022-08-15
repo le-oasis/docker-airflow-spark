@@ -11,7 +11,6 @@ from airflow.utils.dates import days_ago
 ###############################################
 # Parameters & Arguments
 ###############################################
-
 minio_conf = {
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
     "spark.hadoop.fs.s3a.endpoint": "http://minio:9000",
@@ -20,47 +19,37 @@ minio_conf = {
     "spark.hadoop.fs.s3a.path.style.access": "true",
     "spark.hadoop.fs.s3a.connection.ssl.enabled": "false",
 }
-
+###############################################
 # Spark App Name; shown on Spark UI
-spark_app_name = "Spark Minio Connect"
+spark_app_name = "Minio_Spark"
 
 # Path to Jars
 spark_home = "/usr/local/spark/app"
 
-
 # Runtime Arguments
 app_jars=f'{spark_home}/jars/hadoop-aws-3.2.0.jar,{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar,{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
 driver_class_path=f'{spark_home}/jars/hadoop-aws-3.2.0.jar:{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar:{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
-
-
-
-
 ###############################################
 # DAG Definition
 ###############################################
-
 # Arguments
 args = {
     'owner': 'airflow',    
     'retry_delay': timedelta(minutes=5),
 }
-
-
-
+###############################################
 # DAG Definition
 with DAG(
     dag_id='Spark_Minio_Connect',
     default_args=args,
     schedule_interval=None,
     start_date=days_ago(1),
-    tags=['read', 'minio'],
+    tags=['read/write', 'minio'],
 ) as dag:
         start_task = DummyOperator(
 	task_id='start_task'
 )
-
-
-
+###############################################
 # Sequence of Tasks
 Pull_Data_From_S3 = SparkSubmitOperator(task_id='Pull_Data',
                                               conn_id='spark_connect',
@@ -78,8 +67,7 @@ Pull_Data_From_S3 = SparkSubmitOperator(task_id='Pull_Data',
                                               dag=dag
                                               )                                             
 
-
+###############################################
 end_task = DummyOperator(task_id='end_task')                                  
-
-
+###############################################
 start_task >> Pull_Data_From_S3 >> end_task

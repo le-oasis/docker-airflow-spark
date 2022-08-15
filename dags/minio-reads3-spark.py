@@ -40,12 +40,12 @@ default_args = {
 
 # DAG Definition
 dag_spark = DAG(
-        dag_id = "Spark_Demo_P",
+        dag_id = "Minio_Reads3_Spark",
         default_args=default_args,
-        # schedule_interval='0 0 * * *',
         schedule_interval=None,	
         dagrun_timeout=timedelta(minutes=10),
         description='use case of sparkoperator in airflow',
+        tags=['minio-read/write', 'S3'],
         start_date = airflow.utils.dates.days_ago(1)
 )
 
