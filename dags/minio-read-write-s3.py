@@ -22,10 +22,10 @@ minio_conf = {
 ###############################################
 # Spark App Name; shown on Spark UI
 spark_app_name = "Minio_Spark"
-
+###############################################
 # Path to Jars
 spark_home = "/usr/local/spark/app"
-
+###############################################
 # Runtime Arguments
 app_jars=f'{spark_home}/jars/hadoop-aws-3.2.0.jar,{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar,{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
 driver_class_path=f'{spark_home}/jars/hadoop-aws-3.2.0.jar:{spark_home}/jars/hadoop-cloud-storage-3.2.0.jar:{spark_home}/jars/aws-java-sdk-bundle-1.11.375.jar'
