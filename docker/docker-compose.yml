@@ -44,7 +44,7 @@ services:
     container_name: postgres_container
     hostname: postgres
     env_file:
-      - ./.env
+      - .env
     networks:
       - oasiscorp
     ports:
