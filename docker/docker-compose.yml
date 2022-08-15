@@ -161,7 +161,7 @@ services:
 
    
       /usr/bin/mc mb myminio/sliver;
-      /usr/bin/mc policy download myminio/sliver;
+      /usr/bin/mc policy download myminio/silver;
 
 
       /usr/bin/mc mb myminio/gold;

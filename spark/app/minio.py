@@ -14,43 +14,25 @@ spark = SparkSession \
 
 
 # Pulling DataFrame from Minio
-df = spark.read.option("header",True).csv("s3a://oasis/test/office.csv")
+customers = spark.read.option("header",True).csv("s3a://bronze/sales/customers/2022/07/02/09/customers.csv")
+
 
 # Printing Result
-print(df.show(3))
+print(customers.show(3))
 
-#### Reading Ratings Dataset
-ratings = spark.read\
-            .option("header", "true")\
-            .option("inferSchema", "true")\
-            .csv("s3a://oasis/test/ratings.csv")
+# Read SQL
+customers.createOrReplaceTempView("customers")
 
-# Show top 3             
-ratings.show(3)
-ratings.registerTempTable("ratings")
-
-#### Reading Movies Dataset
-movies = spark.read\
-            .option("header", "true")\
-            .option("inferSchema", "true")\
-            .csv("s3a://oasis/test/movies.csv")
-movies.show(3)
-movies.registerTempTable("movies")
 
 #### Performing Transformations 
-top_100_movies = spark.sql("""
-    SELECT title, AVG(rating) as avg_rating
-    FROM movies m
-    LEFT JOIN ratings r ON m.movieId = r.movieID
-    GROUP BY title
-    HAVING COUNT(*) > 100
-    ORDER BY avg_rating DESC
-    LIMIT 100
+uk_customers = spark.sql("""
+    SELECT *
+    FROM customers
+    WHERE country = 'United Kingdom'
+    ORDER BY customer_id DESC
+    LIMIT 10
 """)
 
-###
-# top_100_movies.write.parquet("s3a://oasis/test/top_100_movies")
-####
 
 # Writing Results to S3
-top_100_movies.write.option("header","true").csv("s3a://oasis/test/results/resultcsv")
+uk_customers.write.option("header","true").csv("s3a://silver/customers/UnitedKingdom/")
