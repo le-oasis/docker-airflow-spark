@@ -85,7 +85,7 @@ After running airflow-init & pulling the necessary images, you're ready to rock 
 - Run the following command to start the services:
 
 ~~~
-docker compose -f docker-compose.lakehouse.yml -f docker-compose.yml up --build -d
+docker compose -f docker-compose.yml -f docker-compose.spark.yml up -d
 ~~~
 
 
