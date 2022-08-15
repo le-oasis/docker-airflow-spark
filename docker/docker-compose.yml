@@ -153,21 +153,9 @@ services:
       - minio
     networks:
       - oasiscorp
-    entrypoint: >
-      /bin/sh -c "
-      /usr/bin/mc config host add myminio http://minio:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY};
-      /usr/bin/mc mb myminio/bronze;
-      /usr/bin/mc policy download myminio/bronze;
-
-   
-      /usr/bin/mc mb myminio/sliver;
-      /usr/bin/mc policy download myminio/silver;
-
-
-      /usr/bin/mc mb myminio/gold;
-      /usr/bin/mc policy download myminio/gold;
-      exit 0;
-      "
+    volumes:
+      - ../minio/entrypoint.sh:/entrypoint.sh
+    entrypoint: /bin/bash /entrypoint.sh
 
   # Redis DB
   redis:
