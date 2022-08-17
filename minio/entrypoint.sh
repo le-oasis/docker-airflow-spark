@@ -5,7 +5,7 @@
 /usr/bin/mc mb ${MINIO_ALIAS}/bronze;
 /usr/bin/mc policy download ${MINIO_ALIAS}/bronze;
 
-/usr/bin/mc mb ${MINIO_ALIAS}/sliver;
+/usr/bin/mc mb ${MINIO_ALIAS}/silver;
 /usr/bin/mc policy download ${MINIO_ALIAS}/silver;
 
 /usr/bin/mc mb ${MINIO_ALIAS}/gold;
