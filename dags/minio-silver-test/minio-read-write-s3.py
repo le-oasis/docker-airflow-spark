@@ -63,7 +63,7 @@ with DAG(
 # Sequence of Tasks
 ###############################################
 Silver_Customers = SparkSubmitOperator(task_id='Silver_Customer_Transform',
-                                              conn_id='mcstore_con_spark',
+                                              conn_id='spark_connect',
                                               application='/usr/local/spark/app/minio-test/silver-customers.py',
                                               conf=minio_conf,
                                               total_executor_cores=2,
@@ -79,7 +79,7 @@ Silver_Customers = SparkSubmitOperator(task_id='Silver_Customer_Transform',
                                               )                                             
 ###############################################
 Silver_Orders = SparkSubmitOperator(task_id='Silver_Orders_Transform',
-                                              conn_id='mcstore_con_spark',
+                                              conn_id='spark_connect',
                                               application='/usr/local/spark/app/minio-test/silver-orders.py',
                                               conf=minio_conf,
                                               total_executor_cores=2,
@@ -95,7 +95,7 @@ Silver_Orders = SparkSubmitOperator(task_id='Silver_Orders_Transform',
                                               )                                             
 ###############################################
 Silver_Products = SparkSubmitOperator(task_id='Silver_Product_Transform',
-                                              conn_id='mcstore_con_spark',
+                                              conn_id='spark_connect',
                                               application='/usr/local/spark/app/minio-test/silver-products.py',
                                               conf=minio_conf,
                                               total_executor_cores=2,
