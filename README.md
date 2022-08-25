@@ -120,7 +120,7 @@ Airflow UI Login:
 - Access to the Postgres database is available using the following command:
 
 ```
-docker exec -it  mcstore-postgresdb psql -U airflow
+docker exec -it postgres_container psql -U hive
 
 ```
 
