@@ -151,8 +151,6 @@ services:
                 - postgres
 
 
-
-
   # # Zookeeper: A configuration Manager for NiFi
   # zookeeper:
   #       hostname: myzookeeper
