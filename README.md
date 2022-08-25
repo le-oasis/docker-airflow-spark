@@ -206,7 +206,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB.
 - Run the following command:
 
 ```
-docker exec -it  mcstore-postgresdb psql -U airflow metastore
+docker exec -it  postgres_container psql -U airflow metastore
 ```
 
 - After gaining acces, we can run a SQL query to validate the data has been inserted.
@@ -299,7 +299,7 @@ docker stats
 enter the Postgres Conatiner via CLI command :
 
 ```
-docker exec -it  mcstore-postgresdb bash 
+docker exec -it  postgres_container psql 
 ```
 
 
