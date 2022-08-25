@@ -14,16 +14,16 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 docker pull apache/airflow:2.2.3
 ~~~
 ~~~
-docker pull bde2020/spark-master:3.3.0-hadoop3.3
+docker pull bde2020/spark-master:3.2.0-hadoop3.3
 ~~~
 ~~~
-docker pull bde2020/spark-worker:3.3.0-hadoop3.3
+docker pull bde2020/spark-worker:3.2.0-hadoop3.3
 ~~~
 ~~~
-docker pull jupyter/pyspark-notebook:spark-3.2.1
+docker pull jupyter/pyspark-notebook:spark-3.2.0
 ~~~
 ~~~
-docker pull postgres:latest
+docker pull postgres:9.5.3
 ~~~
 ~~~
 docker pull bitnami/zookeeper:3.7.0
@@ -35,7 +35,7 @@ docker pull apache/nifi-registry:latest
 docker pull apache/nifi:1.15.0
 ~~~
 ~~~
-docker pull docker.io/bitnami/minio:2022
+docker pull minio/minio
 ~~~
 ~~~
 docker pull minio/mc
