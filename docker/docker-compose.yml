@@ -41,8 +41,8 @@ services:
 
   # Postgre DB
   postgres:
-    hostname: postgres
-    container_name: postgres
+    hostname: oasispostgres
+    container_name: postgres_container
     build:
       context: ./postgres
       dockerfile: Dockerfile
@@ -50,7 +50,7 @@ services:
      - oasiscorp
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
-      - ./postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/create_ranger_users.sql
+      - ${PWD}/postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/create_ranger_users.sql
     env_file:
       - .env
     ports:
@@ -103,7 +103,7 @@ services:
         - ${PWD}/hadoop-hive.env
       command: /opt/hive/bin/hive --service metastore
       environment:
-        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 oasiscorppostgresdb:5432"
+        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 oasispostgres:5432"
       ports:
         - "9083:9083"
       depends_on:
