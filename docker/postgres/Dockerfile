@@ -1,4 +1,4 @@
-FROM postgres:14
+FROM postgres:9.5.3
 
 COPY hive/hive-schema-2.3.0.postgres.sql /var/lib/postgresql/hive/hive-schema-2.3.0.postgres.sql
 COPY hive/hive-txn-schema-2.3.0.postgres.sql /var/lib/postgresql/hive/hive-txn-schema-2.3.0.postgres.sql
