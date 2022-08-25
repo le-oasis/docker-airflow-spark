@@ -19,7 +19,6 @@ services:
       - oasiscorp
 
   # Spark Worker-1
-
   spark-worker-1:
     image: 'bde2020/spark-worker:3.2.0-hadoop3.2'
     container_name: spark-worker-1
@@ -36,7 +35,6 @@ services:
       - oasiscorp 
 
   # Spark Worker-2
-
   spark-worker-2:
     image: 'bde2020/spark-worker:3.2.0-hadoop3.2'
     container_name: spark-worker-2
@@ -53,7 +51,6 @@ services:
       - oasiscorp
   
   # Spark Worker-3
-
   spark-worker-3:
     image: bde2020/spark-worker:3.2.0-hadoop3.2
     container_name: spark-worker-3
@@ -70,7 +67,6 @@ services:
       - oasiscorp
 
   # Minio: S3 Object Storage
-
   minio:
     hostname: minio
     container_name: minio
@@ -93,7 +89,6 @@ services:
     command: ["server", "--console-address", ":9001", "/export"]
 
   # Minio Client: Create Minio Buckets
-
   createbuckets:
     image: 'minio/mc'
     container_name: minio-client
