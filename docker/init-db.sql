@@ -1,3 +1,0 @@
-CREATE USER metastore WITH PASSWORD 'postgres';
-CREATE DATABASE metastore;
-GRANT ALL PRIVILEGES ON DATABASE metastore TO metastore;
