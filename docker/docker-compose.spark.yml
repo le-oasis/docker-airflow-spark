@@ -79,8 +79,8 @@ services:
       - "9000:9000"
       - "9001:9001"
     volumes:
-      - ./minio/data:/export
-      - ./minio/config:/root/.minio
+      - ${PWD}/minio/data:/export
+      - ${PWD}/minio/config:/root/.minio
     networks:
       - oasiscorp    
     env_file:
@@ -104,7 +104,7 @@ services:
     networks:
       - oasiscorp
     volumes:
-      - ./minio/entrypoint.sh:/entrypoint.sh
+      - ${PWD}/minio/entrypoint.sh:/entrypoint.sh
     entrypoint: /bin/bash /entrypoint.sh
 
 
