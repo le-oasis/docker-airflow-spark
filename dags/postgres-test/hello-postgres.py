@@ -22,7 +22,7 @@ args = {
 # Step 3: Instantiate a DAG
 # Give the DAG name, configure the schedule, and set the DAG settings.
 with DAG(
-    dag_id='Postgres_Demo',
+    dag_id='Postgres-Demo',
     default_args=args,
     schedule_interval=None,
     start_date=days_ago(1),

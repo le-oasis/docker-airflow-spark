@@ -31,7 +31,7 @@ args = {
 }
 ###############################################
 dag = DAG(
-        dag_id="spark-postgres", 
+        dag_id="Spark-Postgres", 
         description="This DAG is a sample of integration between Spark and DB. It reads CSV files, load them into a Postgres DB and then read them from the same Postgres DB.",
         default_args=args, 
         schedule_interval=None

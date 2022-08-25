@@ -29,7 +29,7 @@ def read_file_content(ds, **kwargs):
                            ,bucket_name="oasis")
     print(f"File contents: '{contents}'.")
 ###############################################    
-with DAG(dag_id='Minio_RW_Demo',
+with DAG(dag_id='Minio-Without-Spark',
         start_date=days_ago(1),  
         schedule_interval=None,
         catchup=False,

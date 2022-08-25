@@ -20,7 +20,7 @@ args = {
 ###############################################
 # DAG Definition
 with DAG(
-    dag_id='Spark_Test',
+    dag_id='Spark-Test',
     default_args=args,
     schedule_interval=None,
     start_date=days_ago(1),

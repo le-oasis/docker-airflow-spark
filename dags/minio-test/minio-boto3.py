@@ -25,7 +25,7 @@ def read_data():
     print(top5)
 ###############################################
 # DAG Definition
-with DAG(dag_id='Minio_Boto3',
+with DAG(dag_id='Minio-Boto3',
         start_date=days_ago(1),  
         schedule_interval=None,
         catchup=False,
