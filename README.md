@@ -186,7 +186,7 @@ docker exec -it postgres_container psql -U hive
 
 Click on Create and fill in the necessary details:
 
-- Conn Id : `postgres_air` - the ID with which we can retrieve the connection details later on.
+- Conn Id : `postgres_connect` - the ID with which we can retrieve the connection details later on.
 - Conn Type : `Postgres` - Select it from the dropdown menu.
 - Host : `postgres` - {defined in the .env file}
 - Schema : `metastore` - the database name.
