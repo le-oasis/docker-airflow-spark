@@ -3,7 +3,7 @@
 # Contributors: Demilade Somide, John Oloniyo
 # Supervising Line Manager: Oladimeji Oladepo
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
-# BUILD: docker build --rm --force-rm -t docker-prunedge:latest . 
+# BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
 # BASED ON: https://github.com/puckel/docker-airflow
 # INSPIRED BY: https://github.com/cordon-thiago/airflow-spark
 
@@ -20,7 +20,7 @@ ENV HADOOP_VERSION=3.2
 ENV SPARK_INSTALL_ROOT=/spark
 
 # Spark Environment 
-# Spark Home = /spark/spark-3.3.0-bin-hadoop3.3.0/
+# Spark Home = /spark/spark-3.2.0-bin-hadoop3.2/
 ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 
 # Let's Rock n Roll
