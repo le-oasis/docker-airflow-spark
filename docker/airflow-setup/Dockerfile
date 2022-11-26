@@ -94,6 +94,7 @@ COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow/airflow.cfg
 
 #https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html
 USER airflow
+RUN pip install --upgrade pip
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
 # RUN pip install --no-cache-dir -U pip setuptools wheel
