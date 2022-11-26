@@ -53,7 +53,7 @@ docker pull redis:latest
 - Run the following command to build the image:
 
 ```
-docker build --rm --force-rm -t docker-prunedge:latest . 
+docker build --rm --force-rm -t oasiscorp:latest . 
 ```
 ## Airflow Init.
 - navigate back to: 👉🏼 : `docker`
