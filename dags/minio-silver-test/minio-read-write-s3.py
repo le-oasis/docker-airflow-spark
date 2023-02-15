@@ -1,6 +1,7 @@
 ###############################################
 # Import Necessary Libraries
 import airflow
+import os
 from datetime import timedelta
 from airflow import DAG
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator 
@@ -10,6 +11,10 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 ###############################################
 # Parameters & Arguments
+# Environment Variables
+## Environment Variables ##
+# postgres_username = os.environ.get("REAL_PG_USER")
+# postgres_password = os.environ.get("REAL_PG_PASS")
 ###############################################
 minio_conf = {
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
