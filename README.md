@@ -14,10 +14,10 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 docker pull apache/airflow:2.2.3
 ~~~
 ~~~
-docker pull bde2020/spark-master:3.2.0-hadoop3.3
+docker pull bde2020/spark-master:3.2.0-hadoop3.2
 ~~~
 ~~~
-docker pull bde2020/spark-worker:3.2.0-hadoop3.3
+docker pull bde2020/spark-worker:3.2.0-hadoop3.2
 ~~~
 ~~~
 docker pull jupyter/pyspark-notebook:spark-3.2.0
