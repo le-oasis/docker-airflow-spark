@@ -135,7 +135,7 @@ services:
   # Jupyter notebook
   jupyter:
         build:
-            context: ./lakehouse/jupyter
+            context: ./jupyter
         hostname: myjupyter
         container_name: jupyter
         networks:

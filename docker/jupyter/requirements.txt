@@ -1,6 +1,7 @@
 pyarrow
 geospark
 delta-spark
+botocore
 boto3
 pandas
 numpy
