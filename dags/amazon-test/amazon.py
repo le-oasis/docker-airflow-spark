@@ -19,7 +19,7 @@ from airflow.utils.dates import days_ago
 ###############################################
 amz_conf = {
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-    "spark.hadoop.fs.s3a.endpoint": "s3.amazonaws.com",
+    "spark.hadoop.fs.s3a.endpoint": "s3://d2b-internal-assessment-bucket/",
     "spark.hadoop.fs.s3a.path.style.access": "true",
     "spark.hadoop.fs.s3a.connection.ssl.enabled": "false",
     "spark.sql.catalogImplementation": "hive",
