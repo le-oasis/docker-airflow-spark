@@ -22,18 +22,19 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
   volumes:
-    - ${PWD}/airflow/dags:/opt/airflow/dags
-    - ${PWD}/airflow/logs:/opt/airflow/logs
-    - ${PWD}/airflow/plugins:/opt/airflow/plugins
-    - ${PWD}/airflow/extraction:/opt/airflow/extraction
+    - ${PWD}/lakehouse/airflow/dags:/opt/airflow/dags
+    - ${PWD}/lakehouse/airflow/logs:/opt/airflow/logs
+    - ${PWD}/lakehouse/airflow/plugins:/opt/airflow/plugins
+    - ${PWD}/lakehouse/airflow/extraction:/opt/airflow/extraction
     - $HOME/.aws/credentials:/home/airflow/.aws/credentials:ro
     - ${PWD}/app:/usr/local/spark/app 
     - ${PWD}/spark/resources:/usr/local/spark/resources 
     - ${PWD}/spark/conf:/spark/spark-3.2.0-bin-hadoop3.2/conf
-
-
-
   user: "${AIRFLOW_UID:-50000}:0"
+  env_file:
+    - .env
+  networks:
+    - oasiscorp
   depends_on:
     &airflow-common-depends-on
     redis:
@@ -43,11 +44,13 @@ x-airflow-common:
 
 services:
   postgres:
+    hostname: oasispostgres
+    container_name: postgres_container
     image: postgres:13
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
+    env_file:
+    - .env
+    networks:
+    - oasiscorp
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
     healthcheck:
@@ -58,6 +61,9 @@ services:
 
   redis:
     image: redis:latest
+    container_name: redis
+    networks:
+    - oasiscorp
     expose:
       - 6379
     healthcheck:
@@ -229,6 +235,8 @@ services:
   flower:
     <<: *airflow-common
     command: celery flower
+    networks:
+      - oasiscorp
     profiles:
       - flower
     ports:
@@ -246,3 +254,8 @@ services:
 
 volumes:
   postgres-db-volume:
+
+# Network Bridge Connection
+networks:
+  oasiscorp:
+    driver: bridge
