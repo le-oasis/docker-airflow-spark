@@ -258,3 +258,4 @@ terraform/*
 __pycache__
 airflow/redshift_download
 terraform/*
+*.env
