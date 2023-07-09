@@ -20,6 +20,9 @@ folium
 missingno
 apache-sedona
 apache-sedona[spark]
+praw 
+configparser 
+psycopg2-binary
 # pytz
 # pyOpenSSL
 # ndg-httpsclient
