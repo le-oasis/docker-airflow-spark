@@ -45,7 +45,7 @@ docker pull redis:latest
 ~~~
 ## Dockerfile: Build the Image.
 - A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
-- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3`.
+- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.6.0`.
 - navigate to the `docker-airflow` directory, this is where the `Dockerfile` is located:
     - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
     - `docker` --> `airflow-setup` --> `Dockerfile`.
@@ -56,7 +56,7 @@ docker pull redis:latest
 docker build --rm --force-rm -t oasiscorp:latest . 
 ```
 ## Airflow Init.
-- navigate back to: 👉🏼 : `docker`
+- navigate  to: 👉🏼 : `lakehouse/airflow/airflow-setup`
 
 - You must run this `once` before you can get started. This is the initial bootstrap process. 
 - You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. 
