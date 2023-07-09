@@ -2,6 +2,28 @@ version: "3.8"
 
 services:
 
+  # Jupyter Notebook - PySpark Enabled
+  jupyter-spark:
+
+        build:
+            context: lakehouse/jupyter
+        hostname: myjupyter
+        container_name: jupyter_container
+        networks:
+            - oasiscorp
+        ports:
+          - "8888:8888"
+        volumes:
+          - ./notebooks:/home/jovyan/work/notebooks/
+          - ./spark/resources/data:/home/jovyan/work/data/
+          - ./spark/resources/jars:/home/jovyan/work/jars/
+          - ./spark/conf:/usr/local/spark/conf
+        env_file:
+          - .env
+        restart: always
+        depends_on:
+                - postgres
+
   # Spark Master with 3 workers.
   spark-master:
     image: 'bde2020/spark-master:3.2.0-hadoop3.2'
