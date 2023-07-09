@@ -241,6 +241,7 @@ spark-defaults.conf
 
 venv/
 extraction/secrets/
+airflow/dags/configuration.conf
 notes/
 airflow/extraction/*.csv
 airflow/dags/__pycache__
