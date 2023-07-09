@@ -73,16 +73,118 @@ To ensure the services are running, you can click on the following URLs:
 | redis:latest | [Link](https://hub.docker.com/_/redis) | [6379](http://localhost:6379) | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
 
 
+## Status of Containers
+
+To check the status of the containers, run the following command:
+
+```
+docker ps
+```
+
+## Spark Architecture 
+* Apache Spark is an open source - data processing engine for large datasets. 
+* It is highly scalable and enables users to perform large-scale data transformation and analysis. Also enables stream data analysis in real-time.
+* The Spark architecture is a distributed processing framework, as shown below:
+
+![](./doc/architecture.png "Blueprint")
 
 
-## Jupyter: http://localhost:8888
 
-* For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
-* The URL with the token can be taken from container logs using:
+### Connecting Spark with Airflow via Airflow DAG
+
+1. Go to the Spark webUI on http://localhost:8085
+
+2. Click on `Admin` ->  `Connections` in the top bar. 
+
+3. Click on `Add a new record` and input the following details:
+
+- Conn Id:  `spark_connect`  - This is the name of the connection.
+- Conn Type: `Spark` - This is the type of connection.
+- Host: `spark://spark-master` - This is the hostname of the Spark Master.
+- Port: `7077`  - This is the port of the Spark Master.
+- Extra: `{"queue": "root.default"}` - This is the name of the queue that the Spark job will be submitted to.
+
+4. Save the connection settings. 
+
+![](./doc/sparkcon.png "Spark DAG")
+
+5. Run the `SparkOperatorDemo` DAG.
+
+6. After a couple minutes you should see the DAG run as successful. 
+
+![](./doc/sparkdag.png "Spark DAG")
+
+7. Check the DAG log for the result.
+
+![](./doc/sparklog.png "Spark DAG")
+
+8. Check the Spark UI http://localhost:8181 for the result of our DAG & Spark submit via terminal:
+
+![](./doc/sparkui.png "Spark DAG")
+
+## Dockerfile for Jupyter Notebook with Spark
+
+This Dockerfile sets up a Jupyter Notebook environment with Apache Spark installed, enabling you to run Spark jobs within Jupyter notebooks.
+
+### Instructions
+
+To use this Dockerfile, follow these steps:
+
+1. Build the Docker image: `docker build -t jupyter-spark .`
+
+2. Run the Docker container: `docker run -p 8888:8888 jupyter-spark`
+
+3. For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
+
+4. The URL with the token can be taken from container logs using:
  
 ```
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2.0") 2>&1 | grep 'http://127.0.0.1' | tail -1
+
 ```
+
+
+### Spark Installation
+
+The Dockerfile downloads and installs Apache Spark based on the specified versions. The Spark binaries are fetched from the Apache archive.
+
+- If `scala_version` is not provided, Spark is downloaded without Scala support.
+- If `scala_version` is provided, Spark is downloaded with Scala support.
+
+The downloaded Spark archive is extracted to `/usr/local`.
+
+### Spark Configuration
+
+The Dockerfile sets the necessary environment variables for Spark:
+
+- `SPARK_HOME` is set to `/usr/local/spark`, the installation directory.
+- `SPARK_OPTS` defines additional options for the Spark driver, such as memory allocation and log level.
+- The `PATH` variable is updated to include the Spark binaries (`${SPARK_HOME}/bin`).
+
+A symbolic link is created to the Spark installation directory based on the specified versions, ensuring `SPARK_HOME` is correctly set.
+
+Additionally, a link is created in the `before_notebook` hook to automatically source the `PYTHONPATH` environment variable.
+
+### Additional Notes
+
+The Dockerfile also creates the directory `/usr/local/bin/before-notebook.d` and creates a symbolic link to the `spark-config.sh` script in the Spark sbin directory. This allows you to configure Spark before starting the Jupyter Notebook.
+
+Refer to the official Apache Spark documentation for further information on configuring and using Spark with Jupyter Notebook.
+
+
+## Spark Master & Worker
+
+- Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.
+- Spark Worker is the node that runs the tasks assigned by the Spark Master.
+
+The Spark Master and Worker are configured using the following environment variables:
+
+- `SPARK_MASTER_HOST` is set to `spark-master` to ensure the Spark Master is accessible from the Spark Worker.
+- `SPARK_MASTER_PORT` is set to `7077` to ensure the Spark Master is accessible from the Spark Worker.
+- `SPARK_MASTER_WEBUI_PORT` is set to `8080` to ensure the Spark Master UI is accessible from the host.
+- `SPARK_WORKER_WEBUI_PORT` is set to `8081` to ensure the Spark Worker UI is accessible from the host.
+
+
 
 ## Airflow: http://localhost:8085
 
@@ -120,42 +222,7 @@ docker exec -it postgres_container psql -U hive
 * This would serve as our Data Storage Service.
 
 
-# Spark Architecture 
-* Apache Spark is an open source - data processing engine for large datasets. 
-* It is highly scalable and enables users to perform large-scale data transformation and analysis. Also enables stream data analysis in real-time.
-* The Spark architecture is a distributed processing framework, as shown below:
 
-![](./doc/architecture.png "Blueprint")
-
-
-## Connecting Spark with Airflow via Airflow DAG
-1. Configure a Spark Connection by Accessing the AirflowUI http://localhost:8085 and creating a connection.
-2. Click on `Admin` ->  `Connections` in the top bar. 
-3. Click on `Add a new record` and input the following details:
-
-- Conn Id:  `spark_connect`  - This is the name of the connection.
-- Conn Type: `Spark` - This is the type of connection.
-- Host: `spark://spark-master` - This is the hostname of the Spark Master.
-- Port: `7077`  - This is the port of the Spark Master.
-- Extra: `{"queue": "root.default"}` - This is the name of the queue that the Spark job will be submitted to.
-
-4. Save the connection settings. 
-
-![](./doc/sparkcon.png "Spark DAG")
-
-5. Run the `SparkOperatorDemo` DAG.
-
-6. After a couple minutes you should see the DAG run as successful. 
-
-![](./doc/sparkdag.png "Spark DAG")
-
-7. Check the DAG log for the result.
-
-![](./doc/sparklog.png "Spark DAG")
-
-8. Check the Spark UI http://localhost:8181 for the result of our DAG & Spark submit via terminal:
-
-![](./doc/sparkui.png "Spark DAG")
 
 
 ## Connecting Postgres with Airflow via Airflow DAG
