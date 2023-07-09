@@ -237,3 +237,23 @@ ENV/
 
 # End of https://www.gitignore.io/api/macos,linux,django,python,pycharm
 spark-defaults.conf
+
+
+venv/
+extraction/secrets/
+notes/
+airflow/extraction/*.csv
+airflow/dags/__pycache__
+airflow/plugins/*
+airflow/logs/*
+airflow/extracts/*
+airflow/.env
+airflow/.DS_Store
+airflow/extraction/pipeline_secret.conf
+terraform/*
+!*.tf
+*.conf
+.DS_Store
+__pycache__
+airflow/redshift_download
+terraform/*
