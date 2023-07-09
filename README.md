@@ -6,43 +6,24 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 
 ## Setting Up the Data Lake
 
-## Docker Images 
-- For ease of use, before starting services, please pull the required docker images first.
-- Run the following commands in order to pull the required docker images.
+## Table of Docker Images and Services 
 
-~~~
-docker pull apache/airflow:2.2.3
-~~~
-~~~
-docker pull bde2020/spark-master:3.2.0-hadoop3.2
-~~~
-~~~
-docker pull bde2020/spark-worker:3.2.0-hadoop3.2
-~~~
-~~~
-docker pull jupyter/pyspark-notebook:spark-3.2.0
-~~~
-~~~
-docker pull postgres:9.5.3
-~~~
-~~~
-docker pull bitnami/zookeeper:3.7.0
-~~~
-~~~
-docker pull apache/nifi-registry:latest
-~~~
-~~~
-docker pull apache/nifi:1.15.0
-~~~
-~~~
-docker pull minio/minio
-~~~
-~~~
-docker pull minio/mc
-~~~
-~~~
-docker pull redis:latest
-~~~
+| Docker Image | Docker Hub Link | Port | Service | Description |
+
+| apache/airflow:2.6.0 | https://hub.docker.com/r/apache/airflow | 8085 | Airflow | Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.|
+| bde2020/spark-master:3.2.0-hadoop3.2 | https://hub.docker.com/r/bde2020/spark-master | 8080 | Spark Master | Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.|
+| bde2020/spark-worker:3.2.0-hadoop3.2 | https://hub.docker.com/r/bde2020/spark-worker | 8081 | Spark Worker | Spark Worker is the node that runs the tasks assigned by the Spark Master.|
+| jupyter/pyspark-notebook:spark-3.2.0 | https://hub.docker.com/r/jupyter/pyspark-notebook | 8888 | Jupyter Notebook | Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.|
+| postgres:9.5.3 | https://hub.docker.com/_/postgres | 5432 | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
+| bitnami/zookeeper:3.7.0 | https://hub.docker.com/r/bitnami/zookeeper | 2181 | Zookeeper | ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.|
+| apache/nifi-registry:latest | https://hub.docker.com/r/apache/nifi-registry | 18080 | Nifi Registry | NiFi Registry is a complementary application that provides a central location for storage and management of shared resources across one or more instances of NiFi and/or MiNiFi.|
+| apache/nifi:1.15.0 | https://hub.docker.com/r/apache/nifi | 8091 | Nifi | Apache NiFi supports powerful and scalable directed graphs of data routing, transformation, and system mediation logic.|
+| minio/minio | https://hub.docker.com/r/minio/minio | 9000 | Minio | MinIO is a high performance, distributed object storage system.|
+| minio/mc | https://hub.docker.com/r/minio/mc | 9000 | Minio Client | MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc. It supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).|
+| redis:latest | https://hub.docker.com/_/redis | 6379 | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
+
+
+
 ## Dockerfile: Build the Image.
 - A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
 - `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.6.0`.
