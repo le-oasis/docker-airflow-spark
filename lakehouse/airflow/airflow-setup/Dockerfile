@@ -1,7 +1,5 @@
-# Building on Top of Airflow version 2.2.3
+# Building on Top of Airflow version 2.6.3
 # AUTHOR: Mahmud Oyinloye 
-# Contributors: Demilade Somide, John Oloniyo
-# Supervising Line Manager: Oladimeji Oladepo
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
 # BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
 # BASED ON: https://github.com/puckel/docker-airflow
