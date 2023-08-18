@@ -18,20 +18,7 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
-    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
-    # _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    # Scan for DAGs every 60 seconds
-
-
-#     - ${PWD}/lakehouse/airflow/dags:/opt/airflow/dags
-#     - ${PWD}/lakehouse/airflow/logs:/opt/airflow/logs
-#     - ${PWD}/lakehouse/airflow/plugins:/opt/airflow/plugins
-#     - ${PWD}/lakehouse/airflow/extraction:/opt/airflow/extraction
-#     - $HOME/.aws/credentials:/home/airflow/.aws/credentials:ro
-#     - ${PWD}/app:/usr/local/spark/app 
-#     - ${PWD}/spark/resources:/usr/local/spark/resources 
-#     - ${PWD}/spark/conf:/spark/spark-3.2.0-bin-hadoop3.2/conf
-   
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'   
   volumes:
     - ${PWD}/lakehouse/airflow/dags:/opt/airflow/dags
     - ${PWD}/lakehouse/airflow/logs:/opt/airflow/logs
