@@ -18,8 +18,6 @@ services:
           - ./spark/resources/data:/home/jovyan/work/data/
           - ./spark/resources/jars:/home/jovyan/work/jars/
           - ./spark/conf:/usr/local/spark/conf
-        env_file:
-          - .env
         restart: always
         depends_on:
                 - postgres
@@ -32,8 +30,8 @@ services:
     environment:
       - INIT_DAEMON_STEP=setup_spark
     volumes:
-      - ../spark/app:/usr/local/spark/app
-      - ../spark/resources:/usr/local/spark/resources
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
     ports:
        - "8181:8080"
        - "7077:7077"
@@ -49,10 +47,10 @@ services:
     ports:
       - "8081:8081"
     env_file:
-      - .env
+      - spark.env
     volumes:
-      - ../spark/app:/usr/local/spark/app 
-      - ../spark/resources:/usr/local/spark/resources
+      - ./spark/app:/usr/local/spark/app 
+      - ./spark/resources:/usr/local/spark/resources
     networks:
       - oasiscorp 
 
@@ -65,10 +63,10 @@ services:
     depends_on: 
       - spark-master
     env_file:
-      - .env
+      - spark.env
     volumes:
-      - ../spark/app:/usr/local/spark/app
-      - ../spark/resources:/usr/local/spark/resources
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
     networks:
       - oasiscorp
   
@@ -81,10 +79,10 @@ services:
     depends_on: 
       - spark-master
     env_file:
-      - .env
+      - spark.env
     volumes:
-      - ../spark/app:/usr/local/spark/app
-      - ../spark/resources:/usr/local/spark/resources
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
     networks:
       - oasiscorp
 
