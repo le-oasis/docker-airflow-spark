@@ -63,7 +63,7 @@ RUN if [ -z "${scala_version}" ]; then \
 USER ${NB_UID}
 
 # Install Packages
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
 COPY requirements.txt .
 
 # Install Packages
