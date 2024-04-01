@@ -62,12 +62,12 @@ RUN if [ -z "${scala_version}" ]; then \
 
 USER ${NB_UID}
 
-# Install Packages
-RUN pip install --upgrade pip
+# Copy requ
 COPY requirements.txt .
 
 # Install Packages
-RUN pip install --no-cache-dir -r requirements.txt && \
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 

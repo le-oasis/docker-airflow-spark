@@ -18,8 +18,6 @@ requests
 plotly
 folium
 missingno
-apache-sedona
-apache-sedona[spark]
 praw 
 configparser 
 psycopg2-binary
@@ -28,4 +26,5 @@ psycopg2-binary
 # ndg-httpsclient
 # pyasn1
 # redis
-# requests
+# apache-sedona
+# apache-sedona[spark]

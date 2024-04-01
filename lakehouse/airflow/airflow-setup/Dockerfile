@@ -87,19 +87,11 @@ RUN apt-get update \
 
 # Install Airflow Packages & Providers
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow/airflow.cfg
-# RUN chown -R airflow: ${AIRFLOW_HOME}
 
-#https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html
 USER airflow
 RUN pip install --upgrade pip
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
-# RUN pip install --no-cache-dir -U pip setuptools wheel
-RUN pip install --no-cache-dir --user apache-airflow-providers-apache-spark
-RUN pip install --no-cache-dir --user boto3
-RUN pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas]
-RUN pip install --no-cache-dir --user pandas
-RUN pip install --no-cache-dir --user numpy
-RUN pip install --no-cache-dir --user delta
-RUN pip install --no-cache-dir --user delta-spark
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --user -r requirements.txt \
+    && pip install --no-cache-dir --user apache-airflow-providers-apache-spark \
+    && pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas] 
