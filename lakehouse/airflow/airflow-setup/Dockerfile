@@ -6,7 +6,7 @@
 
 
 # Airflow Image Definition 
-ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.6.0
+ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.6.3
 ARG AIRFLOW_HOME=/opt/airflow
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
