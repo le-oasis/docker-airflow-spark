@@ -29,6 +29,7 @@ docker-compose -f docker-compose.spark.yml up
 
 
 ### Accessing the Services
+
 Once the Docker instances are running, you can access the services at the following URLs:
 
 Airflow Web UI: http://localhost:8085
@@ -39,6 +40,7 @@ Spark Worker UI: http://localhost:8081
 The Airflow webserver, scheduler, and worker are running on ports 8085, 8086, and 8087, respectively. The Jupyter Notebook is running on port 8888, and the Spark master and workers are running on ports 8181, 8081, 8082, and 8083.
 
 ### Accessing the PostgreSQL Database
+
 To access the PostgreSQL database, you can use the following connection information:
 
 Host: localhost
@@ -50,6 +52,7 @@ Password: airflow
 
 
 ### Stopping the Services
+
 To stop the services, you can use the following command:
 
 down
