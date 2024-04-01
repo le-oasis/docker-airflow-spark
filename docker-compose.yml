@@ -103,6 +103,8 @@ services:
     <<: *airflow-common
     command: celery worker
     container_name: celery-worker
+    environment:
+      - ${PWD}/spark/conf=/spark/spark-3.2.0-bin-hadoop3.2/conf
     restart: always
 
   # Airflow DB
