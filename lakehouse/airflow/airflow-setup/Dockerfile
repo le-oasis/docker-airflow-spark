@@ -2,8 +2,7 @@
 # AUTHOR: Mahmud Oyinloye 
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
 # BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
-# BASED ON: https://github.com/puckel/docker-airflow
-# INSPIRED BY: https://github.com/cordon-thiago/airflow-spark
+
 
 
 # Airflow Image Definition 
