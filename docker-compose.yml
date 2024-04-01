@@ -24,6 +24,7 @@ x-airflow-common:
     - ${PWD}/lakehouse/airflow/logs:/opt/airflow/logs
     - ${PWD}/lakehouse/airflow/plugins:/opt/airflow/plugins
     - ${PWD}/spark/app:/usr/local/spark/app  #Spark Scripts (Must be the same path in airflow and Spark Cluster)
+    - ${PWD}/spark/conf=/spark/spark-3.2.0-bin-hadoop3.2/conf
     - ${PWD}/spark/resources:/usr/local/spark/resources  #Resources folder (Must be the same path in airflow and Spark Cluster)
   user: "${AIRFLOW_UID:-50000}:$AIRFLOW_GID:-50000}"
   env_file:
@@ -53,7 +54,6 @@ services:
       - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
-      - ${PWD}/lakehouse/postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/init-db.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U airflow"]
       interval: 1m30s
@@ -82,6 +82,8 @@ services:
     <<: *airflow-common
     command: webserver
     container_name: webserver
+    environment:
+      - ${PWD}/spark/conf=/spark/spark-3.2.0-bin-hadoop3.2/conf
     ports:
         - '8085:8080'
     healthcheck:
@@ -103,8 +105,6 @@ services:
     <<: *airflow-common
     command: celery worker
     container_name: celery-worker
-    environment:
-      - ${PWD}/spark/conf=/spark/spark-3.2.0-bin-hadoop3.2/conf
     restart: always
 
   # Airflow DB

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Use environment variables for and password
+# Use environment variables and password
 : "${HIVE_USER:=hive}"
 : "${HIVE_PASSWORD:=hive}"
 : "${RANGER_USER:=ranger}"
@@ -24,8 +24,8 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   END
   \$\$;
 
-  CREATE DATABASE IF NOT EXISTS metastore;
-  CREATE DATABASE IF NOT EXISTS ranger;
+  SELECT 'CREATE DATABASE metastore' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'metastore')\\gexec
+  SELECT 'CREATE DATABASE ranger' WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = 'ranger')\\gexec
 
   GRANT ALL PRIVILEGES ON DATABASE metastore TO $HIVE_USER;
   GRANT ALL PRIVILEGES ON DATABASE ranger TO $ADMIN_USER;
