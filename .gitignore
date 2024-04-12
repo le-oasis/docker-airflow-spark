@@ -260,3 +260,4 @@ airflow/redshift_download
 terraform/*
 *.env
 help.txt
+oasis_env/*

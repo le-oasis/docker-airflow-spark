@@ -1,13 +1,8 @@
 #!/bin/bash
 set -e
 
-# Use environment variables and password
-: "${HIVE_USER:=hive}"
-: "${HIVE_PASSWORD:=hive}"
-: "${RANGER_USER:=ranger}"
-: "${RANGER_PASSWORD:=security}"
-: "${ADMIN_USER:=admin}"
-: "${ADMIN_PASSWORD:=security}"
+# Load environment variables from .env file
+source .env
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   DO \$\$

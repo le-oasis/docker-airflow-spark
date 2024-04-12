@@ -6,7 +6,7 @@
 
 
 # Airflow Image Definition 
-ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.6.3
+ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.9.0
 ARG AIRFLOW_HOME=/opt/airflow
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
@@ -92,6 +92,6 @@ USER airflow
 RUN pip install --upgrade pip
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt \
-    && pip install --no-cache-dir --user apache-airflow-providers-apache-spark \
-    && pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas] 
+RUN pip install --user -r requirements.txt \
+    && pip install --user apache-airflow-providers-apache-spark \
+    && pip install --user airflow-clickhouse-plugin[pandas] 
