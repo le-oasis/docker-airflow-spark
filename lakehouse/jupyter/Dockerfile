@@ -20,14 +20,14 @@ USER root
 ARG spark_version="3.2.0"
 ARG hadoop_version="3.2"
 ARG scala_version
-ARG openjdk_version="11"
+ARG openjdk_version="17"
 
 ENV APACHE_SPARK_VERSION="${spark_version}" \
     HADOOP_VERSION="${hadoop_version}"
 
-RUN apt-get update --yes && \
+    RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
-    "openjdk-${openjdk_version}-jre-headless" \
+    "openjdk-${openjdk_version}-jdk-headless" \
     ca-certificates-java && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
