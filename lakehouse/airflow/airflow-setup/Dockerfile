@@ -92,6 +92,6 @@ USER airflow
 RUN pip install --upgrade pip
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
-RUN pip install --user -r requirements.txt \
-    && pip install --user apache-airflow-providers-apache-spark \
-    && pip install --user airflow-clickhouse-plugin[pandas] 
+RUN pip install -r requirements.txt \
+    && pip install  apache-airflow-providers-apache-spark \
+    && pip install  airflow-clickhouse-plugin[pandas] 
