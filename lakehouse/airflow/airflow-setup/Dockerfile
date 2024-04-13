@@ -6,7 +6,7 @@
 
 
 # Airflow Image Definition 
-ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.9.0
+ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.6.3
 ARG AIRFLOW_HOME=/opt/airflow
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
@@ -95,3 +95,10 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt \
     && pip install  apache-airflow-providers-apache-spark \
     && pip install  airflow-clickhouse-plugin[pandas] 
+
+USER root
+RUN apt-get update && apt-get install -y python3-distutils
+USER airflow
+RUN pip install pendulum
+
+RUN airflow db init

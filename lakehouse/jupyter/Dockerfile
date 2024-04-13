@@ -71,6 +71,7 @@ RUN pip install --upgrade pip && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+RUN pip install pendulum==2.1.2
 
 WORKDIR "${HOME}"
 EXPOSE 4040 8088 8089
