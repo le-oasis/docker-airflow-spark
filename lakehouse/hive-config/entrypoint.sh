@@ -1,0 +1,1 @@
+/opt/hive/conf/config/entrypoint.sh

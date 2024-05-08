@@ -5,10 +5,10 @@
 /usr/bin/mc mb myminio/gold
 /usr/bin/mc mb myminio/silver
 /usr/bin/mc mb myminio/bronze
-/usr/bin/mc anonymous set public myminio/oasis
-/usr/bin/mc anonymous set public myminio/gold
-/usr/bin/mc anonymous set public myminio/silver
-/usr/bin/mc anonymous set public myminio/bronze
+/usr/bin/mc policy set public myminio/oasis
+/usr/bin/mc policy set public myminio/gold
+/usr/bin/mc policy set public myminio/silver
+/usr/bin/mc policy set public myminio/bronze
 /usr/bin/mc policy download myminio/oasis
 /usr/bin/mc policy download myminio/silver
 /usr/bin/mc policy download myminio/bronze
