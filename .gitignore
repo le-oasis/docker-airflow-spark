@@ -261,3 +261,4 @@ terraform/*
 *.env
 help.txt
 oasis_env/*
+./hadoop-libs/*
