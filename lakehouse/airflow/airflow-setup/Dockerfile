@@ -75,7 +75,7 @@ RUN cd "${SPARK_INSTALL_ROOT}" && \
 
 
 # Install Java
-ARG JAVA_LIBRARY=openjdk-17-jdk-headless
+ARG JAVA_LIBRARY=openjdk-11-jdk-headless
 ENV JAVA_LIBRARY=${JAVA_LIBRARY}
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -84,7 +84,7 @@ RUN apt-get update \
     && apt-get install libsasl2-dev \
     && apt-get clean \ 
     && rm -rf /var/lib/apt/lists/*
-
+    
 # Install Airflow Packages & Providers
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow/airflow.cfg
 
