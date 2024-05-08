@@ -7,7 +7,7 @@ x-airflow-common:
   # comment the build & context if you want to use the built image.
   # image: 'air-prune'
   build:
-    context: ./lakehouse/airflow-setup
+    context: ./lakehouse/airflow/airflow-setup
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor

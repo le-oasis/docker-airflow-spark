@@ -13,7 +13,7 @@ FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
 # Spark & Hadoop Versions 
 ENV SPARK_VERSION=3.4.1
-ENV HADOOP_VERSION=3.2
+ENV HADOOP_VERSION=3
 ENV SPARK_INSTALL_ROOT=/spark
 
 # Spark Environment 
