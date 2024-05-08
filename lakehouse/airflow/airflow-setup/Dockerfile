@@ -1,4 +1,4 @@
-# Building on Top of Airflow version 2.6.3
+# Building on Top of Airflow version 2.2.3
 # AUTHOR: Mahmud Oyinloye 
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
 # BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
@@ -6,18 +6,18 @@
 
 
 # Airflow Image Definition 
-ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.6.3
+ARG AIRFLOW_BASE_IMAGE=apache/airflow:2.2.3
 ARG AIRFLOW_HOME=/opt/airflow
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
 
 # Spark & Hadoop Versions 
-ENV SPARK_VERSION=3.2.0
+ENV SPARK_VERSION=3.4.1
 ENV HADOOP_VERSION=3.2
 ENV SPARK_INSTALL_ROOT=/spark
 
 # Spark Environment 
-# Spark Home = /spark/spark-3.2.0-bin-hadoop3.2/
+# Spark Home = /spark/spark-3.4.1-bin-hadoop3.2/
 ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 
 # Let's Rock n Roll
@@ -68,7 +68,7 @@ RUN mkdir "${SPARK_INSTALL_ROOT}"
 USER $USER
 
 
-# Install Spark Binaries (Spark 3.2.0)
+# Install Spark Binaries (Spark 3.4.1)
 RUN cd "${SPARK_INSTALL_ROOT}" && \
     wget --show-progress https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop${HADOOP_VERSION}.tgz && \
     tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
@@ -101,4 +101,3 @@ RUN apt-get update && apt-get install -y python3-distutils
 USER airflow
 RUN pip install pendulum
 
-RUN airflow db init

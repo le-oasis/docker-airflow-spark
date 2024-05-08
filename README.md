@@ -1,4 +1,4 @@
-# Building a Modern Data Lake with Minio, Spark, Airflow via Docker.
+# Building a Modern Data Lake with Spark, Airflow via Docker.
 
 ## Overview
 This system utilises the lakehouse data-lake architecture to store and compute data for enterprises.
@@ -9,8 +9,8 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 ### Dockerfile: Build the Image.
 
 - A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
-- `Dockerfile` that contians installations of `JAVA-JDK.v11`, `ApacheSpark.v3.3.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.6.0`.
-- navigate to the `docker-airflow` directory, this is where the `Dockerfile` is located:
+- `Dockerfile` that contians installations of `JAVA-JDK.v17`, `ApacheSpark.v3.2.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.6.3`.
+- navigate to the `lakehouse/airflow/airflow-setup` directory, this is where the `Dockerfile` is located:
     - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
     - `lakehouse/airflow` --> `airflow-setup` --> `Dockerfile`.
 - It will take about ***10minutes*** to build, depending on yor internet speed / platform you use to build the image.
@@ -19,6 +19,22 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 ```
 docker build --rm --force-rm -t oasiscorp:latest . 
 ```
+
+### Build Other Images
+To build the posrgres image, navigate to the `lakehouse` directory and run the following command:
+
+```
+docker build --rm --force-rm -t postgres-oasis:latest .
+```
+
+To build the jupyter-notebook image, navigate to the `lakehouse` directory and run the following command:
+    
+    ```
+    docker build --rm --force-rm -t jupyter-oasis:latest .
+    ```
+
+
+
 ### Airflow Init.
 - navigate  to: 👉🏼 : `lakehouse/airflow/airflow-setup`
 
@@ -49,7 +65,14 @@ After running airflow-init & pulling the necessary images, you're ready to rock 
 - Run the following command to start the services:
 
 ~~~
-docker compose -f docker-compose.yml -f docker-compose.spark.yml up -d
+docker compose -f docker-compose.spark.yml -f docker-compose.yml up --build -d 
+~~~
+
+
+To esure the Airflow Scheduler is working, follow this command 
+
+~~~
+docker exec -it <container_id> airflow db init
 ~~~
 
 
@@ -64,12 +87,7 @@ To ensure the services are running, you can click on the following URLs:
 | bde2020/spark-master:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-master) | [8080](http://localhost:8080) | Spark Master | Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.|
 | bde2020/spark-worker:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-worker) | [8081](http://localhost:8081) | Spark Worker | Spark Worker is the node that runs the tasks assigned by the Spark Master.|
 | jupyter/pyspark-notebook:spark-3.2.0 | [Link](https://hub.docker.com/r/jupyter/pyspark-notebook) | [8888](http://localhost:8888) | Jupyter Notebook | Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.|
-| postgres:9.5.3 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
-| bitnami/zookeeper:3.7.0 | [Link](https://hub.docker.com/r/bitnami/zookeeper) | [2181](http://localhost:2181) | Zookeeper | ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.|
-| apache/nifi-registry:latest | [Link](https://hub.docker.com/r/apache/nifi-registry) | [18080](http://localhost:18080) | Nifi Registry | NiFi Registry is a complementary application that provides a central location for storage and management of shared resources across one or more instances of NiFi and/or MiNiFi.|
-| apache/nifi:1.15.0 | [Link](https://hub.docker.com/r/apache/nifi) | [8091](http://localhost:8091) | Nifi | Apache NiFi supports powerful and scalable directed graphs of data routing, transformation, and system mediation logic.|
-| minio/minio | [Link](https://hub.docker.com/r/minio/minio) | [9000](http://localhost:9000) | Minio | MinIO is a high performance, distributed object storage system.|
-| minio/mc | [Link](https://hub.docker.com/r/minio/mc) | [9000](http://localhost:9000) | Minio Client | MinIO Client (mc) provides a modern alternative to UNIX commands like ls, cat, cp, mirror, diff, find etc. It supports filesystems and Amazon S3 compatible cloud storage service (AWS Signature v2 and v4).|
+| postgres:14 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
 | redis:latest | [Link](https://hub.docker.com/_/redis) | [6379](http://localhost:6379) | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
 
 

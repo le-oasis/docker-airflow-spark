@@ -1,38 +1,41 @@
 <configuration>
     <property>
-        <name>metastore.thrift.uris</name>
-        <value>thrift://hive:9083</value>
+        <name>hive.metastore.uris</name>
+        <value>thrift://host.docker.internal:9083</value> <!-- Accesing trough localhost to woid docker compose adding _wba-netwrok in hostname -->
         <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
     </property>
-
     <property>
-        <name>hive.metastore.uris</name>
-        <value>thrift://hive:9083</value>
-        <description>For Hive CLI to connect to</description>
+        <name>fs.defaultFS</name>
+        <value>s3a://oasis</value>
+    </property>
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+    <property>
+        <name>fs.s3a.connection.ssl.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>fs.s3a.aws.credentials.provider</name>
+        <value>org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider</value>
     </property>
 
     <property>
-        <name>metastore.task.threads.always</name>
-        <value>org.apache.hadoop.hive.metastore.events.EventCleanerTask,org.apache.hadoop.hive.metastore.MaterializationsCacheCleanerTask</value>
+        <name>fs.s3a.access.key</name>
+        <value>accesskey</value>
     </property>
     <property>
-        <name>metastore.expression.proxy</name>
-        <value>org.apache.hadoop.hive.metastore.DefaultPartitionExpressionProxy</value>
+        <name>fs.s3a.secret.key</name>
+        <value>secretkey</value>
     </property>
     <property>
-        <name>javax.jdo.option.ConnectionDriverName</name>
-        <value>org.postgresql.Driver</value>
+        <name>fs.s3a.endpoint</name>
+        <value>http://minio:9000</value>
     </property>
     <property>
-        <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:postgresql://oasispostgres:5432/metastore</value>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
     </property>
-    <property>
-        <name>javax.jdo.option.ConnectionUserName</name>
-        <value>hive</value>
-    </property>
-    <property>
-        <name>javax.jdo.option.ConnectionPassword</name>
-        <value>hive</value>
-    </property>
-    </configuration>
+
+</configuration>
