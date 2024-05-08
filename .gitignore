@@ -262,3 +262,4 @@ terraform/*
 help.txt
 oasis_env/*
 ./hadoop-libs/*
+lakehouse/minio/minio-data/
