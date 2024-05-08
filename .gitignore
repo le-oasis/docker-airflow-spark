@@ -263,3 +263,4 @@ help.txt
 oasis_env/*
 ./hadoop-libs/*
 lakehouse/minio/minio-data/
+lakehouse/airflow/logs
