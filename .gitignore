@@ -264,4 +264,4 @@ oasis_env/*
 ./hadoop-libs/*
 lakehouse/minio/minio-data/
 lakehouse/airflow/logs
-spark/resources/jars/aws-java-sdk-bundle-1.11.375.jar
+spark/resources/jars/aws-java-sdk-bundle-1.11.375.jarspark/resources/jars/aws-java-sdk-bundle-1.11.375.jar
