@@ -2,7 +2,8 @@
 # AUTHOR: Mahmud Oyinloye 
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
 # BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
-
+# BASED ON: https://github.com/puckel/docker-airflow
+# INSPIRED BY: https://github.com/cordon-thiago/airflow-spark
 
 
 # Airflow Image Definition 
@@ -11,14 +12,30 @@ ARG AIRFLOW_HOME=/opt/airflow
 FROM docker.io/${AIRFLOW_BASE_IMAGE}
 
 
-# Spark & Hadoop Versions 
-ENV SPARK_VERSION=3.4.1
-ENV HADOOP_VERSION=3
+# # Spark & Hadoop Versions 
+# ENV SPARK_VERSION=3.2.0
+# ENV HADOOP_VERSION=3.2
 ENV SPARK_INSTALL_ROOT=/spark
 
+# # Spark Environment 
+# # Spark Home = /spark/spark-3.3.0-bin-hadoop3.3.0/
+# ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
+
+# HADOOP
+ENV HADOOP_VERSION 3.2
+ENV HADOOP_HOME /opt/hadoop-$HADOOP_VERSION
+ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+ENV YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+ENV PATH $PATH:$HADOOP_HOME/bin
+
 # Spark Environment 
-# Spark Home = /spark/spark-3.4.1-bin-hadoop3.2/
+ENV SPARK_VERSION=3.2.0
 ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
+ENV PATH $PATH:$SPARK_HOME/bin
+
+# Add these to your environment
+ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+ENV YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
 # Let's Rock n Roll
 USER root
@@ -68,7 +85,7 @@ RUN mkdir "${SPARK_INSTALL_ROOT}"
 USER $USER
 
 
-# Install Spark Binaries (Spark 3.4.1)
+# Install Spark Binaries (Spark 3.2.0)
 RUN cd "${SPARK_INSTALL_ROOT}" && \
     wget --show-progress https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop${HADOOP_VERSION}.tgz && \
     tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
@@ -84,20 +101,25 @@ RUN apt-get update \
     && apt-get install libsasl2-dev \
     && apt-get clean \ 
     && rm -rf /var/lib/apt/lists/*
-    
+
 # Install Airflow Packages & Providers
 COPY config/airflow.cfg ${AIRFLOW_HOME}/airflow/airflow.cfg
+# RUN chown -R airflow: ${AIRFLOW_HOME}
 
+#https://airflow.apache.org/docs/apache-airflow/stable/extra-packages-ref.html
 USER airflow
-RUN pip install --upgrade pip
 RUN pip install apache-airflow[${AIRFLOW_EXTRAS}]
 COPY requirements.txt .
-RUN pip install -r requirements.txt \
-    && pip install  apache-airflow-providers-apache-spark \
-    && pip install  airflow-clickhouse-plugin[pandas] 
+# RUN pip install --no-cache-dir -U pip setuptools wheel
+RUN pip install --no-cache-dir --user apache-airflow-providers-apache-spark
+RUN pip install --no-cache-dir --user boto3
+RUN pip install --no-cache-dir --user airflow-clickhouse-plugin[pandas]
+RUN pip install --no-cache-dir -r requirements.txt
 
-USER root
-RUN apt-get update && apt-get install -y python3-distutils
-USER airflow
-RUN pip install pendulum
 
+# COPY requirements.txt .
+# RUN pip install -r requirements.txt
+# USER airflow
+# # Now we initialize the PostgreSQL backend
+# # https://airflow.apache.org/docs/apache-airflow/stable/howto/set-up-database.html#database-uri
+# RUN airflow db init

@@ -5,7 +5,7 @@ from pyspark import SparkContext
 logFilepath = "/usr/local/spark/resources/data/testfile.txt" 
 
 # Create a SparkContext
-sc = SparkContext("spark://spark-master:7077", "first app")
+sc = SparkContext("spark://oasis-spark:7077", "first app")
 
 # Load the text file into a Spark RDD
 logData = sc.textFile(logFilepath).cache()
