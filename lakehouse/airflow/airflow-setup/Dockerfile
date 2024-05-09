@@ -2,8 +2,6 @@
 # AUTHOR: Mahmud Oyinloye 
 # DESRIPTION: AIRFLOW Container with Java 11 and SPARK BINARIES 
 # BUILD: docker build --rm --force-rm -t docker-oasis:latest . 
-# BASED ON: https://github.com/puckel/docker-airflow
-# INSPIRED BY: https://github.com/cordon-thiago/airflow-spark
 
 
 # Airflow Image Definition 
@@ -32,6 +30,10 @@ ENV PATH $PATH:$HADOOP_HOME/bin
 ENV SPARK_VERSION=3.2.0
 ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 ENV PATH $PATH:$SPARK_HOME/bin
+
+# Set the PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON environment variables
+ENV PYSPARK_PYTHON=/usr/local/bin/python
+ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/python
 
 # Add these to your environment
 ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
@@ -70,6 +72,15 @@ RUN update-alternatives --install /usr/bin/nano nano /bin/nano-tiny 10 \
 # Copy a script that we will use to correct permissions after running certain commands
 COPY fix-permissions /usr/local/bin/fix-permissions
 RUN chmod a+rx /usr/local/bin/fix-permissions
+
+# Copy the entrypoint script into the image
+COPY entrypoint.sh /entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint script as the entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
 
 
 # Configure Locale
