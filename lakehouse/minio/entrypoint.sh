@@ -12,3 +12,5 @@
 /usr/bin/mc policy dxownload myminio/silver
 /usr/bin/mc policy download myminio/bronze
 /usr/bin/mc policy download myminio/gold
+/usr/bin/mc cp testfile.txt myminio/oasis
+

@@ -73,15 +73,6 @@ RUN update-alternatives --install /usr/bin/nano nano /bin/nano-tiny 10 \
 COPY fix-permissions /usr/local/bin/fix-permissions
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
-# Copy the entrypoint script into the image
-COPY entrypoint.sh /entrypoint.sh
-
-# Make the entrypoint script executable
-RUN chmod +x /entrypoint.sh
-
-# Set the entrypoint script as the entrypoint
-ENTRYPOINT ["/entrypoint.sh"]
-
 
 # Configure Locale
 # Configure some required variables

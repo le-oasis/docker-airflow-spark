@@ -2,12 +2,9 @@
 import os
 from pyspark import SparkContext
 
-# # Set the PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON environment variables
-# os.environ["PYSPARK_PYTHON"]="/usr/bin/python3.6"
-# os.environ["PYSPARK_DRIVER_PYTHON"]="/usr/bin/python3.6"
 
 # Test basic functionality of Spark
-logFilepath = "/usr/local/spark/resources/data/testfile.txt" 
+logFilepath = "s3a://oasis/testfile.txt"
 
 # Create a SparkContext
 sc = SparkContext("spark://oasis-spark:7077", "first app")
