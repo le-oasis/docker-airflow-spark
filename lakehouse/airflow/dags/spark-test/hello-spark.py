@@ -40,7 +40,8 @@ Spark_Test = SparkSubmitOperator(task_id='Spark_Test',
                                               executor_cores=2,
                                               name=spark_app_name,
                                               execution_timeout=timedelta(minutes=10),
-                                              dag=dag
+                                              dag=dag,
+                                              env_vars={'PYSPARK_PYTHON': '/usr/local/bin/python3'}
                                               )                                             
 
 ###############################################

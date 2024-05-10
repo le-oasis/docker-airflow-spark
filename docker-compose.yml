@@ -24,7 +24,6 @@ x-airflow-common:
     - ./lakehouse/airflow/logs:/opt/airflow/logs
     - ./spark/app:/usr/local/spark/app 
     - ./spark/resources:/usr/local/spark/resources
-    - ./spark/conf:/spark/spark-3.2.0-bin-hadoop3.2/conf
   user: "${AIRFLOW_UID:-50000}:$AIRFLOW_GID:-50000}"
   env_file:
     - ./.env
@@ -137,6 +136,8 @@ services:
       - ./spark/app:/usr/local/spark/app
       - ./spark/resources:/usr/local/spark/resources
       - ./spark/conf:/spark/conf
+    env_file:
+      - ./spark.env
     ports:
        - "8181:8080"
        - "7077:7077"

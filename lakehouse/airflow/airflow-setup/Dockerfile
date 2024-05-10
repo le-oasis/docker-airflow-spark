@@ -32,8 +32,8 @@ ENV SPARK_HOME=${SPARK_INSTALL_ROOT}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_V
 ENV PATH $PATH:$SPARK_HOME/bin
 
 # Set the PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON environment variables
-ENV PYSPARK_PYTHON=/usr/local/bin/python
-ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/python
+ENV PYSPARK_PYTHON=/usr/local/bin/python3
+ENV PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3
 
 # Add these to your environment
 ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
