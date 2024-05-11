@@ -52,7 +52,7 @@ else
     echo "Database $AIRFLOW_DB created and user $AIRFLOW_USER created with all privileges on $AIRFLOW_DB."
 fi
 
-# Continue with the rest of your script
+# Create the hive schema
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   \c $DB_NAME
 
@@ -76,8 +76,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   GRANT ALL PRIVILEGES ON DATABASE $RANGER_DB to $ADMIN_USER;
 EOSQL
 
-
-# Add these lines at the end of the script
+# Restore the dvdrental database
 DB_RENTAL="dvdrental"
 DB_RENTAL_EXISTS=$(psql -U "$POSTGRES_USER" -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_RENTAL'")
 
