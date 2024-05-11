@@ -90,8 +90,8 @@ sudo chmod -R 777 /workspace/docker-airflow-spark/docker-airflow/logs/*
 
 | Docker Image | Docker Hub Link | Port | Service | Description |
 |--------------|-----------------|------|---------|-------------|
-| apache/airflow:2.2.3| [Link](https://hub.docker.com/r/apache/airflow) | [8085](http://localhost:8085) | Airflow | Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.|
-| bde2020/spark-master:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-master) | [8080](http://localhost:8080) | Spark Master | Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.|
+| apache/airflow:2.2.3| [Link](https://hub.docker.com/r/apache/airflow) | [8088](http://localhost:8085) | Airflow | Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.|
+| bde2020/spark-master:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-master) | [8181](http://localhost:8080) | Spark Master | Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.|
 | bde2020/spark-worker:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-worker) | [8081](http://localhost:8081) | Spark Worker | Spark Worker is the node that runs the tasks assigned by the Spark Master.|
 | jupyter/pyspark-notebook:spark-3.2.0 | [Link](https://hub.docker.com/r/jupyter/pyspark-notebook) | [8888](http://localhost:8888) | Jupyter Notebook | Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.|
 | postgres:9.5.3 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
@@ -218,8 +218,7 @@ dvdrental=# SELECT * FROM actor  LIMIT 5;
 
 
 
-
-### Spark Installation
+## Spark Installation
 
 The Dockerfile downloads and installs Apache Spark based on the specified versions. The Spark binaries are fetched from the Apache archive.
 
@@ -276,7 +275,7 @@ Click on Create and fill in the necessary details:
 - Conn Id : `postgres_connect` - the ID with which we can retrieve the connection details later on.
 - Conn Type : `Postgres` - Select it from the dropdown menu.
 - Host : `postgres` - {defined in the .env file}
-- Schema : `metastore` - the database name.
+- Schema : `airflow` - the database name.
 - Login : `airflow` - or whichever username you set in your docker-compose.yml file.
 - Password : `airflow`  - or whichever password you set in your docker-compose.yml file.
 - Posrt : `5432`  - the standard port for the database within the docker network.
@@ -293,7 +292,7 @@ Click on save: Creating the connection airflow to connect the Postgres DB.
 - Run the following command:
 
 ```
-docker exec -it  postgres_container psql -U airflow metastore
+docker exec -it  <postgres_container> psql -U airflow airflow
 ```
 
 - After gaining acces, we can run a SQL query to validate the data has been inserted.
