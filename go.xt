@@ -1,0 +1,2 @@
+docker exec -it  oasis-postgresdb psql -U airflow metastore
+

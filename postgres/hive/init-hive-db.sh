@@ -84,7 +84,8 @@ if [ "$DB_RENTAL_EXISTS" = "1" ]
 then
     echo "Database $DB_RENTAL already exists, skipping restore."
 else
-    pg_restore --verbose --clean --no-acl --no-owner --section=data --section=post-data --section=pre-data -U $POSTGRES_USER -d $DB_RENTAL /var/lib/postgresql/dvdrental.tar
+    psql -U "$POSTGRES_USER" -c "CREATE DATABASE $DB_RENTAL;"
+    pg_restore --dbname=$DB_RENTAL --username=$POSTGRES_USER --section=data --section=post-data --section=pre-data  /var/lib/postgresql/dvdrental.tar
     echo "Database $DB_RENTAL restored."
     psql -U "$POSTGRES_USER" -c "GRANT ALL PRIVILEGES ON DATABASE $DB_RENTAL TO $POSTGRES_USER;"
 fi
