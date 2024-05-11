@@ -75,8 +75,8 @@ services:
     container_name: oasis-lakehouse-minio
     image: 'minio/minio'
     ports:
-      - "9000:9000"
-      - "9001:9001"
+      - "9090:9000"
+      - "9091:9001"
     volumes:
       - ./minio/data:/export
       - ./minio/config:/root/.minio
