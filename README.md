@@ -66,15 +66,27 @@ docker exec -it <container_id> airflow db init
 
 If you are using Gitpod, you may need to modify the permissions for any file or directory that has permission issues. For example, to modify the permissions for the `notebooks` and `logs` directories, use the following commands:
 
-```bash
-sudo chmod -R 777 /workspace/docker-airflow-spark/notebooks
-sudo chmod -R 777 /workspace/docker-airflow-spark/logs
+
+~~~
+sudo chmod -R 777 /workspace/docker-airflow-spark/notebooks/*
+~~~
+
+~~~
+sudo chmod -R 777 /workspace/docker-airflow/*
+~~~
+
+~~~
+sudo chmod -R 777 /workspace/docker-airflow-spark/docker-airflow/logs/*
+~~~
 
 
-To ensure the services are running, you can click on the following URLs:
 
 
-## Table of Docker Images and Services
+
+## To ensure the services are running, you can click on the following URLs:
+
+
+### Table of Docker Images and Services
 
 | Docker Image | Docker Hub Link | Port | Service | Description |
 |--------------|-----------------|------|---------|-------------|
@@ -86,7 +98,7 @@ To ensure the services are running, you can click on the following URLs:
 | redis:latest | [Link](https://hub.docker.com/_/redis) | [6379](http://localhost:6379) | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
 
 
-## Status of Containers
+### Status of Containers
 
 To check the status of the containers, run the following command:
 
