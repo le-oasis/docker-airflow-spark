@@ -1,68 +1,61 @@
 # Building a Modern Data Lake with Spark, Airflow via Docker.
 
-## Overview
+# Overview
 This system utilises the lakehouse data-lake architecture to store and compute data for enterprises.
 This readme file will detail how to build an ELT (Extract, Load and Transform) pipeline and connect services that support the Data Lake.
 
-## Setting Up the Data Lake
 
-### Dockerfile: Build the Image.
-
-- A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
-- `Dockerfile` that contians installations of `JAVA-JDK.v17`, `ApacheSpark.v3.2.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3` [Python 3.7].
-- navigate to the `lakehouse/airflow/airflow-setup` directory, this is where the `Dockerfile` is located:
-    - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
-    - `docker-airflow` --> `airflow-setup` --> `Dockerfile`.
-- It will take about ***10minutes*** to build, depending on yor internet speed / platform you use to build the image.
-- Run the following command to build the image:
-
-```
-docker build --rm --force-rm -t oasiscorp:latest . 
-```
-
-
-### Airflow Init.
-- navigate  to: 👉🏼 : `docker-airflow`
-
-- You must run this `once` before you can get started. This is the initial bootstrap process. 
-- You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. 
-- Ultimately, this process is in charge of running the database setup work and migrations, bootstrapping and all initalization scripts. 
-- This is essentially, everything you need to get up and running on Apache Airflow.
-- Run the following command to run the init:
+## Pulling Docker Images
+Before starting the services, you need to pull the necessary Docker images. Run the following commands:
 
 ~~~
-docker-compose up airflow-init
+docker pull bde2020/spark-master:3.2.0-hadoop3.2
+~~~
+~~~
+docker pull bde2020/spark-worker:3.2.0-hadoop3.2
+~~~
+~~~
+docker pull minio/minio'
+~~~
+~~~
+docker pull apache/airflow:2.2.3-python3.7
+~~~
+~~~
+docker pull postgres:9.5.3
+~~~
+~~~
+docker pull dimeji/hadoop-namenode:latest
+~~~
+~~~
+docker pull dimeji/hadoop-datanode:latest
+~~~
+~~~
+docker pull dimeji/hive-metastore
+~~~
+~~~
+docker pull jupyter/pyspark-notebook:spark-3.2.0
 ~~~
 
-- output:
 
-![](./doc/air-init.png "Initialize")
+## Starting Services
 
-- This will create the Airflow database and the Airflow USER. 
-- Once we have the Airflow database and the Airflow USER, we can start the Airflow services:
-
-![](./doc/cooked.png "Ready")
-
-<br>
-
-### Starting Services
 After running airflow-init & pulling the necessary images, you're ready to rock n roll. 
-- Navigate to the `docker` directory:
 - Run the following command to start the services:
 
 ~~~
 docker compose -f docker-compose.lakehouse.yml -f docker-compose.yml up --build -d 
 ~~~
 
+### Stopping Services
+Once you're done and you want to stop the services, you can do so with the following command:
 
-To esure the Airflow Scheduler is working, follow this command 
 
 ~~~
-docker exec -it <container_id> airflow db init
+docker-compose -f docker-compose.yml -f docker-compose.lakehouse.yml down --remove-orphans -v
 ~~~
 
 
-## Additional Step for Gitpod Users
+### Additional Step for Gitpod Users
 
 If you are using Gitpod, you may need to modify the permissions for any file or directory that has permission issues. For example, to modify the permissions for the `notebooks` and `logs` directories, use the following commands:
 
@@ -81,8 +74,6 @@ sudo chmod -R 777 /workspace/docker-airflow-spark/docker-airflow/logs/*
 
 
 
-
-
 ## To ensure the services are running, you can click on the following URLs:
 
 
@@ -96,6 +87,7 @@ sudo chmod -R 777 /workspace/docker-airflow-spark/docker-airflow/logs/*
 | jupyter/pyspark-notebook:spark-3.2.0 | [Link](https://hub.docker.com/r/jupyter/pyspark-notebook) | [8888](http://localhost:8888) | Jupyter Notebook | Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.|
 | postgres:9.5.3 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
 | redis:latest | [Link](https://hub.docker.com/_/redis) | [6379](http://localhost:6379) | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
+| minio/minio | [Link](https://hub.docker.com/r/minio/minio) | [9091](http://localhost:9091) | MinIO | MinIO is a High Performance Object Storage released under Apache License v2.0. It is API compatible with Amazon S3 cloud storage service. |
 
 
 ### Status of Containers
