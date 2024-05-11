@@ -62,6 +62,15 @@ docker exec -it <container_id> airflow db init
 ~~~
 
 
+## Additional Step for Gitpod Users
+
+If you are using Gitpod, you may need to modify the permissions for any file or directory that has permission issues. For example, to modify the permissions for the `notebooks` and `logs` directories, use the following commands:
+
+```bash
+sudo chmod -R 777 /workspace/docker-airflow-spark/notebooks
+sudo chmod -R 777 /workspace/docker-airflow-spark/logs
+
+
 To ensure the services are running, you can click on the following URLs:
 
 
@@ -126,26 +135,19 @@ docker ps
 
 ![](./doc/sparkui.png "Spark DAG")
 
-## Dockerfile for Jupyter Notebook with Spark
 
-This Dockerfile sets up a Jupyter Notebook environment with Apache Spark installed, enabling you to run Spark jobs within Jupyter notebooks.
 
-### Instructions
 
-To use this Dockerfile, follow these steps:
+## Access Jupyter Notebook
 
-1. Build the Docker image: `docker build -t jupyter-spark .`
+After starting the container, a URL with a token is generated. This URL is used to access the Jupyter notebook in your web browser.
 
-2. Run the Docker container: `docker run -p 8888:8888 jupyter-spark`
+### Retrieve the Access URL
 
-3. For Jupyter notebook, you must copy the URL with the token generated when the container is started and paste in your browser. 
+You can find the URL with the token in the container logs. Use the following command to retrieve it:
 
-4. The URL with the token can be taken from container logs using:
- 
-```
+```bash
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2.0") 2>&1 | grep 'http://127.0.0.1' | tail -1
-
-```
 
 
 ## Querying the dvdrental Database
