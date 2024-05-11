@@ -75,3 +75,17 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
   CREATE DATABASE $RANGER_DB;
   GRANT ALL PRIVILEGES ON DATABASE $RANGER_DB to $ADMIN_USER;
 EOSQL
+
+
+# Add these lines at the end of the script
+DB_RENTAL="dvdrental"
+DB_RENTAL_EXISTS=$(psql -U "$POSTGRES_USER" -tAc "SELECT 1 FROM pg_database WHERE datname='$DB_RENTAL'")
+
+if [ "$DB_RENTAL_EXISTS" = "1" ]
+then
+    echo "Database $DB_RENTAL already exists, skipping restore."
+else
+    pg_restore --verbose --clean --no-acl --no-owner --section=data --section=post-data --section=pre-data -U $POSTGRES_USER -d $DB_RENTAL /var/lib/postgresql/dvdrental.tar
+    echo "Database $DB_RENTAL restored."
+    psql -U "$POSTGRES_USER" -c "GRANT ALL PRIVILEGES ON DATABASE $DB_RENTAL TO $POSTGRES_USER;"
+fi

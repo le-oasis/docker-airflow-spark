@@ -263,3 +263,5 @@ help.txt
 hadoop-hive.env
 minio/data/*
 minio/data
+spark/conf/*
+spark/conf
