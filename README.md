@@ -148,7 +148,7 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2
 ```
 
 
-### Querying the dvdrental Database
+## Querying the dvdrental Database
 
 Once the Docker container is up and running, you can query the `dvdrental` database using the `psql` command-line interface. Here are the steps:
 
@@ -189,13 +189,15 @@ SELECT * FROM actor LIMIT 5;
 You should see a table with the columns `actor_id`, `first_name`, `last_name`, and `last_update`, and the first 5 rows of data.
 
 dvdrental=# SELECT * FROM actor  LIMIT 5;
- actor_id | first_name |  last_name   |      last_update       
-----------+------------+--------------+------------------------
-        1 | Penelope   | Guiness      | 2013-05-26 14:47:57.62
-        2 | Nick       | Wahlberg     | 2013-05-26 14:47:57.62
-        3 | Ed         | Chase        | 2013-05-26 14:47:57.62
-        4 | Jennifer   | Davis        | 2013-05-26 14:47:57.62
-        5 | Johnny     | Lollobrigida | 2013-05-26 14:47:57.62
+
+| actor_id | first_name | last_name   | last_update            |
+|----------|------------|-------------|------------------------|
+| 1        | Penelope   | Guiness     | 2013-05-26 14:47:57.62 |
+| 2        | Nick       | Wahlberg    | 2013-05-26 14:47:57.62 |
+| 3        | Ed         | Chase       | 2013-05-26 14:47:57.62 |
+| 4        | Jennifer   | Davis       | 2013-05-26 14:47:57.62 |
+| 5        | Johnny     | Lollobrigida| 2013-05-26 14:47:57.62 |
+
 (5 rows)
 
 
