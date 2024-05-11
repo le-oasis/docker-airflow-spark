@@ -19,7 +19,7 @@ Key = 'sales/customers/2022/07/02/09/customers.csv'
 # Read CSV from S3
 def read_data():
     # # Read CSV
-    s3 = boto3.client('s3',aws_access_key_id='',aws_secret_access_key='',endpoint_url='http://mcstoredatalake:9000')
+    s3 = boto3.client('s3',aws_access_key_id='',aws_secret_access_key='',endpoint_url='http://oasisdatalake:9000')
     read_file = s3.get_object(Bucket=Bucket, Key=Key)
     df = pd.read_csv(read_file['Body'],sep=',')
     top5 = df.head()

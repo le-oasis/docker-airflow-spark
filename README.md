@@ -106,6 +106,48 @@ To check the status of the containers, run the following command:
 docker ps
 ```
 
+## Connecting Postgres with Airflow via Airflow DAG
+
+- In this scenario, we are going to schedule a dag file to create a table and insert data into it in PostgreSQL using the Postgres Operator.
+- The DAG file we're executing is named `hello-postgres` in our DAGs folder. 
+- Our DAG file will have two simple tasks of using SQL query to create_table & insert_data into our 'test' database. 
+- After setting up our DAG, we need to configure the connection details in Airflow. 
+- Open the service in your browser at http://localhost:8085 and create a connection.
+- Click on `Admin` ->  `Connections` in the top bar. 
+- Let's create a new one for our purpose.
+
+Click on Create and fill in the necessary details:
+
+- Conn Id : `oasis_con_postgres` - the ID with which we can retrieve the connection details later on.
+- Conn Type : `Postgres` - Select it from the dropdown menu.
+- Host : `oasispostgresdb` - {defined in the yml file}
+- Schema : `airflow` - the database name.
+- Login : `airflow` - or whichever username you set in your docker-compose.yml file.
+- Password : `airflow`  - or whichever password you set in your docker-compose.yml file.
+- Posrt : `5432`  - the standard port for the database within the docker network.
+
+Click on save: Creating the connection airflow to connect the Postgres DB.
+
+- Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side. DAG Succesful 
+
+### Validate DAG
+
+- A little sanity check to make sure the DAG is worked and our SQL tables have been populated.
+- We're going to head into the postgres container 
+- Navigate to the `docker` directory:
+- Run the following command:
+
+```
+docker exec -it  <postgres_container> psql -U airflow airflow
+```
+
+- After gaining acces, we can run a SQL query to validate the data has been inserted.
+
+![](./doc/postgres2.png "SQL")
+
+
+
+
 ## Spark Architecture 
 * Apache Spark is an open source - data processing engine for large datasets. 
 * It is highly scalable and enables users to perform large-scale data transformation and analysis. Also enables stream data analysis in real-time.
@@ -160,7 +202,7 @@ You can find the URL with the token in the container logs. Use the following com
 
 ```bash
 docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2.0") 2>&1 | grep 'http://127.0.0.1' | tail -1
-
+```
 
 ## Querying the dvdrental Database
 
@@ -260,44 +302,7 @@ The Spark Master and Worker are configured using the following environment varia
 
 
 
-## Connecting Postgres with Airflow via Airflow DAG
 
-- In this scenario, we are going to schedule a dag file to create a table and insert data into it in PostgreSQL using the Postgres Operator.
-- The DAG file we're executing is named `hello-postgres` in our DAGs folder. 
-- Our DAG file will have two simple tasks of using SQL query to create_table & insert_data into our 'test' database. 
-- After setting up our DAG, we need to configure the connection details in Airflow. 
-- Open the service in your browser at http://localhost:8085 and create a connection.
-- Click on `Admin` ->  `Connections` in the top bar. 
-- Let's create a new one for our purpose.
-
-Click on Create and fill in the necessary details:
-
-- Conn Id : `postgres_connect` - the ID with which we can retrieve the connection details later on.
-- Conn Type : `Postgres` - Select it from the dropdown menu.
-- Host : `postgres` - {defined in the .env file}
-- Schema : `airflow` - the database name.
-- Login : `airflow` - or whichever username you set in your docker-compose.yml file.
-- Password : `airflow`  - or whichever password you set in your docker-compose.yml file.
-- Posrt : `5432`  - the standard port for the database within the docker network.
-
-Click on save: Creating the connection airflow to connect the Postgres DB.
-
-- Head back to the Airflow UI, activate the DAG on the left and click on "Trigger DAG" on the right-hand side. DAG Succesful 
-
-### Validate DAG
-
-- A little sanity check to make sure the DAG is worked and our SQL tables have been populated.
-- We're going to head into the postgres container 
-- Navigate to the `docker` directory:
-- Run the following command:
-
-```
-docker exec -it  <postgres_container> psql -U airflow airflow
-```
-
-- After gaining acces, we can run a SQL query to validate the data has been inserted.
-
-![](./doc/postgres2.png "SQL")
 
 
 ## Connecting Minio with Airflow via Airflow DAG
