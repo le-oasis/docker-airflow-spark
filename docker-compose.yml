@@ -1,13 +1,13 @@
-# Feel free to modify this file to suit your needs..
+# Welcome to the Modern Data Lake.
 ---
 version: '3'
+
+# Airflow Main Setup
 x-airflow-common:
   &airflow-common
-  # uncomment the image tag to use a specific image
-  # comment the build & context if you want to use the built image.
-  # image: 'air-prune'
   build:
-    context: ./lakehouse/airflow/airflow-setup
+    context: ./docker-airflow/
+    dockerfile: Dockerfile
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -17,18 +17,19 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
-    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'    
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
   volumes:
-    - ./lakehouse/airflow/dags:/opt/airflow/dags
-    - ./lakehouse/airflow/plugins:/opt/airflow/plugins
-    - ./lakehouse/airflow/logs:/opt/airflow/logs
-    - ./spark/app:/usr/local/spark/app 
+    - ./spark/app:/usr/local/spark/app
     - ./spark/resources:/usr/local/spark/resources
+    - ./docker-airflow/dags:/opt/airflow/dags
+    - ./docker-airflow/logs:/opt/airflow/logs
+    - ./docker-airflow/plugins:/opt/airflow/plugins
+    - ${PWD}/spark/conf:/spark/spark-3.2.0-bin-hadoop3.2/conf
   user: "${AIRFLOW_UID:-50000}:$AIRFLOW_GID:-50000}"
   env_file:
-    - ./.env
+    - .env
   networks:
-    - oasiscorp
+    - oasis
   depends_on:
     redis:
       condition: service_healthy
@@ -37,244 +38,201 @@ x-airflow-common:
 
 services:
 
-  # Minio
-  minio:
-    hostname: minio
-    container_name: minio
-    image: 'minio/minio:RELEASE.2024-01-13T07-53-03Z'
-    ports:
-      - '9000:9000'
-      - '9001:9001'
-    volumes:
-      - ./lakehouse/minio/minio-data:/data
-    env_file:
-      - .env
-    command: server /data --console-address ":9001"
-    networks:
-      - oasiscorp
-
-  # Minio MC
-  createbucket:
-    hostname: createbucket
-    container_name: createbucket
-    image: minio/mc:RELEASE.2024-01-13T08-44-48Z
-    depends_on:
-      - minio
-    env_file:
-      - .env
-    entrypoint: ["/bin/sh", "/scripts/entrypoint.sh"]
-    volumes:
-      - ./lakehouse/minio/entrypoint.sh:/scripts/entrypoint.sh
-    networks:
-      - oasiscorp
-
   # Postgres DB
   postgres:
-    hostname: oasis_postgres
-    container_name: oasis_postgres_container
-    image: postgres:10-alpine
-    ports:
-      - 5434:5432
+    hostname: oasispostgresdb
+    container_name: oasis-postgresdb
+    build:
+      context: ./postgres
+      dockerfile: Dockerfile
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+      - ./postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/create_ranger_users.sql
     env_file:
       - .env
-    volumes:
-        # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-        - ./init.sh:/docker-entrypoint-initdb.d/init.sh
+    ports:
+      - 5432:5432
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d metastore_db"]
-      interval: 1s
-      timeout: 10s
-      retries: 10
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
     networks:
-      - oasiscorp
+     - oasis
+
+  # Namenode: A service that is used to manage the namenode.
+  namenode:
+      image: dimeji/hadoop-namenode:latest
+      container_name: oasis-hadoop-namenode
+      volumes:
+        - namenode:/hadoop/dfs/name
+      environment:
+        - CLUSTER_NAME=test
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      ports:
+        - "50070:50070"
+      networks:
+        - oasis
+
+  # Datanode: A service that is used to manage the datanode.    
+  datanode:
+      image: dimeji/hadoop-datanode:latest
+      container_name: oasis-hadoop-datanode
+      volumes:
+        - datanode:/hadoop/dfs/data
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      environment:
+        SERVICE_PRECONDITION: "namenode:50070"
+      ports:
+        - "50075:50075"
+      depends_on:
+      - namenode
+      networks:
+        - oasis
+
+  # Hive: A service that is used to manage metadata.
+  hive:
+      image: dimeji/hive-metastore
+      hostname: hive
+      container_name: oasis-hive-metastore
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      command: /opt/hive/bin/hive --service metastore
+      environment:
+        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 oasispostgresdb:5432"
+      ports:
+        - "9083:9083"
+      depends_on:
+        - namenode
+        - datanode
+      networks:
+        - oasis
+      restart: on-failure
+
+  # Hive Server  
+  hive-server:
+      image: dimeji/hive-server
+      container_name: oasis-hive-server
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      environment:
+        HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive/metastore"
+        SERVICE_PRECONDITION: "hive:9083"
+      ports:
+        - "10000:10000"
+      depends_on:
+        - hive
+      networks:
+        - oasis
 
   # Jupyter notebook
   jupyter-spark:
-        hostname: myjupyter
+        hostname: oasisjupyter
         container_name: jupyter_container
-        image: 'jupyter/pyspark-notebook:latest'
+        image: 'jupyter/pyspark-notebook:spark-3.2.0'
         networks:
-            - oasiscorp
+            - oasis
         ports:
           - "8888:8888"
         volumes:
           - ./notebooks:/home/jovyan/work/notebooks/
           - ./spark/resources/data:/home/jovyan/work/data/
           - ./spark/resources/jars:/home/jovyan/work/jars/
+          - ${PWD}/spark/conf:/usr/local/spark/conf
         restart: always
+        depends_on:
+                - postgres
 
-  # Hive MetaStore
-  hive-metastore:
-    hostname: hive-metastore
-    container_name: hive-metastore
-    build:
-      context: ./lakehouse/hive-config
-    ports:
-      - 9083:9083
-    environment:
-      SERVICE_NAME: metastore
-      DB_DRIVER: postgres
-      HIVE_CUSTOM_CONF_DIR: /opt/hive/conf
-    volumes:
-      - ./lakehouse/hive-config:/opt/hive/conf
-      - ./hadoop-libs/hadoop-aws-3.1.0.jar:/opt/hive/lib/hadoop-aws-3.1.0.jar
-      - ./hadoop-libs/aws-java-sdk-bundle-1.11.271.jar:/opt/hive/lib/aws-java-sdk-bundle-1.11.271.jar
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - oasiscorp
 
-  # Spark Master 
-  spark_master:
-    image: bde2020/spark-master:3.2.0-hadoop3.2
-    hostname: oasis-spark
-    container_name: oasiscorp-master
-    environment:
-      - INIT_DAEMON_STEP=setup_spark
-    volumes:
-      - ./spark/app:/usr/local/spark/app
-      - ./spark/resources:/usr/local/spark/resources
-      - ./spark/conf:/spark/conf
-    env_file:
-      - ./spark.env
-    ports:
-       - "8181:8080"
-       - "7077:7077"
-    networks:
-      - oasiscorp
-
-  # Spark Worker-1
-  spark_worker_1:
-    image: bde2020/spark-worker:3.2.0-hadoop3.2
-    hostname: oasis-spark-w1
-    container_name: oasiscorp-lakehouse-spark-worker-1
-    depends_on: 
-      - spark_master
-    ports:
-      - "8081:8081"
-    env_file:
-      - ./spark.env
-    volumes:
-      - ./spark/app:/usr/local/spark/app 
-      - ./spark/resources:/usr/local/spark/resources
-      - ./spark/conf:/spark/conf
-    networks:
-      - oasiscorp 
-
-  # Spark Worker-2
-  spark_worker_2:
-    image: bde2020/spark-worker:3.2.0-hadoop3.2
-    hostname: oasis-spark-w2
-    container_name: oasiscorp-lakehouse-spark-worker-2
-    ports:
-      - "8083:8081"
-    depends_on: 
-      - spark_master
-    env_file:
-      - ./spark.env
-    volumes:
-      - ./spark/app:/usr/local/spark/app
-      - ./spark/resources:/usr/local/spark/resources
-      - ./spark/conf:/spark/conf
-    networks:
-      - oasiscorp
-  
-  # Spark Worker-3
-  spark_worker_3:
-    image: bde2020/spark-worker:3.2.0-hadoop3.2
-    hostname: oasis-spark-w3
-    container_name: oasiscorp-lakehouse-spark-worker-3
-    ports:
-      - "8084:8081"
-    depends_on: 
-      - spark_master
-    env_file:
-      - ./spark.env
-    volumes:
-      - ./spark/app:/usr/local/spark/app
-      - ./spark/resources:/usr/local/spark/resources
-      - ./spark/conf:/spark/conf
-    networks:
-      - oasiscorp
-
-  # Apache Kyuubi
-  kyuubi:
-    hostname: kyuubi
-    container_name: kyuubi
-    image: apache/kyuubi:1.8.0-spark
-    volumes:
-      - ./lakehouse/kyuubi-config/kyuubi-defaults.conf:/opt/kyuubi/conf/kyuubi-defaults.conf
-    ports:
-      - "10009:10009"
-      - "10099:10099"
-    depends_on:
-      - spark_master
-    networks:
-      - oasiscorp
-
-  # Redis DB
+  # Redis: A key-value store
   redis:
+    container_name: oasis-redis
     image: 'redis:latest'
-    container_name: redis
-    networks:
-      - oasiscorp
-    expose:
-      - 6379
+    ports:
+      - 6379:6379
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 30s
       retries: 50
     restart: always
+    networks:
+      - oasis
 
   # Airflow Web UI
   airflow-webserver:
     <<: *airflow-common
     command: webserver
-    container_name: webserver
+    container_name: oasis-airflow-webserver
     ports:
-        - '8085:8080'
+      - 8088:8080
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8085/health"]
+      test: ["CMD", "curl", "--fail", "http://localhost:4040/health"]
       interval: 10s
       timeout: 10s
       retries: 5
     restart: always
-
+    networks:
+      - oasis
+    
   # Airflow Scheduler
   airflow-scheduler:
+    container_name: oasis-airflow-scheduler
     <<: *airflow-common
     command: scheduler
-    container_name: scheduler
     restart: always
+    networks:
+      - oasis
 
   # Airflow Worker 
   airflow-worker:
+    container_name: oasis-airflow-worker
     <<: *airflow-common
     command: celery worker
-    container_name: celery-worker
     restart: always
+    networks:
+      - oasis
 
   # Airflow DB
   airflow-init:
+    container_name: oasis-airflow-init
     <<: *airflow-common
     command: version
-    container_name: airflow-init
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
       _AIRFLOW_WWW_USER_CREATE: 'true'
-      _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-oasis}
-      _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-oasis}
+      _AIRFLOW_WWW_USER_USERNAME: ${POSTGRES_USER}
+      _AIRFLOW_WWW_USER_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - oasis
+  
+  # Airflow CLI
+  airflow-cli:
+    <<: *airflow-common
+    container_name: oasis-airflow-cli
+    profiles:
+      - debug
+    environment:
+      <<: *airflow-common-env
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    command:
+      - bash
+      - -c 
+      - airflow
+    networks:
+      - oasis
 
-
-
+# Volumes 
 volumes:
   postgres-db-volume:
-  minio-data:
-    driver: local
+  namenode:
+  datanode:
 
+# Network Bridge Connection
 networks:
-  oasiscorp:
+  oasis:
+    name: oasis
     driver: bridge

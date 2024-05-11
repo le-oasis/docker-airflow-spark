@@ -74,7 +74,7 @@ UPDATED=datetime.datetime.today().replace(second=0, microsecond=0)
 # Spark Session Builder
 spark = SparkSession \
     .builder \
-    .master("spark://spark-master:7077").getOrCreate()
+    .master("spark://mcstoresparkm:7077").getOrCreate()
 ######################################################################################
 # Orders Schema 
 ORDERS_SCHEMA =[('order_number', IntegerType()), ('customer_id', IntegerType()), ('product_id', IntegerType()), ('order_date', DateType()),
@@ -99,15 +99,9 @@ print(df_table_curated.show(3))
 ######################################################################################
 # Send Result to Silver Layer 
 # Writing Results to S3
-
-# Transform Customers Table to Curated Table in CSV Format
-df_table_curated.write.option("header","true").csv("s3a://silver/CSV/orders")
-
-# Transform Customers Table to Curated Table in Parquet Format
-df_table_curated.write.option("compression","snappy").parquet("s3a://silver/Curated/orders")
-
-# Transform Customers Table to Curated Table in Delta Format
-df_table_curated.write.format("delta").mode("overwrite").option('overwriteSchema','true').save("s3a://silver/Delta/orders")
+df_table_curated.write.option("header","true").csv("s3a://silver/csv/orders")
+df_table_curated.write.option("compression","snappy").parquet("s3a://silver/curated/orders")
+df_table_curated.write.format("delta").mode("overwrite").option('overwriteSchema','true').save("s3a://silver/delta/orders")
 ######################################################################################
 
 

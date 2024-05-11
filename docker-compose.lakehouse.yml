@@ -1,0 +1,114 @@
+version: "3.8"
+
+services:
+
+  # Spark Master 
+  spark_master:
+    image: bde2020/spark-master:3.2.0-hadoop3.2
+    hostname: oasissparkm
+    container_name: oasis-lakehouse-spark-master
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+    volumes:
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
+    ports:
+       - "8181:8080"
+       - "7077:7077"
+    networks:
+      - oasis
+
+  # Spark Worker-1
+  spark_worker_1:
+    image: bde2020/spark-worker:3.2.0-hadoop3.2
+    hostname: oasissparkw1
+    container_name: oasis-lakehouse-spark-worker-1
+    depends_on: 
+      - spark_master
+    ports:
+      - "8081:8081"
+    env_file:
+      - .env
+    volumes:
+      - ./spark/app:/usr/local/spark/app 
+      - ./spark/resources:/usr/local/spark/resources
+    networks:
+      - oasis 
+
+  # Spark Worker-2
+  spark_worker_2:
+    image: bde2020/spark-worker:3.2.0-hadoop3.2
+    hostname: oasissparkw2
+    container_name: oasis-lakehouse-spark-worker-2
+    ports:
+      - "8083:8081"
+    depends_on: 
+      - spark_master
+    env_file:
+      - .env
+    volumes:
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
+    networks:
+      - oasis
+  
+  # Spark Worker-3
+  spark_worker_3:
+    image: bde2020/spark-worker:3.2.0-hadoop3.2
+    hostname: oasissparkw3
+    container_name: oasis-lakehouse-spark-worker-3
+    ports:
+      - "8084:8081"
+    depends_on: 
+      - spark_master
+    env_file:
+      - .env
+    volumes:
+      - ./spark/app:/usr/local/spark/app
+      - ./spark/resources:/usr/local/spark/resources
+    networks:
+      - oasis
+
+  # Minio: S3 Object Storage
+  minio:
+    hostname: oasisdatalake
+    container_name: oasis-lakehouse-minio
+    image: 'minio/minio'
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio/data:/export
+      - ./minio/config:/root/.minio
+    networks:
+      - oasis    
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    command: ["server", "--console-address", ":9001", "/export"]
+
+  # Minio Client: Create Minio Buckets
+  createbuckets:
+    image: 'minio/mc'
+    container_name: oasis-lakehouse-minio-client
+    depends_on:
+      - minio
+    env_file:
+      - .env
+    networks:
+      - oasis
+    volumes:
+      - ./minio/entrypoint.sh:/entrypoint.sh
+    entrypoint: /bin/bash /entrypoint.sh
+
+
+
+# Network Bridge Connection
+networks:
+  oasis:
+    name: oasis
+    driver: bridge
