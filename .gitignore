@@ -253,7 +253,7 @@ airflow/.DS_Store
 airflow/extraction/pipeline_secret.conf
 terraform/*
 !*.tf
-*.conf
+!*.conf
 .DS_Store
 __pycache__
 airflow/redshift_download
