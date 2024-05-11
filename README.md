@@ -1,8 +1,9 @@
-# Building a Modern Data Lake with Spark, Airflow via Docker.
+# Building a Modern Data Lakehouse with Spark, Airflow, and MinIO via Docker
 
 # Overview
-This system utilises the lakehouse data-lake architecture to store and compute data for enterprises.
-This readme file will detail how to build an ELT (Extract, Load and Transform) pipeline and connect services that support the Data Lake.
+Our project has evolved into a comprehensive system that leverages the lakehouse architecture, combining the best elements of data lakes and data warehouses for enterprise-level data storage and computation. 
+
+- This README will guide you through the process of building an ELT (Extract, Load, Transform) pipeline using Apache Spark and Airflow, orchestrated via Docker. We also introduce MinIO, a high-performance object storage service, into our stack to handle scalable, S3-compatible storage needs. This setup ensures a robust, scalable, and efficient data infrastructure.
 
 
 ## Pulling Docker Images
@@ -15,7 +16,7 @@ docker pull bde2020/spark-master:3.2.0-hadoop3.2
 docker pull bde2020/spark-worker:3.2.0-hadoop3.2
 ~~~
 ~~~
-docker pull minio/minio'
+docker pull minio/minio
 ~~~
 ~~~
 docker pull apache/airflow:2.2.3-python3.7
