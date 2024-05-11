@@ -10,7 +10,7 @@ from pyspark.sql.functions import col
 # Spark Session Builder
 spark = SparkSession \
     .builder \
-    .master("spark://spark-master:7077").getOrCreate()
+    .master("spark://oasissparkm:7077").getOrCreate()
 
 
 # Pulling DataFrame from Minio
@@ -35,4 +35,4 @@ uk_customers = spark.sql("""
 
 
 # Writing Results to S3
-uk_customers.write.option("header","true").csv("s3a://silver/customers/United-Kingdom")
+uk_customers.write.option("header","true").csv("s3a://silver/customers/UKVI")

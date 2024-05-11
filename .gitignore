@@ -260,3 +260,6 @@ airflow/redshift_download
 terraform/*
 *.env
 help.txt
+hadoop-hive.env
+minio/data/*
+minio/data

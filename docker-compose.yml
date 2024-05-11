@@ -1,14 +1,13 @@
-# ---
-# Feel free to modify this file to suit your needs..
+# Welcome to the Modern Data Lake.
 ---
 version: '3'
+
+# Airflow Main Setup
 x-airflow-common:
   &airflow-common
-  # uncomment the image tag to use a specific image
-  # comment the build & context if you want to use the built image.
-  # image: 'air-prune'
   build:
-    context: ./lakehouse/airflow/airflow-setup
+    context: ./docker-airflow/
+    dockerfile: Dockerfile
   environment:
     &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: CeleryExecutor
@@ -18,18 +17,19 @@ x-airflow-common:
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
-    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'   
+    AIRFLOW__API__AUTH_BACKEND: 'airflow.api.auth.backend.basic_auth'
   volumes:
-    - ${PWD}/lakehouse/airflow/dags:/opt/airflow/dags
-    - ${PWD}/lakehouse/airflow/logs:/opt/airflow/logs
-    - ${PWD}/lakehouse/airflow/plugins:/opt/airflow/plugins
-    - ${PWD}/spark/app:/usr/local/spark/app  #Spark Scripts (Must be the same path in airflow and Spark Cluster)
-    - ${PWD}/spark/resources:/usr/local/spark/resources  #Resources folder (Must be the same path in airflow and Spark Cluster)
+    - ./spark/app:/usr/local/spark/app
+    - ./spark/resources:/usr/local/spark/resources
+    - ./docker-airflow/dags:/opt/airflow/dags
+    - ./docker-airflow/logs:/opt/airflow/logs
+    - ./docker-airflow/plugins:/opt/airflow/plugins
+    - ${PWD}/spark/conf:/spark/spark-3.2.0-bin-hadoop3.2/conf
   user: "${AIRFLOW_UID:-50000}:$AIRFLOW_GID:-50000}"
   env_file:
     - .env
   networks:
-    - oasiscorp
+    - oasis
   depends_on:
     redis:
       condition: service_healthy
@@ -40,89 +40,199 @@ services:
 
   # Postgres DB
   postgres:
+    hostname: oasispostgresdb
+    container_name: oasis-postgresdb
     build:
-      context: lakehouse/postgres
+      context: ./postgres
       dockerfile: Dockerfile
-    container_name: postgres_container
-    hostname: postgres
-    environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow
-    networks:
-      - oasiscorp
-    ports:
-      - "5432:5432"
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
-      - ${PWD}/lakehouse/postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - ${PWD}/postgres/hive/init-hive-db.sh:/docker-entrypoint-initdb.d/init-hive-db.sh
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
       retries: 5
     restart: always
-
-  # Redis DB
-  redis:
-    image: 'redis:latest'
-    container_name: redis
     networks:
-      - oasiscorp
-    expose:
-      - 6379
+     - oasis
+
+  # Namenode: A service that is used to manage the namenode.
+  namenode:
+      image: dimeji/hadoop-namenode:latest
+      container_name: oasis-hadoop-namenode
+      volumes:
+        - namenode:/hadoop/dfs/name
+      environment:
+        - CLUSTER_NAME=test
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      ports:
+        - "50070:50070"
+      networks:
+        - oasis
+
+  # Datanode: A service that is used to manage the datanode.    
+  datanode:
+      image: dimeji/hadoop-datanode:latest
+      container_name: oasis-hadoop-datanode
+      volumes:
+        - datanode:/hadoop/dfs/data
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      environment:
+        SERVICE_PRECONDITION: "namenode:50070"
+      ports:
+        - "50075:50075"
+      depends_on:
+      - namenode
+      networks:
+        - oasis
+
+  # Hive: A service that is used to manage metadata.
+  hive:
+      image: dimeji/hive-metastore
+      hostname: hive
+      container_name: oasis-hive-metastore
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      command: /opt/hive/bin/hive --service metastore
+      environment:
+        SERVICE_PRECONDITION: "namenode:50070 datanode:50075 oasispostgresdb:5432"
+      ports:
+        - "9083:9083"
+      depends_on:
+        - namenode
+        - datanode
+      networks:
+        - oasis
+      restart: on-failure
+
+  # Hive Server  
+  hive-server:
+      image: dimeji/hive-server
+      container_name: oasis-hive-server
+      env_file:
+        - ${PWD}/hadoop-hive.env
+      environment:
+        HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive/metastore"
+        SERVICE_PRECONDITION: "hive:9083"
+      ports:
+        - "10000:10000"
+      depends_on:
+        - hive
+      networks:
+        - oasis
+
+  # Jupyter notebook
+  jupyter-spark:
+        hostname: oasisjupyter
+        container_name: jupyter_container
+        image: 'jupyter/pyspark-notebook:spark-3.2.0'
+        networks:
+            - oasis
+        ports:
+          - "8888:8888"
+        volumes:
+          - ./notebooks:/home/jovyan/work/notebooks/
+          - ./spark/resources/data:/home/jovyan/work/data/
+          - ./spark/resources/jars:/home/jovyan/work/jars/
+          - ${PWD}/spark/conf:/usr/local/spark/conf
+        restart: always
+        depends_on:
+                - postgres
+
+
+  # Redis: A key-value store
+  redis:
+    container_name: oasis-redis
+    image: 'redis:latest'
+    ports:
+      - 6379:6379
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
       timeout: 30s
       retries: 50
     restart: always
+    networks:
+      - oasis
 
   # Airflow Web UI
   airflow-webserver:
     <<: *airflow-common
     command: webserver
-    container_name: webserver
+    container_name: oasis-airflow-webserver
     ports:
-        - '8085:8080'
+      - 8088:8080
     healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:8085/health"]
+      test: ["CMD", "curl", "--fail", "http://localhost:4040/health"]
       interval: 10s
       timeout: 10s
       retries: 5
     restart: always
-
+    networks:
+      - oasis
+    
   # Airflow Scheduler
   airflow-scheduler:
+    container_name: oasis-airflow-scheduler
     <<: *airflow-common
     command: scheduler
-    container_name: scheduler
     restart: always
+    networks:
+      - oasis
 
   # Airflow Worker 
   airflow-worker:
+    container_name: oasis-airflow-worker
     <<: *airflow-common
     command: celery worker
-    container_name: celery-worker
     restart: always
+    networks:
+      - oasis
 
   # Airflow DB
   airflow-init:
+    container_name: oasis-airflow-init
     <<: *airflow-common
     command: version
-    container_name: airflow-init
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_UPGRADE: 'true'
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
+    networks:
+      - oasis
+  
+  # Airflow CLI
+  airflow-cli:
+    <<: *airflow-common
+    container_name: oasis-airflow-cli
+    profiles:
+      - debug
+    environment:
+      <<: *airflow-common-env
+      CONNECTION_CHECK_MAX_COUNT: "0"
+    command:
+      - bash
+      - -c 
+      - airflow
+    networks:
+      - oasis
 
-
-
+# Volumes 
 volumes:
   postgres-db-volume:
-    driver: local
+  namenode:
+  datanode:
 
+# Network Bridge Connection
 networks:
-  oasiscorp:
+  oasis:
+    name: oasis
     driver: bridge
