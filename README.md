@@ -9,10 +9,10 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 ### Dockerfile: Build the Image.
 
 - A `Dockerfile`  is a text document that contains all the commands a user could call on the command line to assemble an image. 
-- `Dockerfile` that contians installations of `JAVA-JDK.v17`, `ApacheSpark.v3.2.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.6.3`.
+- `Dockerfile` that contians installations of `JAVA-JDK.v17`, `ApacheSpark.v3.2.0`, `Hadoop.v3`, & other dependencies built on top of `Airflow.v.2.2.3` [Python 3.7].
 - navigate to the `lakehouse/airflow/airflow-setup` directory, this is where the `Dockerfile` is located:
     - `Dockerfile` is a `.dockerfile` file that contains the instructions to build the image.
-    - `lakehouse/airflow` --> `airflow-setup` --> `Dockerfile`.
+    - `docker-airflow` --> `airflow-setup` --> `Dockerfile`.
 - It will take about ***10minutes*** to build, depending on yor internet speed / platform you use to build the image.
 - Run the following command to build the image:
 
@@ -20,23 +20,9 @@ This readme file will detail how to build an ELT (Extract, Load and Transform) p
 docker build --rm --force-rm -t oasiscorp:latest . 
 ```
 
-### Build Other Images
-To build the posrgres image, navigate to the `lakehouse` directory and run the following command:
-
-```
-docker build --rm --force-rm -t postgres-oasis:latest .
-```
-
-To build the jupyter-notebook image, navigate to the `lakehouse` directory and run the following command:
-    
-    ```
-    docker build --rm --force-rm -t jupyter-oasis:latest .
-    ```
-
-
 
 ### Airflow Init.
-- navigate  to: 👉🏼 : `lakehouse/airflow/airflow-setup`
+- navigate  to: 👉🏼 : `docker-airflow`
 
 - You must run this `once` before you can get started. This is the initial bootstrap process. 
 - You will see a bunch of debug logging during this process. You can scroll through this to see what the initalization process is doing. 
@@ -65,7 +51,7 @@ After running airflow-init & pulling the necessary images, you're ready to rock 
 - Run the following command to start the services:
 
 ~~~
-docker compose -f docker-compose.spark.yml -f docker-compose.yml up --build -d 
+docker compose -f docker-compose.lakehouse.yml -f docker-compose.yml up --build -d 
 ~~~
 
 
@@ -83,11 +69,11 @@ To ensure the services are running, you can click on the following URLs:
 
 | Docker Image | Docker Hub Link | Port | Service | Description |
 |--------------|-----------------|------|---------|-------------|
-| apache/airflow:2.6.0 | [Link](https://hub.docker.com/r/apache/airflow) | [8085](http://localhost:8085) | Airflow | Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.|
+| apache/airflow:2.2.3| [Link](https://hub.docker.com/r/apache/airflow) | [8085](http://localhost:8085) | Airflow | Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.|
 | bde2020/spark-master:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-master) | [8080](http://localhost:8080) | Spark Master | Spark Master is the heart of the Spark application. It is the central coordinator that schedules tasks on worker nodes.|
 | bde2020/spark-worker:3.2.0-hadoop3.2 | [Link](https://hub.docker.com/r/bde2020/spark-worker) | [8081](http://localhost:8081) | Spark Worker | Spark Worker is the node that runs the tasks assigned by the Spark Master.|
 | jupyter/pyspark-notebook:spark-3.2.0 | [Link](https://hub.docker.com/r/jupyter/pyspark-notebook) | [8888](http://localhost:8888) | Jupyter Notebook | Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.|
-| postgres:14 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
+| postgres:9.5.3 | [Link](https://hub.docker.com/_/postgres) | [5432](http://localhost:5432) | Postgres | PostgreSQL is a powerful, open source object-relational database system.|
 | redis:latest | [Link](https://hub.docker.com/_/redis) | [6379](http://localhost:6379) | Redis | Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.|
 
 
@@ -118,7 +104,7 @@ docker ps
 
 - Conn Id:  `spark_connect`  - This is the name of the connection.
 - Conn Type: `Spark` - This is the type of connection.
-- Host: `spark://spark-master` - This is the hostname of the Spark Master.
+- Host: `spark://oasissparkm` - This is the hostname of the Spark Master.
 - Port: `7077`  - This is the port of the Spark Master.
 - Extra: `{"queue": "root.default"}` - This is the name of the queue that the Spark job will be submitted to.
 
