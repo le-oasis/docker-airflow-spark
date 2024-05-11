@@ -47,7 +47,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - postgres-db-volume:/var/lib/postgresql/data
-      - ./postgres/create_ranger_users.sql:/docker-entrypoint-initdb.d/create_ranger_users.sql
+      - ${PWD}/postgres/hive/init-hive-db.sh:/docker-entrypoint-initdb.d/init-hive-db.sh
     env_file:
       - .env
     ports:
