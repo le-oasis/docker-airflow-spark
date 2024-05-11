@@ -148,6 +148,61 @@ docker logs $(docker ps -q --filter "ancestor=jupyter/pyspark-notebook:spark-3.2
 ```
 
 
+### Querying the dvdrental Database
+
+Once the Docker container is up and running, you can query the `dvdrental` database using the `psql` command-line interface. Here are the steps:
+
+1. Access the PostgreSQL interactive terminal:
+
+```bash
+docker exec -it oasis-postgresdb psql -U airflow
+```
+
+2. List all databases:
+
+```bash
+\l
+```
+
+You should see `dvdrental` in the list of databases.
+
+3. Connect to the `dvdrental` database:
+
+```bash
+\c dvdrental
+```
+
+4. List all tables in the `dvdrental` database:
+
+```bash
+\dt
+```
+
+You should see a list of tables such as `actor`, `address`, `category`, etc.
+
+5. Query a table. For example, to select the first 5 rows from the `actor` table:
+
+```bash
+SELECT * FROM actor LIMIT 5;
+```
+
+You should see a table with the columns `actor_id`, `first_name`, `last_name`, and `last_update`, and the first 5 rows of data.
+
+dvdrental=# SELECT * FROM actor  LIMIT 5;
+ actor_id | first_name |  last_name   |      last_update       
+----------+------------+--------------+------------------------
+        1 | Penelope   | Guiness      | 2013-05-26 14:47:57.62
+        2 | Nick       | Wahlberg     | 2013-05-26 14:47:57.62
+        3 | Ed         | Chase        | 2013-05-26 14:47:57.62
+        4 | Jennifer   | Davis        | 2013-05-26 14:47:57.62
+        5 | Johnny     | Lollobrigida | 2013-05-26 14:47:57.62
+(5 rows)
+
+
+
+
+
+
 ### Spark Installation
 
 The Dockerfile downloads and installs Apache Spark based on the specified versions. The Spark binaries are fetched from the Apache archive.
@@ -187,45 +242,6 @@ The Spark Master and Worker are configured using the following environment varia
 - `SPARK_MASTER_PORT` is set to `7077` to ensure the Spark Master is accessible from the Spark Worker.
 - `SPARK_MASTER_WEBUI_PORT` is set to `8080` to ensure the Spark Master UI is accessible from the host.
 - `SPARK_WORKER_WEBUI_PORT` is set to `8081` to ensure the Spark Worker UI is accessible from the host.
-
-
-
-## Airflow: http://localhost:8085
-
-Airflow UI Login: 
-* username: airflow 
-* password: airflow
-
-## Spark: http://localhost:8181
-
-* Spark Master & Workers.
-
-
-## Minio: http://localhost:9001
-
-* Minio is the best server which is suited for storing unstructured data such as photos, videos, log files, backups, and container.
-* This would serve as our Object Storage Service. 
-
-## Postgres
-- Access to the Postgres database is available using the following command:
-
-```
-docker exec -it postgres_container psql -U hive
-
-```
-
-## Nifi: http://localhost:8091/nifi/
-
-* NiFi is the best server which is suited for processing data.
-* This would serve as our Data Processing Service.
-
-
-## Nifi Registry: http://localhost:18080/nifi-registry
-
-* NiFi Registry is the best server which is suited for storing and retrieving data.
-* This would serve as our Data Storage Service.
-
-
 
 
 
